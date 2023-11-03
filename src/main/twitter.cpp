@@ -1,5 +1,8 @@
-#include <iostrem>
+#include "commandline.hpp"
+
+#include <iostream>
 
 int main() {
-	std::cout << "Ola, mundo\n";
+	CommandLine commandLine;
+	commandLine.run();
 }

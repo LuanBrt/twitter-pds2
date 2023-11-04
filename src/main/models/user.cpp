@@ -1,4 +1,4 @@
-#include "user.hpp"
+#include "models/user.hpp"
 
 std::string User::username() {
     return _username;

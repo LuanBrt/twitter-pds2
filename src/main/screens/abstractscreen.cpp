@@ -14,6 +14,14 @@ int AbstractScreen::renderMenu(const std::map<int, std::string> &options) const 
     return selected;
 }
 
+std::string AbstractScreen::Input(std::string content){
+    std::cout<<content<<std::endl;
+    std::string data;
+    std::cin>>data;
+    return data;
+
+}
+
 std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::string> fields) const
 {
     std::map<std::string, std::string> response;

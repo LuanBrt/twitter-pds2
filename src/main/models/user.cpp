@@ -11,3 +11,7 @@ std::string User::password() {
 std::string User::nickname() {
     return _nickname;
 }
+
+int User::followers(){
+    return _followers;
+}

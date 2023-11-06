@@ -20,6 +20,8 @@ class AbstractScreen {
         /// @return O valor passado pelo usuário
         virtual std::string Input(std::string content);
 
+        virtual void output(std::string data);
+
         /// @brief Mostra ao usuário um formulário exigindo os campos selecionados
         /// @param fields 
         /// @return Um mapa representando o valor passado pelo usuário a cada campo

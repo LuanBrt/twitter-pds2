@@ -18,8 +18,13 @@ std::string AbstractScreen::Input(std::string content){
     std::cout<<content<<std::endl;
     std::string data;
     std::cin>>data;
+    std::cout<<std::endl;
     return data;
 
+}
+
+void AbstractScreen::output(std::string data){
+    std::cout<<data<<std::endl;
 }
 
 std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::string> fields) const

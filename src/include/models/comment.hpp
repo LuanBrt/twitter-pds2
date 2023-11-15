@@ -1,20 +1,17 @@
 #pragma once
 #include <string>
 
-class Tweet;
-
 class Comment {
 public:
-    Comment(const std::string& description, const std::string& author, Tweet* tweetReference);
+    Comment(const std::string description, const std::string author, int tweetReference)
+    : _description(description), _author(author), _tweetReference(tweetReference) {}
 
-    std::string getDescription() const;
-    std::string getAuthor() const;
-    Tweet* getTweetReference() const;
-
-    void addCommentToTweet();
+    std::string getDescription();
+    std::string getAuthor();
+    int getTweetReference();
 
 private:
     std::string _description;
     std::string _author;
-    Tweet* _tweetReference;
+    int _tweetReference;
 };

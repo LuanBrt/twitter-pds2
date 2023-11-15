@@ -1,17 +1,13 @@
 #include "models/comment.hpp"
-#include "models/tweet.hpp"
 
-Comment::Comment(const std::string& description, const std::string& author, Tweet* tweetReference)
-    : _description(description), _author(author), _tweetReference(tweetReference) {}
-
-std::string Comment::getDescription() const {
+std::string Comment::getDescription() {
     return _description;
 }
 
-std::string Comment::getAuthor() const {
+std::string Comment::getAuthor() {
     return _author;
 }
 
-Tweet* Comment::getTweetReference() const {
+int Comment::getTweetReference() {
     return _tweetReference;
 }

@@ -1,4 +1,5 @@
 #include "controllers/authcontroller.hpp"
+#include "controllers/tweetcontroller.hpp"
 
 #include <iostream>
 #include <map>
@@ -21,7 +22,7 @@ AbstractController *AuthController::render() {
         // Obter credenciais de login
         case ValidOptions::LOGIN: {
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Senha"});
-            return nullptr;
+            return new TweetController();
         }
     }
     return nullptr;

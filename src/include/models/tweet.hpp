@@ -1,22 +1,24 @@
 #pragma once
 #include <string>
 #include <vector>
-
-class Comment;
+#include "models/comment.hpp"
 
 class Tweet {
 public:
-    Tweet(const std::string& author, const std::string& description, const std::string& timestamp, int likes);
+    Tweet(int id, const std::string author, const std::string description, const std::string timestamp, int likes);
 
-    std::string getAuthor() const;
-    std::string getDescription() const;
-    std::string getTimestamp() const;
-    int getLikes() const;
-    const std::vector<Comment> getComments() const;
-    
-    void addComment(const std::string& commentDescription, const std::string& commentAuthor);
+    int getId() const;
+    std::string getAuthor();
+    std::string getDescription();
+    std::string getTimestamp();
+    int getLikes();
+    const std::vector<Comment> getComments();
+
+    void addComment(const std::string commentDescription, const std::string commentAuthor);
+    static Tweet getTweetById(int id, const std::vector<Tweet> tweets);
 
 private:
+    int _id;
     std::string _author;
     std::string _description;
     std::string _timestamp;

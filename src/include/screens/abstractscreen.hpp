@@ -15,13 +15,6 @@ class AbstractScreen {
         /// @return A opção selecionada
         virtual int renderMenu(const std::map<int, std::string> &options) const;
 
-        /// @brief Cria uma caixa de texto, onde o texto de apresentação é o valor do content
-        /// @param content 
-        /// @return O valor passado pelo usuário
-        virtual std::string Input(std::string content);
-
-        virtual void output(std::string data);
-
         /// @brief Mostra ao usuário um formulário exigindo os campos selecionados
         /// @param fields 
         /// @return Um mapa representando o valor passado pelo usuário a cada campo

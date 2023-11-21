@@ -1,16 +1,29 @@
 #include "screens/tweetscreen.hpp"
-#include <iostream>
 #include "models/tweet.hpp"
+#include "models/comment.hpp"
+
+#include <iostream>
+
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define BLUE    "\033[34m"
 
 TweetScreen::TweetScreen() {
-    std::vector<Tweet> tweetVector;
-
-    tweetVector.push_back(Tweet(1, "AutorTweet", "Conteúdo do Tweet", "2023-01-01 12:00:00", 0));
-    tweetVector.push_back(Tweet(2, "AutorTweet2", "Conteúdo do Tweet2", "2023-01-01 12:00:00", 1));
-
-    Tweet tweet = Tweet::getTweetById(1, tweetVector);
-
-    _title = "Tweet";
-    std::cout << "Autor: " << tweet.getAuthor() << std::endl;
+    _title = "Opções:";
 }
 
+void TweetScreen::renderTweet(Tweet tweet) {
+    std::cout << RED << "Autor: " << RESET << tweet.getAuthor() << std::endl;
+    std::cout << RED << "Conteúdo: \n" << RESET << tweet.getDescription() << std::endl;
+    std::cout << BLUE << "Likes: " << RESET << tweet.getLikes() << BLUE <<
+        "   Horário: " << RESET << tweet.getTimestamp() << std::endl;
+    
+    std::vector<Comment> comments = tweet.getComments();
+
+    std::cout << RED << "Comentários: \n" << RESET;
+    for (Comment comment : comments) {
+        std::cout << "Autor do Comentário: " << comment.getAuthor() << std::endl;
+        std::cout << "Descrição do Comentário: " << comment.getDescription() << std::endl;
+        std::cout << std::endl;
+    }
+}

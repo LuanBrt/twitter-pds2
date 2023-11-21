@@ -25,16 +25,16 @@ int Tweet::getLikes() {
     return _likes;
 }
 
-const std::vector<Comment> Tweet::getComments() {
+std::vector<Comment> Tweet::getComments() {
     return _comments;
 }
 
-void Tweet::addComment(const std::string commentDescription, const std::string commentAuthor) {
+void Tweet::addComment(std::string commentDescription, std::string commentAuthor) {
     Comment* newComment = new Comment(commentDescription, commentAuthor, Tweet::getId());
     _comments.push_back(*newComment);
 }
 
-Tweet Tweet::getTweetById(int id, const std::vector<Tweet> tweets) {
+Tweet Tweet::getTweetById(int id, std::vector<Tweet> tweets) {
     for (const auto tweet : tweets) {
         if (tweet.getId() == id) {
             return tweet;

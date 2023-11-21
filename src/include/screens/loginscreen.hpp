@@ -7,5 +7,6 @@
 
 class LoginScreen : public AbstractScreen {
     public:
+        /// @brief Construtor padrao
         LoginScreen();
 };

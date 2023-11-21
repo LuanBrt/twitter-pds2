@@ -4,6 +4,7 @@
 
 class User {
 public:
+    User(std::string username, std::string password, std::string nickname): _username(username), _password(password), _nickname(nickname) {}
     std::string username();
     std::string password();
     std::string nickname();

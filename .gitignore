@@ -7,3 +7,7 @@ Testing
 Makefile
 cmake_install.cmake
 TwitterApp
+test
+database.db
+databasetest.db
+build/

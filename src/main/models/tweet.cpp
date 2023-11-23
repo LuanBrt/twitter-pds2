@@ -1,46 +1,46 @@
 #include "models/tweet.hpp"
 #include "models/comment.hpp"
+#include "models/userrepo.hpp"
+#include "models/user.hpp"
 
-Tweet::Tweet(int id, const std::string author, const std::string description, const std::string timestamp, int likes)
-    : _id(id), _author(author), _description(description), _timestamp(timestamp), _likes(likes) {}
 
-
-int Tweet::getId() const{
+int Tweet::id(){
   return _id;
 }
 
-std::string Tweet::getAuthor() {
-    return _author;
+User Tweet::author() {
+    UserRepo _repo;
+    return _repo.searchUserById(_authorId);
 }
 
-std::string Tweet::getDescription() {
+std::string Tweet::description() {
     return _description;
 }
 
-std::string Tweet::getTimestamp() {
+std::string Tweet::timestamp() {
     return _timestamp;
 }
 
-int Tweet::getLikes() {
+int Tweet::likes() {
     return _likes;
 }
 
-std::vector<Comment> Tweet::getComments() {
+std::vector<Comment> Tweet::comments() {
     return _comments;
 }
 
 void Tweet::addComment(std::string commentDescription, std::string commentAuthor) {
-    Comment* newComment = new Comment(commentDescription, commentAuthor, Tweet::getId());
+    Comment* newComment = new Comment(commentDescription, commentAuthor, Tweet::id());
     _comments.push_back(*newComment);
 }
 
 Tweet Tweet::getTweetById(int id, std::vector<Tweet> tweets) {
-    for (const auto tweet : tweets) {
-        if (tweet.getId() == id) {
+    for (auto tweet : tweets) {
+        if (tweet.id() == id) {
             return tweet;
         }
     }
 
     // Se não encontrar, retorna um tweet "vazio" (os atributos não são garantidos)
-    return Tweet(-1, "", "", "", 0);
+    return Tweet(-1, -1, "", "", 0);
 }

@@ -13,12 +13,12 @@ TweetScreen::TweetScreen() {
 }
 
 void TweetScreen::renderTweet(Tweet tweet) {
-    std::cout << RED << "Autor: " << RESET << tweet.getAuthor() << std::endl;
-    std::cout << RED << "Conteúdo: \n" << RESET << tweet.getDescription() << std::endl;
-    std::cout << BLUE << "Likes: " << RESET << tweet.getLikes() << BLUE <<
-        "   Horário: " << RESET << tweet.getTimestamp() << std::endl;
+    std::cout << RED << "Autor: " << RESET << tweet.author().username() << std::endl;
+    std::cout << RED << "Conteúdo: \n" << RESET << tweet.description() << std::endl;
+    std::cout << BLUE << "Likes: " << RESET << tweet.likes() << BLUE <<
+        "   Horário: " << RESET << tweet.timestamp() << std::endl;
     
-    std::vector<Comment> comments = tweet.getComments();
+    std::vector<Comment> comments = tweet.comments();
 
     std::cout << RED << "Comentários: \n" << RESET;
     for (Comment comment : comments) {

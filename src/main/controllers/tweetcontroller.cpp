@@ -1,5 +1,8 @@
 #include "controllers/tweetcontroller.hpp"
 #include "models/tweet.hpp"
+#include "models/tweetrepo.hpp"
+#include "models/userrepo.hpp"
+#include "models/user.hpp"
 
 #include <iostream>
 #include <map>
@@ -14,14 +17,17 @@ TweetController::TweetController() {
 
 AbstractController *TweetController::render() {
 
-    std::vector<Tweet> tweetVector;
+    UserRepo _userRepo;
+    User user("luan", "123", "teste");
 
-    tweetVector.push_back(Tweet(1, 1, "Conteúdo do Tweet", "2023-01-01 12:00:00", 0));
-    tweetVector.push_back(Tweet(2, 1, "Conteúdo do Tweet2", "2023-01-01 12:00:00", 1));
+    User ur = _userRepo.addUser(user);
 
-    Tweet tweet = Tweet::getTweetById(2, tweetVector);
+    TweetRepo _tweetRepo;
+    Tweet tweet(ur.id(), "testee", "21/11/2023", 0);
 
-    _tweetScreen.renderTweet(tweet);
+    Tweet tr = _tweetRepo.addTweet(tweet);
+
+    _tweetScreen.renderTweet(tr);
 
     int selected = _tweetScreen.renderMenu(_options);
     switch (selected) {
@@ -37,7 +43,6 @@ AbstractController *TweetController::render() {
             std::map<std::string, std::string> response = _tweetScreen.renderForm({"Usuario", "Comentário"});
             std::string username = response["Usuario"];
             std::string comment = response["Comentário"];
-            tweet.addComment(comment, username);
             _tweetScreen.renderTweet(tweet);
         }
     }

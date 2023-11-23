@@ -9,9 +9,9 @@
 class TweetRepo : public AbstractRepo {
 public:
 
-    /// @brief Adiciona um usuario ao banco de dados
+    /// @brief Adiciona um tweet ao banco de dados
     /// @param tweet 
-    /// @return Retorna 1 caso sucesso e 0 caso erro
+    /// @return Retorna o próprio tweet criado caso sucesso e um throw de erro caso dê errado
     Tweet addTweet(Tweet tweet);
 
     /// @brief Pega todos os tweets do banco de dados
@@ -19,8 +19,8 @@ public:
     std::vector<Tweet> getTweets();
 
 
-    /// @brief Busca tweets que foram enviados por um usuario com esse username
+    /// @brief Busca um tweet específico com esse id
     /// @param id
-    /// @return Retorna uma lista de tweets que contenham o author como esse username
+    /// @return Retorna o tweet que contém o id especificado
     Tweet searchTweetById(int id);
 };

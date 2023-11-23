@@ -34,8 +34,8 @@ std::vector<Tweet> TweetRepo::getTweets() {
   sql += "SELECT * FROM tweet;";
   std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
   for (auto tweetData : result) {
-      Tweet u(stoi(tweetData["id"]),stoi(tweetData["author_id"]), tweetData["description"], tweetData["timestamp"], stoi(tweetData["likes"]));
-      tweetVec.push_back(u);
+      Tweet t(stoi(tweetData["id"]),stoi(tweetData["author_id"]), tweetData["description"], tweetData["timestamp"], stoi(tweetData["likes"]));
+      tweetVec.push_back(t);
   }
 
   return tweetVec;

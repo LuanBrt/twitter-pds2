@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "models/comment.hpp"
 #include "models/user.hpp"
 
 class Tweet {
@@ -16,10 +15,8 @@ public:
     std::string description();
     std::string timestamp();
     int likes();
-    std::vector<Comment> comments();
 
-    void addComment(std::string commentDescription, std::string commentAuthor);
-    static Tweet getTweetById(int id, std::vector<Tweet> tweets);
+    Tweet getTweetById(int id, std::vector<Tweet> tweets);
 
 private:
     int _id;
@@ -27,5 +24,4 @@ private:
     std::string _description;
     std::string _timestamp;
     int _likes;
-    std::vector<Comment> _comments;
 };

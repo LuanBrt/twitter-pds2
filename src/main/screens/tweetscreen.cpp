@@ -17,13 +17,4 @@ void TweetScreen::renderTweet(Tweet tweet) {
     std::cout << RED << "Conteúdo: \n" << RESET << tweet.description() << std::endl;
     std::cout << BLUE << "Likes: " << RESET << tweet.likes() << BLUE <<
         "   Horário: " << RESET << tweet.timestamp() << std::endl;
-    
-    std::vector<Comment> comments = tweet.comments();
-
-    std::cout << RED << "Comentários: \n" << RESET;
-    for (Comment comment : comments) {
-        std::cout << "Autor do Comentário: " << comment.getAuthor() << std::endl;
-        std::cout << "Descrição do Comentário: " << comment.getDescription() << std::endl;
-        std::cout << std::endl;
-    }
 }

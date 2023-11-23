@@ -25,15 +25,6 @@ int Tweet::likes() {
     return _likes;
 }
 
-std::vector<Comment> Tweet::comments() {
-    return _comments;
-}
-
-void Tweet::addComment(std::string commentDescription, std::string commentAuthor) {
-    Comment* newComment = new Comment(commentDescription, commentAuthor, Tweet::id());
-    _comments.push_back(*newComment);
-}
-
 Tweet Tweet::getTweetById(int id, std::vector<Tweet> tweets) {
     for (auto tweet : tweets) {
         if (tweet.id() == id) {

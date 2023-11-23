@@ -1,17 +1,26 @@
 #pragma once
+
+#include "models/user.hpp"
+#include "models/tweet.hpp" 
+
 #include <string>
+
 
 class Comment {
 public:
-    Comment(const std::string description, const std::string author, int tweetReference)
-    : _description(description), _author(author), _tweetReference(tweetReference) {}
+    Comment(int authorId, int tweetId, std::string description)
+    : _authorId(authorId), _tweetId(tweetId), _description(description) {}
+    Comment(int id, int authorId, int tweetId, std::string description)
+    : _id(id), _authorId(authorId), _tweetId(tweetId), _description(description)  {}
 
-    std::string getDescription();
-    std::string getAuthor();
-    int getTweetReference();
+    int id();
+    std::string description();
+    User author();
+    Tweet tweet();
 
 private:
+    int _id;
+    int _authorId;
+    int _tweetId;
     std::string _description;
-    std::string _author;
-    int _tweetReference;
 };

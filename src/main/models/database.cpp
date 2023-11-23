@@ -15,15 +15,21 @@ Database::~Database() {
 
 void Database::createDb() {
 
-    std::string sqlUser = "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT,nickname VARCHAR(100) NOT NULL,";
-    sqlUser += " password VARCHAR(100) NOT NULL,username VARCHAR(100) NOT NULL);";
+    std::string sqlUser = "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, nickname VARCHAR(100) NOT NULL, "
+                      "password VARCHAR(100) NOT NULL, username VARCHAR(100) NOT NULL);";
 
-    std::string sqlTweet = "CREATE TABLE tweet(id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER NOT NULL,";
-    sqlTweet += " description VARCHAR(500) NOT NULL, timestamp VARCHAR(100) NOT NULL, likes INTEGER NOT NULL, FOREIGN KEY(author_id) REFERENCES user(id));";
+    std::string sqlTweet = "CREATE TABLE tweet(id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER NOT NULL, "
+                       "description VARCHAR(500) NOT NULL, timestamp VARCHAR(100) NOT NULL, likes INTEGER NOT NULL, "
+                       "FOREIGN KEY(author_id) REFERENCES user(id));";
+
+    std::string sqlComment = "CREATE TABLE comment(id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER NOT NULL, "
+                         "tweet_id INTEGER NOT NULL, description VARCHAR(500) NOT NULL, "
+                         "FOREIGN KEY(author_id) REFERENCES user(id), FOREIGN KEY(tweet_id) REFERENCES tweet(id));";
 
 
     createTable("user", sqlUser);
     createTable("tweet", sqlTweet);
+    createTable("comment", sqlComment);
 }
 
 void Database::createTable(std::string tableName, std::string sql) {

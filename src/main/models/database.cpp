@@ -26,10 +26,15 @@ void Database::createDb() {
                          "tweet_id INTEGER NOT NULL, description VARCHAR(500) NOT NULL, "
                          "FOREIGN KEY(author_id) REFERENCES user(id), FOREIGN KEY(tweet_id) REFERENCES tweet(id));";
 
+    std::string sqlLike = "CREATE TABLE like(id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, "
+                          "tweet_id INTEGER NOT NULL, FOREIGN KEY(user_id) REFERENCES user(id), "
+                          "FOREIGN KEY(tweet_id) REFERENCES tweet(id));";
+
 
     createTable("user", sqlUser);
     createTable("tweet", sqlTweet);
     createTable("comment", sqlComment);
+    createTable("like", sqlLike);
 }
 
 void Database::createTable(std::string tableName, std::string sql) {

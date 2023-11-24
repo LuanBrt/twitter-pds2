@@ -49,3 +49,21 @@ Tweet TweetRepo::searchTweetById(int id) {
     Tweet t(stoi(result[0]["id"]), stoi(result[0]["author_id"]), result[0]["description"], result[0]["timestamp"], stoi(result[0]["likes"]));
     return t;
 }
+
+void TweetRepo::likeTweet(int id) {
+    std::string sql;
+    sql += "UPDATE tweet SET likes = likes + 1 WHERE id = " + std::to_string(id) + ";";
+
+    std::cout << sql << std::endl;
+    int r = executeInsert(_db, sql);
+    std::cout << r << std::endl;
+}
+
+void TweetRepo::dislikeTweet(int id) {
+    std::string sql;
+    sql += "UPDATE tweet SET likes = likes - 1 WHERE id = " + std::to_string(id) + ";";
+
+    std::cout << sql << std::endl;
+    int r = executeInsert(_db, sql);
+    std::cout << r << std::endl;
+}

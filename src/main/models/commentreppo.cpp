@@ -4,9 +4,9 @@
 
 Comment CommentRepo::addComment(Comment comment) {
     std::string sql;
-    sql += "INSERT INTO comment (author_id, comment_id, description) VALUES (";
+    sql += "INSERT INTO comment (author_id, tweet_id, description) VALUES (";
     sql += "" + std::to_string(comment.author().id()) + ", ";
-        sql += "" + std::to_string(comment.tweet().id()) + ", ";
+    sql += "" + std::to_string(comment.tweet().id()) + ", ";
     sql += "'" + comment.description() + "');";
 
     std::cout << sql << std::endl;

@@ -23,4 +23,8 @@ public:
     /// @param id
     /// @return Retorna o tweet que contém o id especificado
     Tweet searchTweetById(int id);
+
+    void likeTweet(int id);
+
+    void dislikeTweet(int id);
 };

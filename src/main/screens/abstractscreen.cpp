@@ -14,15 +14,16 @@ int AbstractScreen::renderMenu(const std::map<int, std::string> &options) const 
     return selected;
 }
 
-std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::string> fields) const
-{
+std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::string> fields) const {
     std::map<std::string, std::string> response;
 
     for (auto field : fields) {
         std::string value;
         std::cout << field << " : ";
-        std::cin >> value;
-        response[field] = value;
+        std::cin.ignore();
+
+        std::getline(std::cin, value);
+        response[field] = value;    
     }
 
     return response;

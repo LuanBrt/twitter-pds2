@@ -24,4 +24,8 @@ public:
     /// @param id
     /// @return Retorna o usuário específico com esse id
     User searchUserById(int id);
+
+    std::vector<User> getFollowing(User u);
+
+    User followUser(User follower, User following);
 };

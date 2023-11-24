@@ -2,7 +2,6 @@
 #include "controllers/tweetcontroller.hpp"
 
 #include <iostream>
-#include <map>
 
 AuthController::AuthController() {
     _options[ValidOptions::EXIT] = "Sair";
@@ -22,6 +21,7 @@ AbstractController *AuthController::render() {
         // Obter credenciais de login
         case ValidOptions::LOGIN: {
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Senha"});
+            std::cout << response["Usuario"];
             return new TweetController();
         }
     }

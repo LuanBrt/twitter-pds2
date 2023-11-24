@@ -4,6 +4,7 @@
 #include "screens/loginscreen.hpp"
 #include "models/userrepo.hpp"
 
+#include <string>
 #include <map>
 
 class AuthController: public AbstractController {

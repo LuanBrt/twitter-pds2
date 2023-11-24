@@ -26,5 +26,7 @@ std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::s
         response[field] = value;    
     }
 
+    std::cout << response["Usuario"] << std::endl;
+
     return response;
 }

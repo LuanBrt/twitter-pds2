@@ -35,6 +35,20 @@ TEST_CASE("Testando repositorio de usuários") {
         std::vector<User> r = repo.searchUser("userfind");
         CHECK(r.size() == 3);
     }
+
+    SUBCASE("Testando seguir um usuario") {
+        User user1("talvani", "123456", "Talvani");
+        User ur1 = repo.addUser(user1);
+
+        User user2("luan", "123456", "Luan Borges");
+        User ur2 = repo.addUser(user2);
+
+        repo.followUser(ur1, ur2);
+        std::vector<User> following = repo.getFollowing(ur1);
+        CHECK(following.size() == 1);
+        CHECK(following[0].id() == ur2.id());
+    }
+
     remove(dbname);
 
 }

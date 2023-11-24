@@ -58,10 +58,10 @@ std::vector<User> UserRepo::getFollowing(User u) {
     return userVec;
 }
 
-User UserRepo::followUser(User follower, User following) {
-    std::string sql = "INSERT INTO follow (follower_id, followed_id) VALUES ("+std::to_string(follower.id())+", "+std::to_string(following.id())+");";
+User UserRepo::followUser(User follower, User followed) {
+    std::string sql = "INSERT INTO follow (follower_id, followed_id) VALUES ("+std::to_string(follower.id())+", "+std::to_string(followed.id())+");";
     int r = executeInsert(_db, sql);
-    return following;
+    return followed;
 }
 
 

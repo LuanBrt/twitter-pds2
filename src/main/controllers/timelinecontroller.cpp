@@ -1,7 +1,7 @@
 #include "controllers/timelinecontroller.hpp"
 #include "models/tweet.hpp"
 
-#include <vector>
+#include <map>
 
 TimelineController::TimelineController(User u): _user(u) {
     _options[ValidOptions::USERCONFIG] = "Configurar usuário";
@@ -13,10 +13,20 @@ TimelineController::TimelineController(User u): _user(u) {
 }
 
 AbstractController *TimelineController::render() {
-    // obtendo os tweets de pessoas que o usuario segue
-    std::vector<Tweet> tweets = _repo.get
+    getTweets();
+    int option = _view.renderMenu(_options);
+    switch (option) {
+        case 0:
+            break;
+        default:
+            return new TimelineController(_user);
+
+    }
+    return nullptr;
 }
 
-std::vector<Tweet> TimelineController::getTweets() {
-    std::vector<User> following = repo.getFollowing(_user);
+void TimelineController::getTweets() {
+    std::vector<Tweet> response = _tweetRepo.getUserTimeline(_user);
+    _view.renderTweetList(response);
+    
 }

@@ -10,9 +10,7 @@ Tweet TweetRepo::addTweet(Tweet tweet) {
     sql += "'" + tweet.timestamp() + "', ";
     sql += "" + std::to_string(tweet.likes()) + ");";
 
-    std::cout << sql << std::endl;
     int r = executeInsert(_db, sql);
-    std::cout << r << std::endl;
 
     
     if (r != 0) {
@@ -54,7 +52,6 @@ void TweetRepo::likeTweet(int id) {
     std::string sql;
     sql += "UPDATE tweet SET likes = likes + 1 WHERE id = " + std::to_string(id) + ";";
 
-    std::cout << sql << std::endl;
     int r = executeInsert(_db, sql);
     std::cout << r << std::endl;
 }
@@ -63,8 +60,21 @@ void TweetRepo::dislikeTweet(int id) {
     std::string sql;
     sql += "UPDATE tweet SET likes = likes - 1 WHERE id = " + std::to_string(id) + ";";
 
-    std::cout << sql << std::endl;
     int r = executeInsert(_db, sql);
     std::cout << r << std::endl;
 }
 
+std::vector<Tweet> TweetRepo::getUserTimeline(User u) {
+    std::vector<Tweet> response;
+
+    std::string sql = "SELECT t.* FROM follow f JOIN tweet t ON f.followed_id = t.author_id WHERE f.follower_id="+std::to_string(u.id())+" UNION "
+                        "SELECT t.* FROM tweet t WHERE t.author_id="+std::to_string(u.id())+";";
+    
+    std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
+
+    for (auto tweetData : result) {
+        response.push_back(Tweet(stoi(tweetData["id"]), stoi(tweetData["author_id"]), tweetData["description"], tweetData["timestamp"], stoi(tweetData["likes"])));
+    }
+
+    return response;
+}

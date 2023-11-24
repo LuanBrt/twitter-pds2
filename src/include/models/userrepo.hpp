@@ -11,12 +11,17 @@ public:
 
     /// @brief Adiciona um usuario ao banco de dados
     /// @param user 
-    /// @return Retorna 1 caso sucesso e 0 caso erro
-    int addUser(User user);
+    /// @return Retorna o próprio usuário criado caso sucesso e um throw de erro caso dê errado
+    User addUser(User user);
 
 
     /// @brief Busca usuário baseado em uma keyword
     /// @param keyword
     /// @return Retorna uma lista de usuarios que contenham a chave especificada no userame
     std::vector<User> searchUser(std::string keyword);
+
+    /// @brief Busca usúario baseado em um id
+    /// @param id
+    /// @return Retorna o usuário específico com esse id
+    User searchUserById(int id);
 };

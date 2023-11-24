@@ -14,26 +14,32 @@ Database::~Database() {
 }   
 
 void Database::createDb() {
-    std::map<std::string, std::string> userTable;
 
-    userTable["id"] = "INTEGER PRIMARY KEY AUTOINCREMENT";
-    userTable["username"] = "VARCHAR(100) NOT NULL";
-    userTable["password"] = "VARCHAR(100) NOT NULL";
-    userTable["nickname"] = "VARCHAR(100) NOT NULL";
-    createTable("user", userTable);
+    std::string sqlUser = "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, nickname VARCHAR(100) NOT NULL, "
+                      "password VARCHAR(100) NOT NULL, username VARCHAR(100) NOT NULL);";
+
+    std::string sqlTweet = "CREATE TABLE tweet(id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER NOT NULL, "
+                       "description VARCHAR(500) NOT NULL, timestamp VARCHAR(100) NOT NULL, likes INTEGER NOT NULL, "
+                       "FOREIGN KEY(author_id) REFERENCES user(id));";
+
+    std::string sqlComment = "CREATE TABLE comment(id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER NOT NULL, "
+                         "tweet_id INTEGER NOT NULL, description VARCHAR(500) NOT NULL, "
+                         "FOREIGN KEY(author_id) REFERENCES user(id), FOREIGN KEY(tweet_id) REFERENCES tweet(id));";
+
+    std::string sqlLike = "CREATE TABLE like(id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, "
+                          "tweet_id INTEGER NOT NULL, FOREIGN KEY(user_id) REFERENCES user(id), "
+                          "FOREIGN KEY(tweet_id) REFERENCES tweet(id));";
+
+
+    createTable("user", sqlUser);
+    createTable("tweet", sqlTweet);
+    createTable("comment", sqlComment);
+    createTable("like", sqlLike);
 }
 
-void Database::createTable(std::string tableName, std::map<std::string, std::string> attributes) {
+void Database::createTable(std::string tableName, std::string sql) {
     char *zErrMsg = 0;
     int rc;
-    std::string sql = "CREATE TABLE " + tableName + "(";
-
-    for (auto attr : attributes) {
-        sql += attr.first + " " + attr.second + ",";
-    }
-    // removendo ultima virgula
-    sql.pop_back();
-    sql += ");";
 
     // executando o comando de criação
     rc = sqlite3_exec(_db, sql.c_str(), nullptr, nullptr, &zErrMsg);

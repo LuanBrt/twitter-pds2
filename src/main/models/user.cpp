@@ -1,5 +1,9 @@
 #include "models/user.hpp"
 
+int User::id() {
+    return _id;
+}
+
 std::string User::username() {
     return _username;
 }

@@ -28,7 +28,7 @@ std::vector<std::map<std::string, std::string>> AbstractRepo::executeSelect(sqli
     sqlite3_stmt *stmt;
     std::vector<std::map<std::string, std::string>> result;
 
-    // Prapara consulta
+    // Prepara consulta
     if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
         return result;
     }

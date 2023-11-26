@@ -24,4 +24,16 @@ public:
     /// @param id
     /// @return Retorna o usuário específico com esse id
     User searchUserById(int id);
+
+
+    /// @brief Obtem uma lista de todos os seguidos de um usuario
+    /// @param u O usuário
+    /// @return Um vetor com os seguidos
+    std::vector<User> getFollowing(User u);
+
+    /// @brief Adiciona o following a lista de seguidors do follower
+    /// @param follower Usuario que vai seguir
+    /// @param followed Usuario seguido
+    /// @return O usuario seguido
+    User followUser(User follower, User followed);
 };

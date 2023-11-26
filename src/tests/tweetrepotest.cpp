@@ -62,5 +62,27 @@ TEST_CASE("Testando repositorio de usuários") {
 
       CHECK_EQ(tweetSearch.description(), tr.description());
     }
+
+    SUBCASE("Testando obtenção de timeline de usuário") {
+
+      // criando usuários
+      User user1("talvani", "123456", "Talvani");
+      User ur1 = userRepo.addUser(user1);
+      User user2("luan", "123456", "Luan Borges");
+      User ur2 = userRepo.addUser(user2);
+
+      // seguindo usuário
+      userRepo.followUser(ur1, ur2);
+
+      // criando tweet
+      Tweet tweet(ur2.id(), "teste tweet", "24/11/2023", 0);
+      Tweet tr = tweetRepo.addTweet(tweet);
+
+
+      std::vector<Tweet> timeline = tweetRepo.getUserTimeline(ur1);
+      CHECK(timeline[0].id() == tr.id());
+
+    }
+
     remove(dbname);
 }

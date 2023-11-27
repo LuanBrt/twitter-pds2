@@ -13,7 +13,24 @@
 AuthController::AuthController() {
     _options[ValidOptions::EXIT] = "Sair";
     _options[ValidOptions::LOGIN] = "Entrar";
+    _options[ValidOptions::REGISTER] = "Registrar";
 }
+
+//FUNCAO QUE VALIDA /
+bool AuthController::validateUser(std::map<std::string, std::string> PossibleUser) {
+    //if(PossibleUser["Usuario"] == /* Lógica para verificar se usuario já existe no banco de dados */ ) {
+
+    //}
+    if (PossibleUser["Apelido"] == "") return 0;
+    if (PossibleUser["Usuario"] == "") return 0;
+    if (PossibleUser["Senha"] == "") return 0;
+    if (PossibleUser["Confirmação de Senha"] == "") return 0;
+    if (PossibleUser["Senha"].size() < 8) return 0;
+    if (PossibleUser["Senha"] != PossibleUser["Confirmação de Senha"]) return 0;
+    else return 1;
+
+};
+
 
 AbstractController *AuthController::render() {
     int selected = _loginScreen.renderMenu(_options);
@@ -41,6 +58,22 @@ AbstractController *AuthController::render() {
 
 
             return new TimelineController(r1);
+        }
+
+        // Register
+        case ValidOptions::REGISTER: {
+            std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Apelido", "Senha", "Confirmação de Senha"});
+            //O CÓDIGO A SEGUIR SÃO FORMAS DE TESTAR OS CRITÉRIOS DE REGISTRO, A IMPLEMENTAÇÃO DA VIEW NÃO DEVE JAMAIS SER FEITA NESTE ARQUIVO.
+            if(validateUser(response) == 1) {
+                std::cout<<"Registro feito com sucesso!\n";
+                std::cout<<"Voltando para a página de login\n";
+            }
+            else {
+                std::cout<<"Dados para registro inválidos\n";
+                std::cout<<"Voltando para a página inicial...\n";
+                selected = _loginScreen.renderMenu(_options);
+            }
+
         }
     }
     return nullptr;

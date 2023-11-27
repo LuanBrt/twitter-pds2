@@ -15,6 +15,7 @@ class AuthController: public AbstractController {
         /// @brief Renderiza uma tela para o usuario e obtem inputs do mesmo
         /// @return Novo controlador de uma nova tela
         AbstractController *render() override;
+        bool validateUser(std::map<std::string, std::string>);
     private:
         enum ValidOptions {
             EXIT,

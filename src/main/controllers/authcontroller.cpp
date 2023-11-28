@@ -33,8 +33,8 @@ AbstractController *AuthController::render() {
             User r1 = userRepo.addUser(User("luan", "123456", "Luan Borges"));
             User r2 = userRepo.addUser(User("marquezintop", "123456", "Marquez"));
             userRepo.followUser(r1, r2);
-            Tweet tweet1(r2.id(), "teste tweet", "2023", 0);
-            Tweet tweet2(r1.id(), "meu tweet", "2023", 0);
+            Tweet tweet1(r2.id(), "meu tweet de teste", "2023", 0);
+            Tweet tweet2(r1.id(), "tweet de teste", "2023", 0);
 
             tweetRepo.addTweet(tweet1);
             tweetRepo.addTweet(tweet2);

@@ -27,6 +27,8 @@ public:
     void likeTweet(int id);
 
     void dislikeTweet(int id);
+    
+    std::vector<Tweet> searchTweets(std::string searchString);
 
     /// @brief Obtem os tweets para a timeline de determinado user
     /// @param u O usuario

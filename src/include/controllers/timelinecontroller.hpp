@@ -18,6 +18,8 @@ public:
 
     /// @brief Obtem os tweets do repositorio, e envia para a view exibir
     void getTweets();
+    /// @brief Busca no repositório os tweets que contém a palavra chave
+    void searchTweets();
 
 
     /// @brief Metodo virtual dos controllers

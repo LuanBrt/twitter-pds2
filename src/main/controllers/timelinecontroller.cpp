@@ -23,11 +23,6 @@ AbstractController *TimelineController::render() {
             std::map<std::string,std::string> keyword;
 
             keyword = _searchController.renderForm({"Usuário"});
-            for(auto it : keyword){
-
-                std::cout<<it.second;
-
-            }
 
             std::vector<User> users = _userRepo.searchUser(keyword["Usuário"]);
 

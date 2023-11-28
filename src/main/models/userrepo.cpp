@@ -38,18 +38,10 @@ std::vector<User> UserRepo::searchUser(std::string keyword) {
     std::string sql;
     sql += "SELECT * FROM user WHERE username LIKE '%" + keyword + "%' LIMIT 5;";
     std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
-    if(result.empty()){
-
-        std::cout<<std::endl<<"Desculpe, nenhum usuário encontrado!"<<std::endl;
-
-    }else{
-
-        for (auto userData : result) {
-            User u(stoi(userData["id"]), userData["username"], userData["password"], userData["nickname"]);
-            userVec.push_back(u);
-        }
-
-    }
+    for (auto userData : result) {
+        User u(stoi(userData["id"]), userData["username"], userData["password"], userData["nickname"]);
+        userVec.push_back(u);
+    } 
 
     return userVec;
 }

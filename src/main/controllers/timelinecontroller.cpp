@@ -23,17 +23,21 @@ AbstractController *TimelineController::render() {
             std::map<std::string,std::string> keyword;
 
             keyword = _searchController.renderForm({"Usuário"});
-            for(auto it : keyword){
-
-                std::cout<<it.second;
-
-            }
 
             std::vector<User> users = _userRepo.searchUser(keyword["Usuário"]);
 
-            for(auto it: users){
+            if(users.empty()){
 
-                std::cout<<it.username()<<std::endl<<it.nickname()<<std::endl;
+                std::cout<<"Desculpe, mas esse usuário não existe";
+
+            }else{
+
+                for(auto it: users){
+
+                    std::cout<<it.username()<<std::endl<<it.nickname()<<std::endl;
+
+                }
+
 
             }
 

@@ -26,20 +26,7 @@ AbstractController *TimelineController::render() {
 
             std::vector<User> users = _userRepo.searchUser(keyword["Usuário"]);
 
-            if(users.empty()){
-
-                std::cout<<"Desculpe, mas esse usuário não existe";
-
-            }else{
-
-                for(auto it: users){
-
-                    std::cout<<it.username()<<std::endl<<it.nickname()<<std::endl;
-
-                }
-
-
-            }
+            _view.renderTextSearchUser(users);
 
             return new TimelineController(_user);
 

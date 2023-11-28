@@ -17,24 +17,51 @@ AuthController::AuthController() {
 }
 
 //FUNCAO QUE VALIDA /
-bool AuthController::validateUser(std::map<std::string, std::string> PossibleUser) {
-    //if(PossibleUser["Usuario"] == /* Lógica para verificar se usuario já existe no banco de dados */ ) {
+bool AuthController::validateUser(std::map<std::string, std::string> possibleUser) {
+    bool userExists = false;
+    std::vector<User> dbResponse = _repo.searchUser(possibleUser["Usuario"]);
 
-    //}
-    if (PossibleUser["Apelido"] == "") return 0;
-    if (PossibleUser["Usuario"] == "") return 0;
-    if (PossibleUser["Senha"] == "") return 0;
-    if (PossibleUser["Confirmação de Senha"] == "") return 0;
-    if (PossibleUser["Senha"].size() < 8) return 0;
-    if (PossibleUser["Senha"] != PossibleUser["Confirmação de Senha"]) return 0;
-    else return 1;
+    for (auto user : dbResponse) {
+        std::cout<<user.username()<<std::endl;
+        
+        if (user.username() == possibleUser["Usuario"]) {
+
+        std::cout<<"Já existe com o mesmo nome, portanto Não era pra criar!"<<std::endl;
+            userExists = true;
+        };
+    }
+
+    if (possibleUser["Apelido"] == "" ||
+        possibleUser["Usuario"] == "" ||
+        possibleUser["Senha"] == "" ||
+        possibleUser["Confirmação de Senha"] == "" ||
+        possibleUser["Senha"].size() < 8 ||
+        possibleUser["Senha"] != possibleUser["Confirmação de Senha"] ||
+        userExists == true) {
+        return false;  // Se alguma verificação falhar, retorna falso
+    }
+    return true;
 
 };
+
+// FUNÇÃO PRECISANDO DE CONSERTO:
+User* AuthController::validateLogin(std::map<std::string, std::string> possibleUser) {
+    std::vector<User> dbResponse = _repo.searchUser(possibleUser["Usuario"]); 
+
+    for ( auto& user : dbResponse) {
+        if (user.username() == possibleUser["Usuario"] && user.password() == possibleUser["Senha"]) {
+            return new User(user);
+        };
+    }
+
+    return nullptr;
+}
+
 
 
 AbstractController *AuthController::render() {
     int selected = _loginScreen.renderMenu(_options);
-    switch (selected) {
+    switch (selected) { 
         
         // Sair
         case ValidOptions::EXIT: {
@@ -44,37 +71,48 @@ AbstractController *AuthController::render() {
         
         // Obter credenciais de login
         case ValidOptions::LOGIN: {
+
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Senha"});
-            UserRepo userRepo;
-            TweetRepo tweetRepo;
-            User r1 = userRepo.addUser(User("luan", "123456", "Luan Borges"));
-            User r2 = userRepo.addUser(User("marquezintop", "123456", "Marquez"));
-            userRepo.followUser(r1, r2);
-            Tweet tweet1(r2.id(), "teste tweet", "2023", 0);
-            Tweet tweet2(r1.id(), "meu tweet", "2023", 0);
+            User* authenticatedUser = validateLogin(response);
 
-            tweetRepo.addTweet(tweet1);
-            tweetRepo.addTweet(tweet2);
+            if (validateLogin(response) == nullptr) {
+                // LÓGICA DE LOGIN MAL SUCEDIDO
+                _loginScreen.renderMessage("Login mal sucedido, voltando para a tela inicial....");
+                //SOCORRO
+                return new AuthController;
 
-
-            return new TimelineController(r1);
+            }
+            else {  
+                _loginScreen.renderMessage("Login bem sucedido.");
+                _loginScreen.renderMessage("Bem-vindo, " + authenticatedUser->nickname() + ".");
+                _loginScreen.renderMessage("Direcionando para a timeline...");
+                _loginScreen.renderMessage("\n");
+                return new TimelineController(*authenticatedUser);
+            }
         }
-
         // Register
         case ValidOptions::REGISTER: {
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Apelido", "Senha", "Confirmação de Senha"});
-            //O CÓDIGO A SEGUIR SÃO FORMAS DE TESTAR OS CRITÉRIOS DE REGISTRO, A IMPLEMENTAÇÃO DA VIEW NÃO DEVE JAMAIS SER FEITA NESTE ARQUIVO.
+
+            //O CÓDIGO A SEGUIR SÃO FORMAS DE TESTAR OS CRITÉRIOS DE REGISTRO.
             if(validateUser(response) == 1) {
-                std::cout<<"Registro feito com sucesso!\n";
-                std::cout<<"Voltando para a página de login\n";
+
+                User tempUser(response["Usuario"],response["Senha"],response["Apelido"]);
+
+                User newUser = _repo.addUser(tempUser);
+
+                _loginScreen.renderMessage("Registro feito com sucesso!");
+                _loginScreen.renderMessage("O Usuário " + newUser.username() + " foi criado!");
+                _loginScreen.renderMessage("Voltando para a página inicial....");
+                _loginScreen.renderMessage("\n");
+
             }
             else {
-                std::cout<<"Dados para registro inválidos\n";
-                std::cout<<"Voltando para a página inicial...\n";
-                selected = _loginScreen.renderMenu(_options);
+                _loginScreen.renderMessage("Dados para registro inválidos");
+                _loginScreen.renderMessage("Voltando para a página inicial...");
             }
-
         }
+        return new AuthController;
     }
     return nullptr;
 }

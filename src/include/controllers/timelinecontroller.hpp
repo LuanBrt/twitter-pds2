@@ -6,6 +6,7 @@
 #include "models/tweetrepo.hpp"
 #include "models/tweet.hpp"
 #include "screens/timelinescreen.hpp"
+#include "screens/usersearchscreen.hpp"
 
 #include <vector>
 
@@ -23,6 +24,7 @@ public:
     /// @brief Metodo virtual dos controllers
     /// @return O proximo controller
     AbstractController *render() override;
+
 private:
     enum ValidOptions {
         USERCONFIG,
@@ -30,7 +32,8 @@ private:
         BUSCATWEET,
         OPENTREND,
         OPENTWEET,
-        SENDTWEET 
+        SENDTWEET,
+        SEARCHUSER,
     };
     std::map<int, std::string> _options;
 
@@ -38,5 +41,6 @@ private:
     TimelineScreen _view;
     TweetRepo _tweetRepo;
     UserRepo _userRepo;
+    userSearch _searchController;
 
 };

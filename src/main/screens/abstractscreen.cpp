@@ -28,3 +28,7 @@ std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::s
 
     return response;
 }
+
+void AbstractScreen::renderMessage(std::string message) const{
+    std::cout << message << std::endl;
+}

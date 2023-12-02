@@ -29,6 +29,20 @@ std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::s
     return response;
 }
 
+// Função que renderiza uma mensagem na tela:
 void AbstractScreen::renderMessage(std::string message) const{
     std::cout << message << std::endl;
+}
+
+// Função que limpa a tela:
+void AbstractScreen::flushConsole() const{
+    system("clear");
+}
+
+void AbstractScreen::renderSeparator() const{
+    std::cout << std::endl << "=====================================================" << std::endl;
+
+void AbstractScreen::renderMessage(std::string message) const{
+    std::cout << message << std::endl;
+
 }

@@ -41,7 +41,7 @@ std::vector<User> UserRepo::searchUser(std::string keyword) {
     for (auto userData : result) {
         User u(stoi(userData["id"]), userData["username"], userData["password"], userData["nickname"]);
         userVec.push_back(u);
-    }
+    } 
 
     return userVec;
 }

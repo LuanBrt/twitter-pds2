@@ -25,14 +25,17 @@ public:
     /// @brief Metodo virtual dos controllers
     /// @return O proximo controller
     AbstractController *render() override;
+
 private:
     enum ValidOptions {
+        EXIT,
         USERCONFIG,
         SEEUSER,
         BUSCATWEET,
         OPENTREND,
         OPENTWEET,
-        SENDTWEET 
+        SENDTWEET,
+        SEARCHUSER,
     };
     std::map<int, std::string> _options;
 

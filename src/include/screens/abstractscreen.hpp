@@ -20,7 +20,7 @@ class AbstractScreen {
         virtual void renderMessage(std::string message) const;
         virtual void flushConsole() const;
         virtual void renderSeparator() const;
-        
+  
     protected:
         std::string _title;
 };

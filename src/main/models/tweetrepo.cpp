@@ -1,6 +1,8 @@
 #include "models/tweetrepo.hpp"
 
 #include <iostream>
+#include <cctype>
+#include <algorithm>
 
 Tweet TweetRepo::addTweet(Tweet tweet) {
     std::string sql;
@@ -77,4 +79,30 @@ std::vector<Tweet> TweetRepo::getUserTimeline(User u) {
     }
 
     return response;
+}
+
+std::vector<Tweet> TweetRepo::searchTweets(std::string searchString) {
+    // tolower na string de busca
+    std::transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
+
+    // criando um vetor para armazenar os tweets com a palavra chave
+    std::vector<Tweet> matchingTweets;
+
+    // consulta SQL para buscar tweets no banco de dados
+    std::string sql = "SELECT DISTINCT * FROM tweet WHERE LOWER(description) LIKE '%" + searchString + "%';";
+
+    std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
+
+    // adicionando os tweets com a palavra chave ao vetor 
+    for (auto tweetData : result) {
+        matchingTweets.push_back(Tweet(
+            stoi(tweetData["id"]),
+            stoi(tweetData["author_id"]),
+            tweetData["description"],
+            tweetData["timestamp"],
+            stoi(tweetData["likes"])
+        ));
+    }
+
+    return matchingTweets;
 }

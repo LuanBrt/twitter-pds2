@@ -32,7 +32,7 @@ User UserRepo::searchUserById(int id) {
     return u;
 }
 
-
+// FUNÇÃO QUE BUSCA O USUÁRIO NO BANCO DE DADOS PELO NOME
 std::vector<User> UserRepo::searchUser(std::string keyword) {
     std::vector<User> userVec;
     std::string sql;

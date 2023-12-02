@@ -41,4 +41,8 @@ void AbstractScreen::flushConsole() const{
 
 void AbstractScreen::renderSeparator() const{
     std::cout << std::endl << "=====================================================" << std::endl;
+
+void AbstractScreen::renderMessage(std::string message) const{
+    std::cout << message << std::endl;
+
 }

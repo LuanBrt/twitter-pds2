@@ -6,7 +6,6 @@
 #include "models/tweetrepo.hpp"
 #include "models/tweet.hpp"
 #include "screens/timelinescreen.hpp"
-#include "screens/usersearchscreen.hpp"
 
 #include <vector>
 
@@ -27,6 +26,7 @@ public:
 
 private:
     enum ValidOptions {
+        EXIT,
         USERCONFIG,
         SEEUSER,
         BUSCATWEET,
@@ -41,6 +41,5 @@ private:
     TimelineScreen _view;
     TweetRepo _tweetRepo;
     UserRepo _userRepo;
-    userSearch _searchController;
 
 };

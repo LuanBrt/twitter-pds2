@@ -17,7 +17,10 @@ class AbstractScreen {
         /// @param fields 
         /// @return Um mapa representando o valor passado pelo usuário a cada campo
         virtual std::map<std::string, std::string> renderForm(std::vector<std::string> fields) const;
-
+        virtual void renderMessage(std::string message) const;
+        virtual void flushConsole() const;
+        virtual void renderSeparator() const;
+        
     protected:
         std::string _title;
 };

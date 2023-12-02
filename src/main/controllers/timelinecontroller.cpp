@@ -2,6 +2,8 @@
 #include "models/tweet.hpp"
 
 #include <map>
+#include <iostream>
+#include <string>
 
 TimelineController::TimelineController(User u): _user(u) {
     _options[ValidOptions::USERCONFIG] = "Configurar usuário";
@@ -18,6 +20,9 @@ AbstractController *TimelineController::render() {
     switch (option) {
         case 0:
             break;
+        case 2:
+            searchTweets();
+            return new TimelineController(_user);
         default:
             return new TimelineController(_user);
 
@@ -29,4 +34,16 @@ void TimelineController::getTweets() {
     std::vector<Tweet> response = _tweetRepo.getUserTimeline(_user);
     _view.renderTweetList(response);
     
+}
+
+void TimelineController::searchTweets() {
+    std::string searchString;
+    std::cout << "Digite a palavra-chave para busca: ";
+    std::getline(std::cin >> std::ws, searchString);
+
+
+    std::vector<Tweet> matchingTweets = _tweetRepo.searchTweets(searchString);
+
+    // exibindo os tweets encontrados
+    _view.renderTweetList(matchingTweets);
 }

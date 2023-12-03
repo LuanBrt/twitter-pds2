@@ -7,16 +7,21 @@
 #include "models/tweetrepo.hpp"
 #include "models/tweet.hpp"
 
-
 #include <iostream>
 
+/* Constructor:
+Objetivo: Inicializa o controlador de autenticação com opções padrão.
+Funcionalidades: Define opções para sair, entrar (login) e registrar. */
 AuthController::AuthController() {
     _options[ValidOptions::EXIT] = "Sair";
     _options[ValidOptions::LOGIN] = "Entrar";
     _options[ValidOptions::REGISTER] = "Registrar";
 }
 
-//FUNCAO QUE VALIDA /
+/* ValidateUser:
+Objetivo: Verifica se os dados fornecidos para registro são válidos.
+Funcionalidades: Verifica se os pré-requisitos para registro estão sendo atendido */
+
 bool AuthController::validateUser(std::map<std::string, std::string> possibleUser) {
     bool userExists = false;
     std::vector<User> dbResponse = _repo.searchUser(possibleUser["Usuario"]);
@@ -44,7 +49,11 @@ bool AuthController::validateUser(std::map<std::string, std::string> possibleUse
 
 };
 
-// FUNÇÃO PRECISANDO DE CONSERTO:
+/* ValidateLogin:
+Objetivo: Autentica um usuário com base nas credenciais fornecidas.
+Funcionalidades: Procura no banco de dados por um usuário com o nome de usuário fornecido.
+Retorna o objeto User se as credenciais coincidirem; caso contrário, retorna nullptr. */
+
 User* AuthController::validateLogin(std::map<std::string, std::string> possibleUser) {
     std::vector<User> dbResponse = _repo.searchUser(possibleUser["Usuario"]); 
 
@@ -57,7 +66,15 @@ User* AuthController::validateLogin(std::map<std::string, std::string> possibleU
     return nullptr;
 }
 
+/* Função render:
+Objetivo: Controla a interface de usuário para login, registro e saída.
 
+Funcionalidades: 
+Renderiza um menu com opções.
+Processa a escolha do usuário.
+Para o login bem-sucedido, redireciona para o TimelineController.
+Para o registro, realiza a validação e adiciona um novo usuário ao banco de dados.
+*/
 
 AbstractController *AuthController::render() {
     int selected = _loginScreen.renderMenu(_options);
@@ -69,20 +86,20 @@ AbstractController *AuthController::render() {
             break;
         }
         
-        // Obter credenciais de login
+        // Obter credenciais de login:
         case ValidOptions::LOGIN: {
 
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Senha"});
             User* authenticatedUser = validateLogin(response);
 
             if (validateLogin(response) == nullptr) {
-                // LÓGICA DE LOGIN MAL SUCEDIDO
+                // LÓGICA DE LOGIN MAL SUCEDIDO:
                 _loginScreen.renderMessage("Login mal sucedido, voltando para a tela inicial....");
-                //SOCORRO
                 return new AuthController;
 
             }
             else {  
+                // LÓGICA DE LOGIN BEM SUCEDIDO:
                 _loginScreen.renderMessage("Login bem sucedido.");
                 _loginScreen.renderMessage("Bem-vindo, " + authenticatedUser->nickname() + ".");
                 _loginScreen.renderMessage("Direcionando para a timeline...");
@@ -90,11 +107,11 @@ AbstractController *AuthController::render() {
                 return new TimelineController(*authenticatedUser);
             }
         }
-        // Register
+        // Implementação da escolha REGISTER:
         case ValidOptions::REGISTER: {
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Apelido", "Senha", "Confirmação de Senha"});
 
-            //O CÓDIGO A SEGUIR SÃO FORMAS DE TESTAR OS CRITÉRIOS DE REGISTRO.
+            //Código a seguir é um feedback do registro, se ele foi bem ou mal sucedido:
             if(validateUser(response) == 1) {
 
                 User tempUser(response["Usuario"],response["Senha"],response["Apelido"]);

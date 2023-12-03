@@ -8,7 +8,6 @@
 
 class CommentRepo : public AbstractRepo {
 public:
-
     /// @brief Adiciona um comentário ao banco de dados
     /// @param comment
     /// @return Retorna o próprio comentário criado caso sucesso e um throw de erro caso dê errado

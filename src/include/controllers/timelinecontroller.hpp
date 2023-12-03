@@ -23,10 +23,14 @@ public:
     /// @brief Busca usuarios no repositorio
     void searchUsers();
 
+    /// @brief Função que publica um tweet
+    void sendTweet();
+
 
     /// @brief Metodo virtual dos controllers
     /// @return O proximo controller
     AbstractController *render() override;
+
 
 private:
     enum ValidOptions {

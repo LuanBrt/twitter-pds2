@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <ctime>
 
 #include "models/tweet.hpp"
  
@@ -25,12 +26,24 @@ AbstractController *TimelineController::render() {
     int option = _view.renderMenu(_options);
     switch (option) {
         // Sair:
-        case EXIT:
+        case EXIT: {
             break;
+        };
+
+        case SEEUSER: {
+
+        };
+
+       case SENDTWEET: {
+            sendTweet();
+            return new TimelineController(_user);
+        };
+
         // Buscar Usuário:
         case SEARCHUSER:
             searchUsers();
             return new TimelineController(_user);
+
         case SEARCHTWEET:
             searchTweets();
             return new TimelineController(_user);
@@ -40,14 +53,27 @@ AbstractController *TimelineController::render() {
     return nullptr;
 }
 
-void TimelineController::getTweets() {
+
+void TimelineController::sendTweet() {
+        _view.flushConsole();
+        std::map<std::string,std::string> response = _view.renderForm({"O que você deseja tweetar?"});
+        time_t now = time(0);
+            Tweet InputTweet(_user.id(),response["O que você deseja tweetar?"],asctime(localtime(&now)),0);
+            _tweetRepo.addTweet(InputTweet);
+            _view.flushConsole();
+            _view.renderSeparator();
+            _view.renderMessage("Tweet realizado com sucesso!");
+            _view.renderSeparator();
+}
+
+void TimelineController::getTweets() {  
     std::vector<Tweet> response = _tweetRepo.getUserTimeline(_user);
     _view.renderTweetList(response);
 }
 
 void TimelineController::searchTweets() {
     std::string searchString;
-    std::cout << "Digite a palavra-chave para busca: ";
+    _view.renderMessage("Digite a palavra-chave para busca:");
     std::getline(std::cin >> std::ws, searchString);
 
     std::vector<Tweet> matchingTweets = _tweetRepo.searchTweets(searchString);

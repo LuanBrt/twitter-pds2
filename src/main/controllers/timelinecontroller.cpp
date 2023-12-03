@@ -5,7 +5,7 @@
 #include <string>
 
 #include "models/tweet.hpp"
-
+ 
 TimelineController::TimelineController(User u) : _user(u) {
     _options[ValidOptions::EXIT] = "Sair";
     _options[ValidOptions::USERCONFIG] = "Configurar usuário";

@@ -8,7 +8,6 @@
 
 class TweetRepo : public AbstractRepo {
 public:
-
     /// @brief Adiciona um tweet ao banco de dados
     /// @param tweet 
     /// @return Retorna o próprio tweet criado caso sucesso e um throw de erro caso dê errado

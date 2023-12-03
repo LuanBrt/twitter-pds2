@@ -7,7 +7,6 @@
 
 class AbstractRepo {
 public:
-
     /// @brief Construtor padrao
     AbstractRepo();
 

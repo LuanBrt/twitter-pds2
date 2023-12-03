@@ -11,7 +11,8 @@
 #include <iostream>
 #include <map>
 
-
+//Constructor
+//Descrição: Inicializa um controlador de tweets, configurando opções com base no estado atual do tweet, como curtidas existentes.
 TweetController::TweetController() {
     UserRepo _userRepo;
     User ur = _userRepo.searchUserById(1);
@@ -28,6 +29,9 @@ TweetController::TweetController() {
     _options[ValidOptions::COMMENT] = "Comentar Tweet";
 }
 
+//Render
+//Controla a interface de usuário relacionada a um tweet específico, permitindo a interação do usuário, como curtir, retweetar e comentar.
+//AbstractController*: Retorna um ponteiro para um novo controlador, representando a próxima tela a ser exibida após as interações do usuário.
 AbstractController *TweetController::render() {
 
     UserRepo _userRepo;
@@ -52,7 +56,7 @@ AbstractController *TweetController::render() {
             exit(0);
             break;
         }
-
+        // Curtir e remover curtida do tweet
         case ValidOptions::LIKE: {
             if (_likeRepo.searchLikeByUserId(ur.id(), tr.id())) {
                 _likeRepo.deleteLike(ur.id(), tr.id());

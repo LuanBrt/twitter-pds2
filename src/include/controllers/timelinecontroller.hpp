@@ -1,6 +1,7 @@
 #pragma once
 
 #include "controllers/abstractcontroller.hpp"
+#include "controllers/userprofilecontroller.hpp"
 #include "models/user.hpp"
 #include "models/userrepo.hpp"
 #include "models/tweetrepo.hpp"
@@ -16,8 +17,15 @@ public:
     TimelineController(User u);
 
 
+    /// @brief Metodo virtual dos controllers
+    /// @return O proximo controller
+    AbstractController *render() override;
+
+
     /// @brief Obtem os tweets do repositorio, e envia para a view exibir
     void getTweets();
+    /// @brief Obtem um usuário e entra no profile dele
+    void seeUser();
     /// @brief Busca tweets no repositorio
     void searchTweets();
     /// @brief Busca usuarios no repositorio
@@ -25,11 +33,6 @@ public:
 
     /// @brief Função que publica um tweet
     void sendTweet();
-
-
-    /// @brief Metodo virtual dos controllers
-    /// @return O proximo controller
-    AbstractController *render() override;
 
 
 private:
@@ -46,7 +49,7 @@ private:
     std::map<int, std::string> _options;
 
     User _user;
-    TimelineScreen _view;
+    TimelineScreen _timelineScreen;
     TweetRepo _tweetRepo;
     UserRepo _userRepo;
 

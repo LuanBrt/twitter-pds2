@@ -31,7 +31,7 @@ bool AuthController::validateUser(std::map<std::string, std::string> possibleUse
         
         if (user.username() == possibleUser["Usuario"]) {
 
-        std::cout<<"Já existe com o mesmo nome, portanto Não era pra criar!"<<std::endl;
+        _loginScreen.renderMessage("Já existe um usuário com o mesmo nome!\n");
             userExists = true;
         };
     }
@@ -100,10 +100,7 @@ AbstractController *AuthController::render() {
             }
             else {  
                 // LÓGICA DE LOGIN BEM SUCEDIDO:
-                _loginScreen.flushConsole();
-                _loginScreen.renderMessage("Login bem sucedido.");
-                _loginScreen.renderMessage("Bem-vindo, " + authenticatedUser->nickname() + ".");
-                _loginScreen.renderMessage("Direcionando para a timeline...");
+                _loginScreen.successfulLogin(*authenticatedUser);
                 return new TimelineController(*authenticatedUser);
             }
         }
@@ -114,16 +111,10 @@ AbstractController *AuthController::render() {
 
             //Código a seguir é um feedback do registro, se ele foi bem ou mal sucedido:
             if(validateUser(response) == 1) {
-                _loginScreen.flushConsole();
                 User tempUser(response["Usuario"],response["Senha"],response["Apelido"]);
 
-                User newUser = _repo.addUser(tempUser);
-                _loginScreen.flushConsole();
-                _loginScreen.renderMessage("Registro feito com sucesso!");
-                _loginScreen.renderMessage("O Usuário " + newUser.username() + " foi criado!");
-                _loginScreen.renderMessage("Voltando para a página inicial....");
-                _loginScreen.renderMessage("\n");
-
+                User registerUser = _repo.addUser(tempUser);
+                _loginScreen.sucessfulRegister(registerUser);
             }
             else {
                 _loginScreen.renderMessage("Dados para registro inválidos");

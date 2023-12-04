@@ -31,6 +31,12 @@ public:
     /// @return Um vetor com os seguidos
     std::vector<User> getFollowing(User u);
 
+    /// @brief Checa se o usuário já foi seguido
+    /// @param follower Usuario seguidor
+    /// @param followed Usuario seguido
+    /// @return 1 se o usuário realmente é seguido pelo follower e 0 caso não
+    int isUserFollow(User follower, User followed);
+
     /// @brief Adiciona o following a lista de seguidors do follower
     /// @param follower Usuario que vai seguir
     /// @param followed Usuario seguido

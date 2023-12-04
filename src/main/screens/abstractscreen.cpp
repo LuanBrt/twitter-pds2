@@ -20,9 +20,8 @@ std::map<std::string, std::string> AbstractScreen::renderForm(std::vector<std::s
     for (auto field : fields) {
         std::string value;
         std::cout << field << " : ";
-        std::cin.ignore();
 
-        std::getline(std::cin, value);
+        std::getline(std::cin >> std::ws, value);
         response[field] = value;    
     }
 

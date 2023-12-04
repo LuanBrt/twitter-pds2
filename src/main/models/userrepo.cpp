@@ -58,6 +58,14 @@ std::vector<User> UserRepo::getFollowing(User u) {
     return userVec;
 }
 
+int UserRepo::isUserFollow(User follower, User followed) {
+    std::vector<User> userVec;
+    std::string sql = "SELECT u.id FROM follow f JOIN user u ON u.id = f.followed_id WHERE follower_id="+std::to_string(follower.id())+" "
+                    "AND followed_id="+std::to_string(followed.id())+";";
+    std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
+    return result.size();
+}
+
 User UserRepo::followUser(User follower, User followed) {
     std::string sql = "INSERT INTO follow (follower_id, followed_id) VALUES ("+std::to_string(follower.id())+", "+std::to_string(followed.id())+");";
     int r = executeInsert(_db, sql);

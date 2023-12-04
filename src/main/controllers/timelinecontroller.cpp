@@ -57,14 +57,13 @@
     void TimelineController::seeUser() {
         _timelineScreen.flushConsole();
         std::map<std::string,std::string> response = _timelineScreen.renderForm({"Digite o nome do usuário que deseja ver:"});
-        std::vector<User> resultUsers = _userRepo.searchUser(response["Digite o nome do usuário que deseja ver:"]);
-        if (resultUsers.size() == 0) {
+        User* resultUser = _userRepo.searchUserByUsername(response["Digite o nome do usuário que deseja ver:"]);
+        if (resultUser == nullptr) {
             _timelineScreen.renderMessage("Não existe usuário com esse nome!");
-        } else if (resultUsers.size() > 1) {
-            _timelineScreen.renderMessage("Existe mais de um usuário com esse nome!");  
         } else {
-            UserProfileController userProfileControler = UserProfileController(resultUsers[0], _user);
+            UserProfileController userProfileControler = UserProfileController(*resultUser, _user);
             userProfileControler.render();
+            _timelineScreen.flushConsole();
         }
     }
 

@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['searchcommentbyid_0',['searchCommentById',['../classCommentRepo.html#a110cdbbe62e11f1ee78c48044d1c45a7',1,'CommentRepo']]],
-  ['searchlikebyuserid_1',['searchLikeByUserId',['../classLikeRepo.html#a4f994cb80c4b82953557504ee6cbe352',1,'LikeRepo']]],
-  ['searchtweetbyid_2',['searchTweetById',['../classTweetRepo.html#ab0c75a4d4c2aeeb7a51957fbd834ab89',1,'TweetRepo']]],
-  ['searchtweets_3',['searchTweets',['../classTimelineController.html#a37ec59cc8e37f6c5e457dc5226cc8dbc',1,'TimelineController']]],
-  ['searchuser_4',['searchUser',['../classUserRepo.html#a76523cf7151f815c017a3bfa66a167be',1,'UserRepo']]],
-  ['searchuserbyid_5',['searchUserById',['../classUserRepo.html#aff58458ec6c6c7c358755e4450fac271',1,'UserRepo']]],
-  ['searchusers_6',['searchUsers',['../classTimelineController.html#a49bcf2babc4b736fc681755fe1b103a6',1,'TimelineController']]]
+  ['timelinecontroller_266',['TimelineController',['../classTimelineController.html#ad35c26ce516976279f56fc3dccf687c9',1,'TimelineController']]],
+  ['timestamp_267',['timestamp',['../classTweet.html#a8d0f8d16c5a1e2fc2aa07433440873c9',1,'Tweet']]],
+  ['tweet_268',['Tweet',['../classTweet.html#a2e8366800b47e368a2f7ae2d08731baf',1,'Tweet::Tweet(int authorId, std::string description, std::string timestamp, int likes)'],['../classTweet.html#a9cd1de303d49ae6afabae8ea71ae2dfb',1,'Tweet::Tweet(int id, int authorId, std::string description, std::string timestamp, int likes)'],['../classComment.html#aef714c2b4d26767048a2935a5e9432da',1,'Comment::tweet()']]],
+  ['tweetcontroller_269',['TweetController',['../classTweetController.html#a4d6f4341d9df803ffe86e9042b59c6b6',1,'TweetController']]],
+  ['tweetscreen_270',['TweetScreen',['../classTweetScreen.html#aa6f94171ec0d08e2cc98b8196d5758f0',1,'TweetScreen']]]
 ];

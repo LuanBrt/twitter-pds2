@@ -1,12 +1,15 @@
-\doxysection{Database Class Reference}
-\hypertarget{classDatabase}{}\label{classDatabase}\index{Database@{Database}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classDatabase}{}\doxysection{Database Class Reference}
+\label{classDatabase}\index{Database@{Database}}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classDatabase_a4703c80e6969d33565ea340f768fdadf}\label{classDatabase_a4703c80e6969d33565ea340f768fdadf}} 
 \mbox{\hyperlink{classDatabase_a4703c80e6969d33565ea340f768fdadf}{Database}} ()
 \begin{DoxyCompactList}\small\item\em Destrutor padrao. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classDatabase_a84d399a2ad58d69daab9b05330e1316d}{\texorpdfstring{$\sim$}{\string~}\+Database}} ()
+\mbox{\Hypertarget{classDatabase_a84d399a2ad58d69daab9b05330e1316d}\label{classDatabase_a84d399a2ad58d69daab9b05330e1316d}} 
+\mbox{\hyperlink{classDatabase_a84d399a2ad58d69daab9b05330e1316d}{$\sim$\+Database}} ()
 \begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDatabase_ad57d95233aa3465be57efecf787ba72e}\label{classDatabase_ad57d95233aa3465be57efecf787ba72e}} 
 void \mbox{\hyperlink{classDatabase_ad57d95233aa3465be57efecf787ba72e}{create\+Db}} ()
 \begin{DoxyCompactList}\small\item\em Comando para criar o banco de dados e todas as tabelas. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{create\+Table}} (std\+::string table\+Name, std\+::string sql)
@@ -16,103 +19,12 @@ void \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{create\+T
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{database_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{database_8hpp_source}{database.\+hpp}}.
+Definition at line 5 of file database.\+hpp.
 
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classDatabase_a4703c80e6969d33565ea340f768fdadf}\label{classDatabase_a4703c80e6969d33565ea340f768fdadf} 
-\index{Database@{Database}!Database@{Database}}
-\index{Database@{Database}!Database@{Database}}
-\doxysubsubsection{\texorpdfstring{Database()}{Database()}}
-{\footnotesize\ttfamily Database\+::\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Destrutor padrao. 
-
-
-
-Definition at line \mbox{\hyperlink{database_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{database_8cpp_source}{database.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00009\ \ \ \ \ sqlite3\_open(getenv(\textcolor{stringliteral}{"{}DBNAME"{}}),\ \&\_db);}
-\DoxyCodeLine{00010\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classDatabase_a84d399a2ad58d69daab9b05330e1316d}\label{classDatabase_a84d399a2ad58d69daab9b05330e1316d} 
-\index{Database@{Database}!````~Database@{\texorpdfstring{$\sim$}{\string~}Database}}
-\index{````~Database@{\texorpdfstring{$\sim$}{\string~}Database}!Database@{Database}}
-\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Database()}{\string~Database()}}
-{\footnotesize\ttfamily Database\+::\texorpdfstring{$\sim$}{\string~}\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Construtor padrao. 
-
-
-
-Definition at line \mbox{\hyperlink{database_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{database_8cpp_source}{database.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00013\ \ \ \ \ sqlite3\_close(\_db);}
-\DoxyCodeLine{00014\ \}\ \ \ }
-
-\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classDatabase_ad57d95233aa3465be57efecf787ba72e}\label{classDatabase_ad57d95233aa3465be57efecf787ba72e} 
-\index{Database@{Database}!createDb@{createDb}}
-\index{createDb@{createDb}!Database@{Database}}
-\doxysubsubsection{\texorpdfstring{createDb()}{createDb()}}
-{\footnotesize\ttfamily void Database\+::create\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Comando para criar o banco de dados e todas as tabelas. 
-
-
-
-Definition at line \mbox{\hyperlink{database_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{database_8cpp_source}{database.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \ \ \ \ std::string\ sqlUser\ =\ \textcolor{stringliteral}{"{}CREATE\ TABLE\ user(id\ INTEGER\ PRIMARY\ KEY\ AUTOINCREMENT,\ nickname\ VARCHAR(100)\ NOT\ NULL,\ "{}}}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}password\ VARCHAR(100)\ NOT\ NULL,\ username\ VARCHAR(100)\ NOT\ NULL);"{}};}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ std::string\ sqlTweet\ =\ \textcolor{stringliteral}{"{}CREATE\ TABLE\ tweet(id\ INTEGER\ PRIMARY\ KEY\ AUTOINCREMENT,\ author\_id\ INTEGER\ NOT\ NULL,\ "{}}}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}description\ VARCHAR(500)\ NOT\ NULL,\ timestamp\ VARCHAR(100)\ NOT\ NULL,\ likes\ INTEGER\ NOT\ NULL,\ "{}}}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FOREIGN\ KEY(author\_id)\ REFERENCES\ user(id));"{}};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ std::string\ sqlComment\ =\ \textcolor{stringliteral}{"{}CREATE\ TABLE\ comment(id\ INTEGER\ PRIMARY\ KEY\ AUTOINCREMENT,\ author\_id\ INTEGER\ NOT\ NULL,\ "{}}}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tweet\_id\ INTEGER\ NOT\ NULL,\ description\ VARCHAR(500)\ NOT\ NULL,\ "{}}}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FOREIGN\ KEY(author\_id)\ REFERENCES\ user(id),\ FOREIGN\ KEY(tweet\_id)\ REFERENCES\ tweet(id));"{}};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ std::string\ sqlLike\ =\ \textcolor{stringliteral}{"{}CREATE\ TABLE\ like(id\ INTEGER\ PRIMARY\ KEY\ AUTOINCREMENT,\ user\_id\ INTEGER\ NOT\ NULL,\ "{}}}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tweet\_id\ INTEGER\ NOT\ NULL,\ FOREIGN\ KEY(user\_id)\ REFERENCES\ user(id),\ "{}}}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FOREIGN\ KEY(tweet\_id)\ REFERENCES\ tweet(id));"{}};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ std::string\ sqlFollow\ =\ \textcolor{stringliteral}{"{}CREATE\ TABLE\ follow(follower\_id\ INTEGER,\ followed\_id\ INTEGER,\ PRIMARY\ KEY\ (follower\_id,\ followed\_id),"{}}}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}FOREIGN\ KEY\ (follower\_id)\ REFERENCES\ user(id),\ FOREIGN\ KEY\ (followed\_id)\ REFERENCES\ user(id));"{}};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{createTable}}(\textcolor{stringliteral}{"{}user"{}},\ sqlUser);}
-\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{createTable}}(\textcolor{stringliteral}{"{}tweet"{}},\ sqlTweet);}
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{createTable}}(\textcolor{stringliteral}{"{}comment"{}},\ sqlComment);}
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{createTable}}(\textcolor{stringliteral}{"{}like"{}},\ sqlLike);}
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}{createTable}}(\textcolor{stringliteral}{"{}follow"{}},\ sqlFollow);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}\label{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1} 
+\mbox{\Hypertarget{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}\label{classDatabase_a5538cb1e46c3ba2a81e7da4d951578f1}} 
 \index{Database@{Database}!createTable@{createTable}}
 \index{createTable@{createTable}!Database@{Database}}
 \doxysubsubsection{\texorpdfstring{createTable()}{createTable()}}
@@ -131,24 +43,24 @@ Comando para criar uma tabela no banco de dados.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{database_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{database_8cpp_source}{database.\+cpp}}.
+Definition at line 45 of file database.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{char}\ *zErrMsg\ =\ 0;}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ rc;}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ executando\ o\ comando\ de\ criação}}
-\DoxyCodeLine{00050\ \ \ \ \ rc\ =\ sqlite3\_exec(\_db,\ sql.c\_str(),\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \&zErrMsg);}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}(\ rc\ !=\ SQLITE\_OK\ )\{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SQL\ error:\ "{}}\ <<\ zErrMsg\ <<\ std::endl;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ sqlite3\_free(zErrMsg);}
-\DoxyCodeLine{00054\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Table\ created\(\backslash\)n"{}};}
-\DoxyCodeLine{00056\ \ \ \ \ \}}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{45                                                              \{}
+\DoxyCodeLine{46     \textcolor{keywordtype}{char} *zErrMsg = 0;}
+\DoxyCodeLine{47     \textcolor{keywordtype}{int} rc;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{comment}{// executando o comando de criação}}
+\DoxyCodeLine{50     rc = sqlite3\_exec(\_db, sql.c\_str(), \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr}, \&zErrMsg);}
+\DoxyCodeLine{51     \textcolor{keywordflow}{if}( rc != SQLITE\_OK )\{}
+\DoxyCodeLine{52         std::cout << \textcolor{stringliteral}{"SQL error: "} << zErrMsg << std::endl;}
+\DoxyCodeLine{53         sqlite3\_free(zErrMsg);}
+\DoxyCodeLine{54     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{55         std::cout << \textcolor{stringliteral}{"Table created\(\backslash\)n"};}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \}}
 
 \end{DoxyCode}
 

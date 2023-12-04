@@ -1,68 +1,31 @@
-\doxysection{Login\+Screen Class Reference}
-\hypertarget{classLoginScreen}{}\label{classLoginScreen}\index{LoginScreen@{LoginScreen}}
+\hypertarget{classLoginScreen}{}\doxysection{Login\+Screen Class Reference}
+\label{classLoginScreen}\index{LoginScreen@{LoginScreen}}
 Inheritance diagram for Login\+Screen\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classLoginScreen}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classLoginScreen_aec37192b228273e97a92333a0f1d24ed}\label{classLoginScreen_aec37192b228273e97a92333a0f1d24ed}} 
 \mbox{\hyperlink{classLoginScreen_aec37192b228273e97a92333a0f1d24ed}{Login\+Screen}} ()
-\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAbstractScreen}{Abstract\+Screen}}}
-\begin{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoginScreen_a120f720dcbc1928e72a00fcd20b9556d}\label{classLoginScreen_a120f720dcbc1928e72a00fcd20b9556d}} 
+void {\bfseries successful\+Login} (\mbox{\hyperlink{classUser}{User}} authenticated\+User)
 \item 
-virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Abstract\+Screen} ()=default
-\begin{DoxyCompactList}\small\item\em Destrutor padrão. \end{DoxyCompactList}\item 
-virtual int \mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{render\+Menu}} (const std\+::map$<$ int, std\+::string $>$ \&options) const
-\begin{DoxyCompactList}\small\item\em Mostra ao usuário as possíveis ações a serem tomadas. \end{DoxyCompactList}\item 
-virtual std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{render\+Form}} (std\+::vector$<$ std\+::string $>$ fields) const
-\begin{DoxyCompactList}\small\item\em Mostra ao usuário um formulário exigindo os campos selecionados. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classAbstractScreen_a5bcd992cb8a72973780ab3549dba7f0e}{render\+Message}} (std\+::string message) const
-\item 
-virtual void \mbox{\hyperlink{classAbstractScreen_afcdbf01bf4574cb3f13d4fa0713598db}{flush\+Console}} () const
-\item 
-virtual void \mbox{\hyperlink{classAbstractScreen_a562eef69d2f6e3306eb72672249c24e2}{render\+Separator}} () const
+\mbox{\Hypertarget{classLoginScreen_a00c2a880b8085dba759055788fa5286a}\label{classLoginScreen_a00c2a880b8085dba759055788fa5286a}} 
+void {\bfseries sucessful\+Register} (\mbox{\hyperlink{classUser}{User}} register\+User)
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Additional Inherited Members}
-\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classAbstractScreen}{Abstract\+Screen}}}
-\begin{DoxyCompactItemize}
-\item 
-std\+::string \mbox{\hyperlink{classAbstractScreen_a3d1af255db36b307485ef76dbd252235}{\+\_\+title}}
-\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{loginscreen_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{loginscreen_8hpp_source}{loginscreen.\+hpp}}.
+Definition at line 9 of file loginscreen.\+hpp.
 
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classLoginScreen_aec37192b228273e97a92333a0f1d24ed}\label{classLoginScreen_aec37192b228273e97a92333a0f1d24ed} 
-\index{LoginScreen@{LoginScreen}!LoginScreen@{LoginScreen}}
-\index{LoginScreen@{LoginScreen}!LoginScreen@{LoginScreen}}
-\doxysubsubsection{\texorpdfstring{LoginScreen()}{LoginScreen()}}
-{\footnotesize\ttfamily Login\+Screen\+::\+Login\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Construtor padrao. 
-
-
-
-Definition at line \mbox{\hyperlink{loginscreen_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{loginscreen_8cpp_source}{loginscreen.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00005\ \ \ \ \ \_title\ =\ \textcolor{stringliteral}{"{}Menu\ de\ Autenticação"{}};}
-\DoxyCodeLine{00006\ \}}
-
-\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

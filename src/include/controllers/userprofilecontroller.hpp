@@ -19,8 +19,10 @@ class UserProfileController: public AbstractController {
         /// @return Novo controlador de uma nova tela
         AbstractController *render() override;
 
+        /// @brief Obtém informações do usuário atual do controller.
         void getUser();
 
+        /// @brief Permite que o usuário atual siga o usuário do controller.
         void followUser();
 
     private:

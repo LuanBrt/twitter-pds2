@@ -1,74 +1,31 @@
-\doxysection{Tweet\+Screen Class Reference}
-\hypertarget{classTweetScreen}{}\label{classTweetScreen}\index{TweetScreen@{TweetScreen}}
+\hypertarget{classTweetScreen}{}\doxysection{Tweet\+Screen Class Reference}
+\label{classTweetScreen}\index{TweetScreen@{TweetScreen}}
 Inheritance diagram for Tweet\+Screen\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classTweetScreen}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classTweetScreen_aa6f94171ec0d08e2cc98b8196d5758f0}\label{classTweetScreen_aa6f94171ec0d08e2cc98b8196d5758f0}} 
 \mbox{\hyperlink{classTweetScreen_aa6f94171ec0d08e2cc98b8196d5758f0}{Tweet\+Screen}} ()
-\begin{DoxyCompactList}\small\item\em O construtor inicializa a tela de tweet com o título padrão "{}\+Opções"{}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em O construtor inicializa a tela de tweet com o título padrão \char`\"{}\+Opções\char`\"{}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classTweetScreen_a39422db9b6400fe8f929af25e85dfe58}{render\+Tweet}} (\mbox{\hyperlink{classTweet}{Tweet}} tweet)
 \begin{DoxyCompactList}\small\item\em Renderiza as informações detalhadas de um tweet, incluindo autor, conteúdo, número de curtidas, horário de postagem e comentários associados. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAbstractScreen}{Abstract\+Screen}}}
-\begin{DoxyCompactItemize}
-\item 
-virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Abstract\+Screen} ()=default
-\begin{DoxyCompactList}\small\item\em Destrutor padrão. \end{DoxyCompactList}\item 
-virtual int \mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{render\+Menu}} (const std\+::map$<$ int, std\+::string $>$ \&options) const
-\begin{DoxyCompactList}\small\item\em Mostra ao usuário as possíveis ações a serem tomadas. \end{DoxyCompactList}\item 
-virtual std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{render\+Form}} (std\+::vector$<$ std\+::string $>$ fields) const
-\begin{DoxyCompactList}\small\item\em Mostra ao usuário um formulário exigindo os campos selecionados. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classAbstractScreen_a5bcd992cb8a72973780ab3549dba7f0e}{render\+Message}} (std\+::string message) const
-\item 
-virtual void \mbox{\hyperlink{classAbstractScreen_afcdbf01bf4574cb3f13d4fa0713598db}{flush\+Console}} () const
-\item 
-virtual void \mbox{\hyperlink{classAbstractScreen_a562eef69d2f6e3306eb72672249c24e2}{render\+Separator}} () const
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Additional Inherited Members}
-\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classAbstractScreen}{Abstract\+Screen}}}
-\begin{DoxyCompactItemize}
-\item 
-std\+::string \mbox{\hyperlink{classAbstractScreen_a3d1af255db36b307485ef76dbd252235}{\+\_\+title}}
-\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{tweetscreen_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{tweetscreen_8hpp_source}{tweetscreen.\+hpp}}.
+Definition at line 9 of file tweetscreen.\+hpp.
 
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classTweetScreen_aa6f94171ec0d08e2cc98b8196d5758f0}\label{classTweetScreen_aa6f94171ec0d08e2cc98b8196d5758f0} 
-\index{TweetScreen@{TweetScreen}!TweetScreen@{TweetScreen}}
-\index{TweetScreen@{TweetScreen}!TweetScreen@{TweetScreen}}
-\doxysubsubsection{\texorpdfstring{TweetScreen()}{TweetScreen()}}
-{\footnotesize\ttfamily Tweet\+Screen\+::\+Tweet\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-O construtor inicializa a tela de tweet com o título padrão "{}\+Opções"{}. 
-
-
-
-Definition at line \mbox{\hyperlink{tweetscreen_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{tweetscreen_8cpp_source}{tweetscreen.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \_title\ =\ \textcolor{stringliteral}{"{}Opções:"{}};}
-\DoxyCodeLine{00015\ \}}
-
-\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classTweetScreen_a39422db9b6400fe8f929af25e85dfe58}\label{classTweetScreen_a39422db9b6400fe8f929af25e85dfe58} 
+\mbox{\Hypertarget{classTweetScreen_a39422db9b6400fe8f929af25e85dfe58}\label{classTweetScreen_a39422db9b6400fe8f929af25e85dfe58}} 
 \index{TweetScreen@{TweetScreen}!renderTweet@{renderTweet}}
 \index{renderTweet@{renderTweet}!TweetScreen@{TweetScreen}}
 \doxysubsubsection{\texorpdfstring{renderTweet()}{renderTweet()}}
@@ -85,30 +42,30 @@ Renderiza as informações detalhadas de um tweet, incluindo autor, conteúdo, n
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{tweetscreen_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{tweetscreen_8cpp_source}{tweetscreen.\+cpp}}.
+Definition at line 17 of file tweetscreen.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classCommentRepo}{CommentRepo}}\ \_commentRepo;}
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classTweetRepo}{TweetRepo}}\ \_tweetRepo;}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classTweet}{Tweet}}\ tr\ =\ \_tweetRepo.\mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{searchTweetById}}(tweet.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ std::cout\ <<\ RED\ <<\ \textcolor{stringliteral}{"{}AUTOR:\ "{}}\ <<\ RESET\ <<\ tr.\mbox{\hyperlink{classTweet_a91a6b33c59bae66b0365d48f6095c97b}{author}}().\mbox{\hyperlink{classUser_a3b777377235791d371d175a6c5d13fea}{username}}()\ <<\ std::endl;}
-\DoxyCodeLine{00024\ \ \ \ \ std::cout\ <<\ RED\ <<\ \textcolor{stringliteral}{"{}CONTEÚDO:\ \(\backslash\)n"{}}\ <<\ RESET\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ -\/\ "{}}\ <<\ tr.\mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}()\ <<\ std::endl;}
-\DoxyCodeLine{00025\ \ \ \ \ std::cout\ <<\ BLUE\ <<\ \textcolor{stringliteral}{"{}LIKES:\ "{}}\ <<\ RESET\ <<\ tr.\mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}}()\ <<\ BLUE\ <<}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ HORÁRIO:\ "{}}\ <<\ RESET\ <<\ tr.\mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}()\ <<\ std::endl;}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ std::vector<Comment>\ commentVector\ =\ \_commentRepo.\mbox{\hyperlink{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}{getCommentsByTweetId}}(tweet.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (commentVector.size()\ >\ 0)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::cout\ <<\ RED\ <<\ \textcolor{stringliteral}{"{}COMENTÁRIOS:\ "{}}\ <<\ RESET\ <<\ std::endl;}
-\DoxyCodeLine{00031\ \ \ \ \ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classComment}{Comment}}\ comment\ :\ commentVector)\ \{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ Autor\ do\ Comentário:\ "{}}\ <<\ comment.author().username()\ <<\ std::endl;}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ Descrição\ do\ Comentário:\ \(\backslash\)n"{}}\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ \ -\/\ "{}}\ <<comment.description()\ <<\ std::endl;}
-\DoxyCodeLine{00035\ \ \ \ \ \}}
-\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{17                                          \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{classCommentRepo}{CommentRepo}} \_commentRepo;}
+\DoxyCodeLine{19     \mbox{\hyperlink{classTweetRepo}{TweetRepo}} \_tweetRepo;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \mbox{\hyperlink{classTweet}{Tweet}} tr = \_tweetRepo.\mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{searchTweetById}}(tweet.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     std::cout << RED << \textcolor{stringliteral}{"AUTOR: "} << RESET << tr.\mbox{\hyperlink{classTweet_a91a6b33c59bae66b0365d48f6095c97b}{author}}().\mbox{\hyperlink{classUser_a3b777377235791d371d175a6c5d13fea}{username}}() << std::endl;}
+\DoxyCodeLine{24     std::cout << RED << \textcolor{stringliteral}{"CONTEÚDO: \(\backslash\)n"} << RESET << \textcolor{stringliteral}{"    -\/ "} << tr.\mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}() << std::endl;}
+\DoxyCodeLine{25     std::cout << BLUE << \textcolor{stringliteral}{"LIKES: "} << RESET << tr.\mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}}() << BLUE <<}
+\DoxyCodeLine{26         \textcolor{stringliteral}{"   HORÁRIO: "} << RESET << tr.\mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}() << std::endl;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     std::vector<Comment> commentVector = \_commentRepo.\mbox{\hyperlink{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}{getCommentsByTweetId}}(tweet.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{29     \textcolor{keywordflow}{if} (commentVector.size() > 0) \{}
+\DoxyCodeLine{30         std::cout << RED << \textcolor{stringliteral}{"COMENTÁRIOS: "} << RESET << std::endl;}
+\DoxyCodeLine{31     \}}
+\DoxyCodeLine{32     \textcolor{keywordflow}{for} (\mbox{\hyperlink{classComment}{Comment}} comment : commentVector) \{}
+\DoxyCodeLine{33         std::cout << \textcolor{stringliteral}{"  Autor do Comentário: "} << comment.author().username() << std::endl;}
+\DoxyCodeLine{34         std::cout << \textcolor{stringliteral}{"      Descrição do Comentário: \(\backslash\)n"} << \textcolor{stringliteral}{"           -\/ "} <<comment.description() << std::endl;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 \}}
 
 \end{DoxyCode}
 

@@ -1,48 +1,32 @@
-\doxysection{Like\+Repo Class Reference}
-\hypertarget{classLikeRepo}{}\label{classLikeRepo}\index{LikeRepo@{LikeRepo}}
+\hypertarget{classLikeRepo}{}\doxysection{Like\+Repo Class Reference}
+\label{classLikeRepo}\index{LikeRepo@{LikeRepo}}
 Inheritance diagram for Like\+Repo\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classLikeRepo}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}{add\+Like}} (int user\+Id, int tweet\+Id)
-\begin{DoxyCompactList}\small\item\em Adiciona uma nova entrada de "{}curtida"{} ao banco de dados, associando um usuário a um tweet. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adiciona uma nova entrada de \char`\"{}curtida\char`\"{} ao banco de dados, associando um usuário a um tweet. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}{search\+Like\+By\+User\+Id}} (int user\+Id, int tweet\+Id)
 \begin{DoxyCompactList}\small\item\em Verifica se um usuário já curtiu um tweet específico no banco de dados. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}{delete\+Like}} (int user\+Id, int tweet\+Id)
-\begin{DoxyCompactList}\small\item\em Exclui uma "{}curtida"{} associada a um usuário e a um tweet específicos no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAbstractRepo}{Abstract\+Repo}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee}{Abstract\+Repo}} ()
-\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Repo}} ()
-\begin{DoxyCompactList}\small\item\em Destrutor padrao. \end{DoxyCompactList}\item 
-virtual int \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{execute\+Insert}} (sqlite3 \texorpdfstring{$\ast$}{*}db, std\+::string sql) const
-\begin{DoxyCompactList}\small\item\em Executa um insert sql. \end{DoxyCompactList}\item 
-virtual std\+::vector$<$ std\+::map$<$ std\+::string, std\+::string $>$ $>$ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{execute\+Select}} (sqlite3 \texorpdfstring{$\ast$}{*}db, std\+::string sql) const
-\begin{DoxyCompactList}\small\item\em Executa um select sql. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Additional Inherited Members}
-\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classAbstractRepo}{Abstract\+Repo}}}
-\begin{DoxyCompactItemize}
-\item 
-sqlite3 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classAbstractRepo_aa49e51230be6d753539ce265a998e24c}{\+\_\+db}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Exclui uma \char`\"{}curtida\char`\"{} associada a um usuário e a um tweet específicos no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{likerepo_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{likerepo_8hpp_source}{likerepo.\+hpp}}.
+Definition at line 8 of file likerepo.\+hpp.
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}\label{classLikeRepo_ace5754d0e1131f597fea23ad693f319a} 
+\mbox{\Hypertarget{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}\label{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}} 
 \index{LikeRepo@{LikeRepo}!addLike@{addLike}}
 \index{addLike@{addLike}!LikeRepo@{LikeRepo}}
 \doxysubsubsection{\texorpdfstring{addLike()}{addLike()}}
@@ -50,7 +34,7 @@ Definition at line \mbox{\hyperlink{likerepo_8hpp_source_l00008}{8}} of file \mb
 
 
 
-Adiciona uma nova entrada de "{}curtida"{} ao banco de dados, associando um usuário a um tweet. 
+Adiciona uma nova entrada de \char`\"{}curtida\char`\"{} ao banco de dados, associando um usuário a um tweet. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -61,23 +45,23 @@ Adiciona uma nova entrada de "{}curtida"{} ao banco de dados, associando um usu�
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{likerepo_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{likerepo_8cpp_source}{likerepo.\+cpp}}.
+Definition at line 5 of file likerepo.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00006\ \ \ \ \ std::string\ sql;}
-\DoxyCodeLine{00007\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}INSERT\ INTO\ like\ (user\_id,\ tweet\_id)\ VALUES\ ("{}};}
-\DoxyCodeLine{00008\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(userId)\ +\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{00009\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{});"{}};}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
-\DoxyCodeLine{00013\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
-\DoxyCodeLine{00014\ \}}
+\DoxyCodeLine{5                                               \{}
+\DoxyCodeLine{6     std::string sql;}
+\DoxyCodeLine{7     sql += \textcolor{stringliteral}{"INSERT INTO like (user\_id, tweet\_id) VALUES ("};}
+\DoxyCodeLine{8     sql += \textcolor{stringliteral}{""} + std::to\_string(userId) + \textcolor{stringliteral}{", "};}
+\DoxyCodeLine{9     sql += \textcolor{stringliteral}{""} + std::to\_string(tweetId) + \textcolor{stringliteral}{");"};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     std::cout << sql << std::endl;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} r = \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db, sql);}
+\DoxyCodeLine{13     std::cout << r << std::endl;}
+\DoxyCodeLine{14 \}}
 
 \end{DoxyCode}
-\Hypertarget{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}\label{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c} 
+\mbox{\Hypertarget{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}\label{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}} 
 \index{LikeRepo@{LikeRepo}!deleteLike@{deleteLike}}
 \index{deleteLike@{deleteLike}!LikeRepo@{LikeRepo}}
 \doxysubsubsection{\texorpdfstring{deleteLike()}{deleteLike()}}
@@ -85,7 +69,7 @@ Definition at line \mbox{\hyperlink{likerepo_8cpp_source_l00005}{5}} of file \mb
 
 
 
-Exclui uma "{}curtida"{} associada a um usuário e a um tweet específicos no banco de dados. 
+Exclui uma \char`\"{}curtida\char`\"{} associada a um usuário e a um tweet específicos no banco de dados. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -96,23 +80,23 @@ Exclui uma "{}curtida"{} associada a um usuário e a um tweet específicos no ba
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{likerepo_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{likerepo_8cpp_source}{likerepo.\+cpp}}.
+Definition at line 27 of file likerepo.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00028\ \ \ \ \ std::string\ sql;}
-\DoxyCodeLine{00029\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}DELETE\ FROM\ like\ WHERE\ user\_id\ =\ "{}};}
-\DoxyCodeLine{00030\ \ \ \ \ sql\ +=\ std::to\_string(userId)\ +\ \textcolor{stringliteral}{"{}\ AND\ tweet\_id\ =\ "{}};}
-\DoxyCodeLine{00031\ \ \ \ \ sql\ +=\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{};"{}};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
-\DoxyCodeLine{00035\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
-\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{27                                                  \{}
+\DoxyCodeLine{28     std::string sql;}
+\DoxyCodeLine{29     sql += \textcolor{stringliteral}{"DELETE FROM like WHERE user\_id = "};}
+\DoxyCodeLine{30     sql += std::to\_string(userId) + \textcolor{stringliteral}{" AND tweet\_id = "};}
+\DoxyCodeLine{31     sql += std::to\_string(tweetId) + \textcolor{stringliteral}{";"};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     std::cout << sql << std::endl;}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} r = \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db, sql);}
+\DoxyCodeLine{35     std::cout << r << std::endl;}
+\DoxyCodeLine{36 \}}
 
 \end{DoxyCode}
-\Hypertarget{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}\label{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352} 
+\mbox{\Hypertarget{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}\label{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}} 
 \index{LikeRepo@{LikeRepo}!searchLikeByUserId@{searchLikeByUserId}}
 \index{searchLikeByUserId@{searchLikeByUserId}!LikeRepo@{LikeRepo}}
 \doxysubsubsection{\texorpdfstring{searchLikeByUserId()}{searchLikeByUserId()}}
@@ -134,20 +118,20 @@ Retorna o número de curtidas encontradas.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{likerepo_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{likerepo_8cpp_source}{likerepo.\+cpp}}.
+Definition at line 16 of file likerepo.\+cpp.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00017\ \ \ \ \ std::string\ sql;}
-\DoxyCodeLine{00018\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ like\ WHERE\ user\_id\ =\ "{}}\ +\ std::to\_string(userId)\ +\ \textcolor{stringliteral}{"{}\ AND\ "{}}}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tweet\_id\ =\ "{}}\ +\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{};"{}};}
-\DoxyCodeLine{00020\ \ \ \ \ }
-\DoxyCodeLine{00021\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
-\DoxyCodeLine{00022\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ result.size();}
-\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{16                                                         \{}
+\DoxyCodeLine{17     std::string sql;}
+\DoxyCodeLine{18     sql += \textcolor{stringliteral}{"SELECT * FROM like WHERE user\_id = "} + std::to\_string(userId) + \textcolor{stringliteral}{" AND "}}
+\DoxyCodeLine{19            \textcolor{stringliteral}{"tweet\_id = "} + std::to\_string(tweetId) + \textcolor{stringliteral}{";"};}
+\DoxyCodeLine{20     }
+\DoxyCodeLine{21     std::cout << sql << std::endl;}
+\DoxyCodeLine{22     std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordflow}{return} result.size();}
+\DoxyCodeLine{25 \}}
 
 \end{DoxyCode}
 

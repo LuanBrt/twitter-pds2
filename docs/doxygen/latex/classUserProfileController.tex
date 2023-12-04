@@ -1,0 +1,113 @@
+\hypertarget{classUserProfileController}{}\doxysection{User\+Profile\+Controller Class Reference}
+\label{classUserProfileController}\index{UserProfileController@{UserProfileController}}
+Inheritance diagram for User\+Profile\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUserProfileController}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUserProfileController_adf0c57722b3aa67003638f08145a323a}{User\+Profile\+Controller}} (\mbox{\hyperlink{classUser}{User}} user, \mbox{\hyperlink{classUser}{User}} logged\+User)
+\begin{DoxyCompactList}\small\item\em Construtor da classe, que recebe o usuário a qual o perfil pertence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAbstractController}{Abstract\+Controller}} $\ast$ \mbox{\hyperlink{classUserProfileController_acaf08ff1155000786ab72523dadd7031}{render}} () override
+\begin{DoxyCompactList}\small\item\em Renderiza uma tela para o usuario e obtem inputs do mesmo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUserProfileController_acbb5d3900d506d50a381b5f544687aff}\label{classUserProfileController_acbb5d3900d506d50a381b5f544687aff}} 
+void \mbox{\hyperlink{classUserProfileController_acbb5d3900d506d50a381b5f544687aff}{get\+User}} ()
+\begin{DoxyCompactList}\small\item\em Obtém informações do usuário atual do controller. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUserProfileController_a7644c39d2e11211b2212ea87f7aa08a0}\label{classUserProfileController_a7644c39d2e11211b2212ea87f7aa08a0}} 
+void \mbox{\hyperlink{classUserProfileController_a7644c39d2e11211b2212ea87f7aa08a0}{follow\+User}} ()
+\begin{DoxyCompactList}\small\item\em Permite que o usuário atual siga o usuário do controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 12 of file userprofilecontroller.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUserProfileController_adf0c57722b3aa67003638f08145a323a}\label{classUserProfileController_adf0c57722b3aa67003638f08145a323a}} 
+\index{UserProfileController@{UserProfileController}!UserProfileController@{UserProfileController}}
+\index{UserProfileController@{UserProfileController}!UserProfileController@{UserProfileController}}
+\doxysubsubsection{\texorpdfstring{UserProfileController()}{UserProfileController()}}
+{\footnotesize\ttfamily User\+Profile\+Controller\+::\+User\+Profile\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUser}{User}}}]{user,  }\item[{\mbox{\hyperlink{classUser}{User}}}]{logged\+User }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe, que recebe o usuário a qual o perfil pertence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & O usuario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 9 of file userprofilecontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10     : \_user(user), \_loggedUser(loggedUser) \{ }
+\DoxyCodeLine{11     \_isFollowed = \textcolor{keyword}{false};}
+\DoxyCodeLine{12     \textcolor{keywordtype}{bool} isYourself = \textcolor{keyword}{false};}
+\DoxyCodeLine{13     \textcolor{keywordflow}{if}(\_userRepo.\mbox{\hyperlink{classUserRepo_a90ea034d7829ba7970263bc0c27fb868}{isUserFollow}}(loggedUser, user)) \_isFollowed = \textcolor{keyword}{true};}
+\DoxyCodeLine{14     \textcolor{keywordflow}{if} (\_loggedUser.id() == \_user.id()) isYourself = \textcolor{keyword}{true};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \_options[ValidOptions::EXIT] = \textcolor{stringliteral}{"Sair para timeline"};}
+\DoxyCodeLine{17     ((isYourself) ? \textcolor{stringliteral}{""} : \_options[ValidOptions::FOLLOWUSER] = (\_isFollowed) ? (\textcolor{stringliteral}{"Deixar de seguir "} + user.\mbox{\hyperlink{classUser_a3b777377235791d371d175a6c5d13fea}{username}}()) : (\textcolor{stringliteral}{"Seguir "} + user.\mbox{\hyperlink{classUser_a3b777377235791d371d175a6c5d13fea}{username}}()));}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUserProfileController_acaf08ff1155000786ab72523dadd7031}\label{classUserProfileController_acaf08ff1155000786ab72523dadd7031}} 
+\index{UserProfileController@{UserProfileController}!render@{render}}
+\index{render@{render}!UserProfileController@{UserProfileController}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAbstractController}{Abstract\+Controller}} $\ast$ User\+Profile\+Controller\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza uma tela para o usuario e obtem inputs do mesmo. 
+
+\begin{DoxyReturn}{Returns}
+Novo controlador de uma nova tela 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAbstractController_a92fcffa3b6f516bf4051e7f211493a9b}{Abstract\+Controller}}.
+
+
+
+Definition at line 20 of file userprofilecontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20                                                   \{}
+\DoxyCodeLine{21     \_userProfileScreen.flushConsole();}
+\DoxyCodeLine{22     \mbox{\hyperlink{classUserProfileController_acbb5d3900d506d50a381b5f544687aff}{getUser}}();}
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} option = \_userProfileScreen.\mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{renderMenu}}(\_options);}
+\DoxyCodeLine{24     \textcolor{keywordflow}{switch} (option) \{}
+\DoxyCodeLine{25         \textcolor{comment}{// Sair:}}
+\DoxyCodeLine{26         \textcolor{keywordflow}{case} EXIT: \{}
+\DoxyCodeLine{27             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{28         \};}
+\DoxyCodeLine{29         \textcolor{keywordflow}{case} FOLLOWUSER: \{}
+\DoxyCodeLine{30             \mbox{\hyperlink{classUserProfileController_a7644c39d2e11211b2212ea87f7aa08a0}{followUser}}();}
+\DoxyCodeLine{31             \mbox{\hyperlink{classUserProfileController_adf0c57722b3aa67003638f08145a323a}{UserProfileController}}(\_user, \_loggedUser).render();}
+\DoxyCodeLine{32         \};}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+userprofilecontroller.\+hpp\item 
+userprofilecontroller.\+cpp\end{DoxyCompactItemize}

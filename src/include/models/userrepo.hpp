@@ -20,6 +20,11 @@ public:
     /// @return Retorna uma lista de usuarios que contenham a chave especificada no userame
     std::vector<User> searchUser(std::string keyword);
 
+    /// @brief Busca usuário baseado no seu username
+    /// @param username
+    /// @return Retorna um usuário especifico
+    User* searchUserByUsername(std::string username);
+
     /// @brief Busca usúario baseado em um id
     /// @param id
     /// @return Retorna o usuário específico com esse id
@@ -31,9 +36,21 @@ public:
     /// @return Um vetor com os seguidos
     std::vector<User> getFollowing(User u);
 
+    /// @brief Checa se o usuário já foi seguido
+    /// @param follower Usuario seguidor
+    /// @param followed Usuario seguido
+    /// @return Retorna 1 se o usuário realmente é seguido pelo follower e 0 caso contrário
+    int isUserFollow(User follower, User followed);
+
     /// @brief Adiciona o following a lista de seguidors do follower
     /// @param follower Usuario que vai seguir
     /// @param followed Usuario seguido
     /// @return O usuario seguido
     User followUser(User follower, User followed);
+
+    /// @brief Remove o following da lista de seguidors do follower
+    /// @param follower Usuario seguidor
+    /// @param followed Usuario seguido
+    /// @return Retorna 1 se a remoção foi bem-sucedida, caso contrário, retorna 0
+    int unfollowUser(User follower, User followed);
 };

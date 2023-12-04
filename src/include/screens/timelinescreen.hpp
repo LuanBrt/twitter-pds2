@@ -14,5 +14,5 @@ public:
 
     /// @brief renderiza os dados dos usuários encontrados
     /// @param users 
-    void renderTextSearchUser(std::vector<User> users);
+    void renderSearchUserResult(std::vector<User> users);
 };

@@ -19,11 +19,13 @@ public:
     /// @return Um inteiro representando sucesso ou falha na execucao do insert
     virtual int executeInsert(sqlite3 *db, std::string sql) const;
 
-    /// @brief Executa um select sql
-    /// @param db Conexao com banco de dados
-    /// @param sql Select a ser executada
-    /// @return Um mapa contendo as informações obtidas no select
+    /// @brief Executa uma operação DELETE no banco de dados
+    /// @param db Conexão com o banco de dados
+    /// @param sql Comando DELETE a ser executado
+    /// @return Retorna 1 se a operação DELETE foi bem-sucedida, caso contrário, retorna 0
     virtual std::vector<std::map<std::string, std::string>> executeSelect(sqlite3 *db, std::string sql) const;
+
+    int executeDelete(sqlite3 *db, std::string sql) const;
 protected:
     sqlite3 *_db;
 };

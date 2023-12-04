@@ -1,11 +1,5 @@
 .vscode
-CMakeLists.txt.user
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
 Testing
-Makefile
-cmake_install.cmake
 TwitterApp
 test
 database.db

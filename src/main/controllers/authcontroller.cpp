@@ -31,7 +31,7 @@ bool AuthController::validateUser(std::map<std::string, std::string> possibleUse
         
         if (user.username() == possibleUser["Usuario"]) {
 
-        std::cout<<"Já existe com o mesmo nome, portanto Não era pra criar!"<<std::endl;
+        _loginScreen.renderMessage("Já existe um usuário com o mesmo nome!\n");
             userExists = true;
         };
     }
@@ -57,7 +57,7 @@ Retorna o objeto User se as credenciais coincidirem; caso contrário, retorna nu
 User* AuthController::validateLogin(std::map<std::string, std::string> possibleUser) {
     std::vector<User> dbResponse = _repo.searchUser(possibleUser["Usuario"]); 
 
-    for ( auto& user : dbResponse) {
+    for (auto& user : dbResponse) {
         if (user.username() == possibleUser["Usuario"] && user.password() == possibleUser["Senha"]) {
             return new User(user);
         };
@@ -88,7 +88,7 @@ AbstractController *AuthController::render() {
         
         // Obter credenciais de login:
         case ValidOptions::LOGIN: {
-
+            _loginScreen.flushConsole();
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Senha"});
             User* authenticatedUser = validateLogin(response);
 
@@ -100,29 +100,21 @@ AbstractController *AuthController::render() {
             }
             else {  
                 // LÓGICA DE LOGIN BEM SUCEDIDO:
-                _loginScreen.renderMessage("Login bem sucedido.");
-                _loginScreen.renderMessage("Bem-vindo, " + authenticatedUser->nickname() + ".");
-                _loginScreen.renderMessage("Direcionando para a timeline...");
-                _loginScreen.renderMessage("\n");
+                _loginScreen.successfulLogin(*authenticatedUser);
                 return new TimelineController(*authenticatedUser);
             }
         }
         // Implementação da escolha REGISTER:
         case ValidOptions::REGISTER: {
+            _loginScreen.flushConsole();
             std::map<std::string, std::string> response = _loginScreen.renderForm({"Usuario", "Apelido", "Senha", "Confirmação de Senha"});
 
             //Código a seguir é um feedback do registro, se ele foi bem ou mal sucedido:
             if(validateUser(response) == 1) {
-
                 User tempUser(response["Usuario"],response["Senha"],response["Apelido"]);
 
-                User newUser = _repo.addUser(tempUser);
-
-                _loginScreen.renderMessage("Registro feito com sucesso!");
-                _loginScreen.renderMessage("O Usuário " + newUser.username() + " foi criado!");
-                _loginScreen.renderMessage("Voltando para a página inicial....");
-                _loginScreen.renderMessage("\n");
-
+                User registerUser = _repo.addUser(tempUser);
+                _loginScreen.sucessfulRegister(registerUser);
             }
             else {
                 _loginScreen.renderMessage("Dados para registro inválidos");

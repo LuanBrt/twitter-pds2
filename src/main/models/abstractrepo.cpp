@@ -53,3 +53,17 @@ std::vector<std::map<std::string, std::string>> AbstractRepo::executeSelect(sqli
     sqlite3_finalize(stmt);
     return result;
 }
+
+int AbstractRepo::executeDelete(sqlite3 *db, std::string sql) const {
+    char *zErrMsg = 0;
+    int rc;
+
+    rc = sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &zErrMsg);
+    if (rc != SQLITE_OK) {
+        std::cout << zErrMsg;
+        sqlite3_free(zErrMsg);
+        return 0;
+    } else {
+        return 1;
+    }
+}

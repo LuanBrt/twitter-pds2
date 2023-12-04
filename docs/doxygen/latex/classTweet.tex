@@ -1,0 +1,263 @@
+\hypertarget{classTweet}{}\doxysection{Tweet Class Reference}
+\label{classTweet}\index{Tweet@{Tweet}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTweet_a2e8366800b47e368a2f7ae2d08731baf}{Tweet}} (int author\+Id, std\+::string \mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}, std\+::string \mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}, int \mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}})
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTweet_a9cd1de303d49ae6afabae8ea71ae2dfb}{Tweet}} (int \mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}, int author\+Id, std\+::string \mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}, std\+::string \mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}, int \mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}})
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o identificador único associado ao tweet. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUser}{User}} \mbox{\hyperlink{classTweet_a91a6b33c59bae66b0365d48f6095c97b}{author}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o autor do tweet. Cria uma instância de \mbox{\hyperlink{classUser}{User}} consultando o repositório de usuários (\mbox{\hyperlink{classUserRepo}{User\+Repo}}) com base no identificador do autor (\+\_\+author\+Id). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a descrição do tweet. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o carimbo de data/hora associado ao tweet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a quantidade de curtidas que o tweet recebeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTweet}{Tweet}} \mbox{\hyperlink{classTweet_a1ff3947b5308df17aa063d136a3f7f11}{get\+Tweet\+By\+Id}} (int \mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}, std\+::vector$<$ \mbox{\hyperlink{classTweet}{Tweet}} $>$ tweets)
+\begin{DoxyCompactList}\small\item\em Função para recuperar um tweet específico por seu identificador a partir de um vetor de tweets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 6 of file tweet.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTweet_a2e8366800b47e368a2f7ae2d08731baf}\label{classTweet_a2e8366800b47e368a2f7ae2d08731baf}} 
+\index{Tweet@{Tweet}!Tweet@{Tweet}}
+\index{Tweet@{Tweet}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{Tweet()}{Tweet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Tweet\+::\+Tweet (\begin{DoxyParamCaption}\item[{int}]{author\+Id,  }\item[{std\+::string}]{description,  }\item[{std\+::string}]{timestamp,  }\item[{int}]{likes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor padrão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em author\+Id} & Identificador único do autor do tweet. \\
+\hline
+{\em description} & Descrição do tweet. \\
+\hline
+{\em timestamp} & Tempo de publicação do tweet. \\
+\hline
+{\em likes} & Quantidade de likes do tweet. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file tweet.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13                                                                               : }
+\DoxyCodeLine{14         \_authorId(authorId), \_description(\mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}), \_timestamp(\mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}), \_likes(\mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}}) \{\};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTweet_a9cd1de303d49ae6afabae8ea71ae2dfb}\label{classTweet_a9cd1de303d49ae6afabae8ea71ae2dfb}} 
+\index{Tweet@{Tweet}!Tweet@{Tweet}}
+\index{Tweet@{Tweet}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{Tweet()}{Tweet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Tweet\+::\+Tweet (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{author\+Id,  }\item[{std\+::string}]{description,  }\item[{std\+::string}]{timestamp,  }\item[{int}]{likes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor padrão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id do tweet. \\
+\hline
+{\em author\+Id} & Identificador único do autor do tweet. \\
+\hline
+{\em description} & Descrição do tweet. \\
+\hline
+{\em timestamp} & Tempo de publicação do tweet. \\
+\hline
+{\em likes} & Quantidade de likes do tweet. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file tweet.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22                                                                                       :}
+\DoxyCodeLine{23         \_id(\textcolor{keywordtype}{id}), \_authorId(authorId), \_description(\mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}), \_timestamp(\mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}), \_likes(\mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}}) \{\};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTweet_a91a6b33c59bae66b0365d48f6095c97b}\label{classTweet_a91a6b33c59bae66b0365d48f6095c97b}} 
+\index{Tweet@{Tweet}!author@{author}}
+\index{author@{author}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{author()}{author()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUser}{User}} Tweet\+::author (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o autor do tweet. Cria uma instância de \mbox{\hyperlink{classUser}{User}} consultando o repositório de usuários (\mbox{\hyperlink{classUserRepo}{User\+Repo}}) com base no identificador do autor (\+\_\+author\+Id). 
+
+\begin{DoxyReturn}{Returns}
+Retorna o autor do tweet. 
+\end{DoxyReturn}
+
+
+Definition at line 11 of file tweet.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11                    \{}
+\DoxyCodeLine{12     \mbox{\hyperlink{classUserRepo}{UserRepo}} \_repo;}
+\DoxyCodeLine{13     \textcolor{keywordflow}{return} \_repo.\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(\_authorId);}
+\DoxyCodeLine{14 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTweet_afef8008a8305610862cfb38f718f68e9}\label{classTweet_afef8008a8305610862cfb38f718f68e9}} 
+\index{Tweet@{Tweet}!description@{description}}
+\index{description@{description}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}}
+{\footnotesize\ttfamily std\+::string Tweet\+::description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna a descrição do tweet. 
+
+\begin{DoxyReturn}{Returns}
+Retorna a descrição do tweet. 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file tweet.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                              \{}
+\DoxyCodeLine{17     \textcolor{keywordflow}{return} \_description;}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTweet_a1ff3947b5308df17aa063d136a3f7f11}\label{classTweet_a1ff3947b5308df17aa063d136a3f7f11}} 
+\index{Tweet@{Tweet}!getTweetById@{getTweetById}}
+\index{getTweetById@{getTweetById}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{getTweetById()}{getTweetById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTweet}{Tweet}} Tweet\+::get\+Tweet\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classTweet}{Tweet}} $>$}]{tweets }\end{DoxyParamCaption})}
+
+
+
+Função para recuperar um tweet específico por seu identificador a partir de um vetor de tweets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador do tweet desejado. \\
+\hline
+{\em tweets} & Vetor de tweets no qual a busca será realizada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}\mbox{\hyperlink{classTweet}{Tweet}}\textquotesingle{} Retorna o tweet correspondente ao identificador fornecido ou um tweet \char`\"{}vazio\char`\"{} (com atributos não garantidos) caso não seja encontrado. 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file tweet.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                          \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} tweet : tweets) \{}
+\DoxyCodeLine{30         \textcolor{keywordflow}{if} (tweet.id() == \textcolor{keywordtype}{id}) \{}
+\DoxyCodeLine{31             \textcolor{keywordflow}{return} tweet;}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{comment}{// Se não encontrar, retorna um tweet "vazio" (os atributos não são garantidos)}}
+\DoxyCodeLine{36     \textcolor{keywordflow}{return} \mbox{\hyperlink{classTweet_a2e8366800b47e368a2f7ae2d08731baf}{Tweet}}(-\/1, -\/1, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{""}, 0);}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTweet_a9400780825c1deb7b8f87f378596f0c0}\label{classTweet_a9400780825c1deb7b8f87f378596f0c0}} 
+\index{Tweet@{Tweet}!id@{id}}
+\index{id@{id}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily int Tweet\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o identificador único associado ao tweet. 
+
+\begin{DoxyReturn}{Returns}
+Retorna o identificador único associado ao tweet. 
+\end{DoxyReturn}
+
+
+Definition at line 7 of file tweet.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7              \{}
+\DoxyCodeLine{8   \textcolor{keywordflow}{return} \_id;}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTweet_a8783cb651e503b234bdf15c19c66c83f}\label{classTweet_a8783cb651e503b234bdf15c19c66c83f}} 
+\index{Tweet@{Tweet}!likes@{likes}}
+\index{likes@{likes}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{likes()}{likes()}}
+{\footnotesize\ttfamily int Tweet\+::likes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna a quantidade de curtidas que o tweet recebeu. 
+
+\begin{DoxyReturn}{Returns}
+Retorna a quantidade de curtidas que o tweet recebeu. 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file tweet.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24                  \{}
+\DoxyCodeLine{25     \textcolor{keywordflow}{return} \_likes;}
+\DoxyCodeLine{26 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}\label{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}} 
+\index{Tweet@{Tweet}!timestamp@{timestamp}}
+\index{timestamp@{timestamp}!Tweet@{Tweet}}
+\doxysubsubsection{\texorpdfstring{timestamp()}{timestamp()}}
+{\footnotesize\ttfamily std\+::string Tweet\+::timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o carimbo de data/hora associado ao tweet. 
+
+\begin{DoxyReturn}{Returns}
+Retorna o carimbo de data/hora associado ao tweet. 
+\end{DoxyReturn}
+
+
+Definition at line 20 of file tweet.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20                            \{}
+\DoxyCodeLine{21     \textcolor{keywordflow}{return} \_timestamp;}
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tweet.\+hpp\item 
+tweet.\+cpp\end{DoxyCompactItemize}

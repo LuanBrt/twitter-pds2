@@ -1,0 +1,102 @@
+\hypertarget{classTimelineScreen}{}\doxysection{Timeline\+Screen Class Reference}
+\label{classTimelineScreen}\index{TimelineScreen@{TimelineScreen}}
+Inheritance diagram for Timeline\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTimelineScreen}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTimelineScreen_abb7c11435941c00b6565244c64a7e814}{render\+Tweet\+List}} (std\+::vector$<$ \mbox{\hyperlink{classTweet}{Tweet}} $>$ tweets)
+\begin{DoxyCompactList}\small\item\em renderiza uma lista de tweets na tela \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTimelineScreen_ac99129a3a974724ef4af52634d9596e8}{render\+Search\+User\+Result}} (std\+::vector$<$ \mbox{\hyperlink{classUser}{User}} $>$ users)
+\begin{DoxyCompactList}\small\item\em renderiza os dados dos usuários encontrados \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file timelinescreen.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimelineScreen_ac99129a3a974724ef4af52634d9596e8}\label{classTimelineScreen_ac99129a3a974724ef4af52634d9596e8}} 
+\index{TimelineScreen@{TimelineScreen}!renderSearchUserResult@{renderSearchUserResult}}
+\index{renderSearchUserResult@{renderSearchUserResult}!TimelineScreen@{TimelineScreen}}
+\doxysubsubsection{\texorpdfstring{renderSearchUserResult()}{renderSearchUserResult()}}
+{\footnotesize\ttfamily void Timeline\+Screen\+::render\+Search\+User\+Result (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classUser}{User}} $>$}]{users }\end{DoxyParamCaption})}
+
+
+
+renderiza os dados dos usuários encontrados 
+
+
+\begin{DoxyParams}{Parameters}
+{\em users} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 11 of file timelinescreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11                                                                 \{}
+\DoxyCodeLine{12     flushConsole();}
+\DoxyCodeLine{13     renderSeparator();}
+\DoxyCodeLine{14     \textcolor{keywordflow}{if} (users.size() == 0) \{}
+\DoxyCodeLine{15         renderMessage(\textcolor{stringliteral}{"Desculpe, mas não encotramos nenhum usuário"});}
+\DoxyCodeLine{16     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{17     renderMessage(\textcolor{stringliteral}{"Usuários Encontrados:"});}
+\DoxyCodeLine{18     renderMessage(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{19     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} user : users) \{}
+\DoxyCodeLine{20         renderMessage(user.username());}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22     renderSeparator();}
+\DoxyCodeLine{23     renderMessage(\textcolor{stringliteral}{"timeline"});}
+\DoxyCodeLine{24     \}}
+\DoxyCodeLine{25 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTimelineScreen_abb7c11435941c00b6565244c64a7e814}\label{classTimelineScreen_abb7c11435941c00b6565244c64a7e814}} 
+\index{TimelineScreen@{TimelineScreen}!renderTweetList@{renderTweetList}}
+\index{renderTweetList@{renderTweetList}!TimelineScreen@{TimelineScreen}}
+\doxysubsubsection{\texorpdfstring{renderTweetList()}{renderTweetList()}}
+{\footnotesize\ttfamily void Timeline\+Screen\+::render\+Tweet\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classTweet}{Tweet}} $>$}]{tweets }\end{DoxyParamCaption})}
+
+
+
+renderiza uma lista de tweets na tela 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tweets} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 3 of file timelinescreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{3                                                             \{}
+\DoxyCodeLine{4     renderMessage(\textcolor{stringliteral}{"\(\backslash\)nTimeline: \(\backslash\)n"});}
+\DoxyCodeLine{5     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} tweet : tweets) \{}
+\DoxyCodeLine{6         renderMessage(\textcolor{stringliteral}{"Id: "} + std::to\_string(tweet.id()));}
+\DoxyCodeLine{7         renderMessage(tweet.author().username() + \textcolor{stringliteral}{" -\/ "} + tweet.description());}
+\DoxyCodeLine{8     \}}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+timelinescreen.\+hpp\item 
+timelinescreen.\+cpp\end{DoxyCompactItemize}

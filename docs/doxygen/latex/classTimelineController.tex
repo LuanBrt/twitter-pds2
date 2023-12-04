@@ -1,0 +1,140 @@
+\hypertarget{classTimelineController}{}\doxysection{Timeline\+Controller Class Reference}
+\label{classTimelineController}\index{TimelineController@{TimelineController}}
+Inheritance diagram for Timeline\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTimelineController}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{Timeline\+Controller}} (\mbox{\hyperlink{classUser}{User}} u)
+\begin{DoxyCompactList}\small\item\em Construtor da classe, que recebe o usuário a qual a timeline pertence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAbstractController}{Abstract\+Controller}} $\ast$ \mbox{\hyperlink{classTimelineController_ac6b110e1057355fad3e5d57609b187ba}{render}} () override
+\begin{DoxyCompactList}\small\item\em Metodo virtual dos controllers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimelineController_a78427a259e7d3c43053497874ca62cf6}\label{classTimelineController_a78427a259e7d3c43053497874ca62cf6}} 
+void \mbox{\hyperlink{classTimelineController_a78427a259e7d3c43053497874ca62cf6}{get\+Tweets}} ()
+\begin{DoxyCompactList}\small\item\em Obtem os tweets do repositorio, e envia para a view exibir. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimelineController_a114119528e226bdfdb7a08fce6fbbe1c}\label{classTimelineController_a114119528e226bdfdb7a08fce6fbbe1c}} 
+void \mbox{\hyperlink{classTimelineController_a114119528e226bdfdb7a08fce6fbbe1c}{see\+User}} ()
+\begin{DoxyCompactList}\small\item\em Obtem um usuário e entra no profile dele. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}\label{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}} 
+void \mbox{\hyperlink{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}{search\+Tweets}} ()
+\begin{DoxyCompactList}\small\item\em Busca tweets no repositorio. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}\label{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}} 
+void \mbox{\hyperlink{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}{search\+Users}} ()
+\begin{DoxyCompactList}\small\item\em Busca usuarios no repositorio. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTimelineController_a86b5d830dde93084698e9c87bc805d07}\label{classTimelineController_a86b5d830dde93084698e9c87bc805d07}} 
+void \mbox{\hyperlink{classTimelineController_a86b5d830dde93084698e9c87bc805d07}{send\+Tweet}} ()
+\begin{DoxyCompactList}\small\item\em Função que publica um tweet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 13 of file timelinecontroller.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}\label{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}} 
+\index{TimelineController@{TimelineController}!TimelineController@{TimelineController}}
+\index{TimelineController@{TimelineController}!TimelineController@{TimelineController}}
+\doxysubsubsection{\texorpdfstring{TimelineController()}{TimelineController()}}
+{\footnotesize\ttfamily Timeline\+Controller\+::\+Timeline\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUser}{User}}}]{u }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe, que recebe o usuário a qual a timeline pertence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & O usuario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 10 of file timelinecontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10                                                  : \_user(u) \{}
+\DoxyCodeLine{11         \_options[ValidOptions::EXIT] = \textcolor{stringliteral}{"Sair"};}
+\DoxyCodeLine{12         \_options[ValidOptions::USERCONFIG] = \textcolor{stringliteral}{"Configurar usuário"};}
+\DoxyCodeLine{13         \_options[ValidOptions::SEEUSER] = \textcolor{stringliteral}{"Ver perfil de usuário"};}
+\DoxyCodeLine{14         \_options[ValidOptions::SEARCHTWEET] = \textcolor{stringliteral}{"Buscar Tweet"};}
+\DoxyCodeLine{15         \_options[ValidOptions::OPENTREND] = \textcolor{stringliteral}{"Abrir trending topics"};}
+\DoxyCodeLine{16         \_options[ValidOptions::OPENTWEET] = \textcolor{stringliteral}{"Abrir tweet"};}
+\DoxyCodeLine{17         \_options[ValidOptions::SENDTWEET] = \textcolor{stringliteral}{"Tweetar"};}
+\DoxyCodeLine{18         \_options[ValidOptions::SEARCHUSER] = \textcolor{stringliteral}{"Buscar Usuário"};}
+\DoxyCodeLine{19     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimelineController_ac6b110e1057355fad3e5d57609b187ba}\label{classTimelineController_ac6b110e1057355fad3e5d57609b187ba}} 
+\index{TimelineController@{TimelineController}!render@{render}}
+\index{render@{render}!TimelineController@{TimelineController}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAbstractController}{Abstract\+Controller}} $\ast$ Timeline\+Controller\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Metodo virtual dos controllers. 
+
+\begin{DoxyReturn}{Returns}
+O proximo controller 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classAbstractController_a92fcffa3b6f516bf4051e7f211493a9b}{Abstract\+Controller}}.
+
+
+
+Definition at line 23 of file timelinecontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23                                                    \{}
+\DoxyCodeLine{24         \mbox{\hyperlink{classTimelineController_a78427a259e7d3c43053497874ca62cf6}{getTweets}}();}
+\DoxyCodeLine{25         \_timelineScreen.renderSeparator();}
+\DoxyCodeLine{26         \textcolor{keywordtype}{int} option = \_timelineScreen.\mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{renderMenu}}(\_options);}
+\DoxyCodeLine{27         \textcolor{keywordflow}{switch} (option) \{}
+\DoxyCodeLine{28             \textcolor{comment}{// Sair:}}
+\DoxyCodeLine{29             \textcolor{keywordflow}{case} EXIT: \{}
+\DoxyCodeLine{30                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{31             \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33             \textcolor{keywordflow}{case} SEEUSER: \{}
+\DoxyCodeLine{34                 \mbox{\hyperlink{classTimelineController_a114119528e226bdfdb7a08fce6fbbe1c}{seeUser}}();}
+\DoxyCodeLine{35                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{36             \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keywordflow}{case} SENDTWEET: \{}
+\DoxyCodeLine{39                 \mbox{\hyperlink{classTimelineController_a86b5d830dde93084698e9c87bc805d07}{sendTweet}}();}
+\DoxyCodeLine{40                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{41             \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43             \textcolor{comment}{// Buscar Usuário:}}
+\DoxyCodeLine{44             \textcolor{keywordflow}{case} SEARCHUSER:}
+\DoxyCodeLine{45                 \mbox{\hyperlink{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}{searchUsers}}();}
+\DoxyCodeLine{46                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48             \textcolor{keywordflow}{case} SEARCHTWEET:}
+\DoxyCodeLine{49                 \mbox{\hyperlink{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}{searchTweets}}();}
+\DoxyCodeLine{50                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{51             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{53         \}}
+\DoxyCodeLine{54         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{55     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+timelinecontroller.\+hpp\item 
+timelinecontroller.\+cpp\end{DoxyCompactItemize}

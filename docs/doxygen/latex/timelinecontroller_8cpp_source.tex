@@ -1,0 +1,80 @@
+\doxysection{timelinecontroller.\+cpp}
+\hypertarget{timelinecontroller_8cpp_source}{}\label{timelinecontroller_8cpp_source}\index{timelinecontroller.cpp@{timelinecontroller.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}controllers/timelinecontroller.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}models/tweet.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00008}00008\ \ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00009}\mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{00009}}\ \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController::TimelineController}}(\mbox{\hyperlink{classUser}{User}}\ u)\ :\ \_user(u)\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00010}00010\ \ \ \ \ \_options[ValidOptions::EXIT]\ =\ \textcolor{stringliteral}{"{}Sair"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00011}00011\ \ \ \ \ \_options[ValidOptions::USERCONFIG]\ =\ \textcolor{stringliteral}{"{}Configurar\ usuário"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00012}00012\ \ \ \ \ \_options[ValidOptions::SEEUSER]\ =\ \textcolor{stringliteral}{"{}Ver\ perfil\ de\ usuário"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00013}00013\ \ \ \ \ \_options[ValidOptions::SEARCHTWEET]\ =\ \textcolor{stringliteral}{"{}Buscar\ Tweet"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00014}00014\ \ \ \ \ \_options[ValidOptions::OPENTREND]\ =\ \textcolor{stringliteral}{"{}Abrir\ trending\ topics"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00015}00015\ \ \ \ \ \_options[ValidOptions::OPENTWEET]\ =\ \textcolor{stringliteral}{"{}Abrir\ tweet"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00016}00016\ \ \ \ \ \_options[ValidOptions::SENDTWEET]\ =\ \textcolor{stringliteral}{"{}Tweetar"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00017}00017\ \ \ \ \ \_options[ValidOptions::SEARCHUSER]\ =\ \textcolor{stringliteral}{"{}Buscar\ Usuário"{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00020}00020\ \textcolor{comment}{//\ A\ SEGUINTE\ FUNÇÃO\ RENDERIZA\ AS\ OPÇÕES\ DA\ TIMELINE\ E\ IMPLEMENTA\ CADA\ UMA}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00021}00021\ \textcolor{comment}{//\ DELAS:}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00022}\mbox{\hyperlink{classTimelineController_ac6b110e1057355fad3e5d57609b187ba}{00022}}\ \mbox{\hyperlink{classAbstractController}{AbstractController}}\ *\mbox{\hyperlink{classTimelineController_ac6b110e1057355fad3e5d57609b187ba}{TimelineController::render}}()\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classTimelineController_a78427a259e7d3c43053497874ca62cf6}{getTweets}}();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00024}00024\ \ \ \ \ \_view.renderSeparator();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ option\ =\ \_view.\mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{renderMenu}}(\_options);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{switch}\ (option)\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sair:}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ EXIT:}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Buscar\ Usuário:}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SEARCHUSER:}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}{searchUsers}}();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SEARCHTWEET:}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}{searchTweets}}();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTimelineController_ad35c26ce516976279f56fc3dccf687c9}{TimelineController}}(\_user);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00043}\mbox{\hyperlink{classTimelineController_a78427a259e7d3c43053497874ca62cf6}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTimelineController_a78427a259e7d3c43053497874ca62cf6}{TimelineController::getTweets}}()\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00044}00044\ \ \ \ \ std::vector<Tweet>\ response\ =\ \_tweetRepo.\mbox{\hyperlink{classTweetRepo_a252f18a2e19843b78cf4b5f834c5f2de}{getUserTimeline}}(\_user);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00045}00045\ \ \ \ \ \_view.\mbox{\hyperlink{classTimelineScreen_abb7c11435941c00b6565244c64a7e814}{renderTweetList}}(response);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00048}\mbox{\hyperlink{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTimelineController_a37ec59cc8e37f6c5e457dc5226cc8dbc}{TimelineController::searchTweets}}()\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00049}00049\ \ \ \ \ std::string\ searchString;}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00050}00050\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Digite\ a\ palavra-\/chave\ para\ busca:\ "{}};}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00051}00051\ \ \ \ \ std::getline(std::cin\ >>\ std::ws,\ searchString);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00053}00053\ \ \ \ \ std::vector<Tweet>\ matchingTweets\ =\ \_tweetRepo.searchTweets(searchString);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ exibindo\ os\ tweets\ encontrados}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00056}00056\ \ \ \ \ \_view.\mbox{\hyperlink{classTimelineScreen_abb7c11435941c00b6565244c64a7e814}{renderTweetList}}(matchingTweets);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00059}\mbox{\hyperlink{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}{00059}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTimelineController_a49bcf2babc4b736fc681755fe1b103a6}{TimelineController::searchUsers}}()\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00060}00060\ \ \ \ \ std::map<std::string,\ std::string>\ keyword;}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00062}00062\ \ \ \ \ keyword\ =\ \_view.\mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{renderForm}}(\{\textcolor{stringliteral}{"{}Usuário"{}}\});}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00064}00064\ \ \ \ \ std::vector<User>\ users\ =\ \_userRepo.\mbox{\hyperlink{classUserRepo_a76523cf7151f815c017a3bfa66a167be}{searchUser}}(keyword[\textcolor{stringliteral}{"{}Usuário"{}}]);}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00065}00065\ \ \ \ \ \_view.flushConsole();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00066}00066\ \ \ \ \ \_view.renderSeparator();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00067}00067\ \ \ \ \ \_view.renderMessage(\textcolor{stringliteral}{"{}Usuários\ Encontrados:"{}});}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00068}00068\ \ \ \ \ \_view.renderMessage(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ user\ :\ users)\ \{}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \_view.renderMessage(user.nickname());}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00072}00072\ \ \ \ \ \_view.renderSeparator();}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00073}00073\ \ \ \ \ \_view.renderMessage(\textcolor{stringliteral}{"{}timeline"{}});}
+\DoxyCodeLine{\Hypertarget{timelinecontroller_8cpp_source_l00074}00074\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,59 @@
+\doxysection{commentreppo.\+cpp}
+\hypertarget{commentreppo_8cpp_source}{}\label{commentreppo_8cpp_source}\index{commentreppo.cpp@{commentreppo.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}models/commentrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00005}\mbox{\hyperlink{classCommentRepo_a918183ca04e2fa2c979a71d5153ca85c}{00005}}\ \mbox{\hyperlink{classComment}{Comment}}\ \mbox{\hyperlink{classCommentRepo_a918183ca04e2fa2c979a71d5153ca85c}{CommentRepo::addComment}}(\mbox{\hyperlink{classComment}{Comment}}\ comment)\ \{}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00006}00006\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00007}00007\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}INSERT\ INTO\ comment\ (author\_id,\ tweet\_id,\ description)\ VALUES\ ("{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00008}00008\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(comment.\mbox{\hyperlink{classComment_a68abd81410f49593b5b188c156175af2}{author}}().id())\ +\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00009}00009\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(comment.\mbox{\hyperlink{classComment_aef714c2b4d26767048a2935a5e9432da}{tweet}}().\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}())\ +\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00010}00010\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}'"{}}\ +\ comment.\mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}}()\ +\ \textcolor{stringliteral}{"{}');"{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00012}00012\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00014}00014\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00016}00016\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ sqlite3\_int64\ lastRowId\ =\ sqlite3\_last\_insert\_rowid(\_db);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Você\ pode\ agora\ buscar\ o\ tweet\ recém-\/criado\ usando\ o\ ID\ obtido}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classComment}{Comment}}\ newComment\ =\ \mbox{\hyperlink{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}{searchCommentById}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(lastRowId));}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Retornando\ o\ tweet\ recém-\/criado}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newComment;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{stringliteral}{"{}Comment\ não\ foi\ adicionado\ ao\ banco\ de\ dados"{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00030}\mbox{\hyperlink{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}{00030}}\ std::vector<Comment>\ \mbox{\hyperlink{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}{CommentRepo::getCommentsByTweetId}}(\textcolor{keywordtype}{int}\ tweetId)\ \{}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00031}00031\ \ \ std::vector<Comment>\ commentVec;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00032}00032\ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00033}00033\ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ comment\ WHERE\ tweet\_id\ =\ "{}}\ +\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00034}00034\ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00035}00035\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ commentData\ :\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00036}00036\ \ \ \ \ \ \ \mbox{\hyperlink{classComment}{Comment}}\ c(stoi(commentData[\textcolor{stringliteral}{"{}id"{}}]),\ stoi(commentData[\textcolor{stringliteral}{"{}author\_id"{}}]),\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ stoi(commentData[\textcolor{stringliteral}{"{}tweet\_id"{}}]),\ commentData[\textcolor{stringliteral}{"{}description"{}}]);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00038}00038\ \ \ \ \ \ \ commentVec.push\_back(c);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00039}00039\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00041}00041\ \ \ \textcolor{keywordflow}{return}\ commentVec;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00044}\mbox{\hyperlink{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}{00044}}\ \mbox{\hyperlink{classComment}{Comment}}\ \mbox{\hyperlink{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}{CommentRepo::searchCommentById}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00045}00045\ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00046}00046\ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ comment\ WHERE\ id\ =\ "{}}\ +\ std::to\_string(\textcolor{keywordtype}{id})\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00047}00047\ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00049}00049\ \ \ \mbox{\hyperlink{classComment}{Comment}}\ c(stoi(result[0][\textcolor{stringliteral}{"{}id"{}}]),\ stoi(result[0][\textcolor{stringliteral}{"{}author\_id"{}}]),\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00050}00050\ \ \ \ \ stoi(result[0][\textcolor{stringliteral}{"{}tweet\_id"{}}]),\ result[0][\textcolor{stringliteral}{"{}description"{}}]);}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00052}00052\ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{\Hypertarget{commentreppo_8cpp_source_l00053}00053\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,90 @@
+\doxysection{tweetcontroller.\+cpp}
+\hypertarget{tweetcontroller_8cpp_source}{}\label{tweetcontroller_8cpp_source}\index{tweetcontroller.cpp@{tweetcontroller.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}controllers/tweetcontroller.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}models/tweet.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}models/tweetrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}models/user.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}models/userrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}models/comment.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}models/commentrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}models/likerepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00014}00014\ \textcolor{comment}{//Constructor}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00015}00015\ \textcolor{comment}{//Descrição:\ Inicializa\ um\ controlador\ de\ tweets,\ configurando\ opções\ com\ base\ no\ estado\ atual\ do\ tweet,\ como\ curtidas\ existentes.}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00016}\mbox{\hyperlink{classTweetController_a4d6f4341d9df803ffe86e9042b59c6b6}{00016}}\ \mbox{\hyperlink{classTweetController_a4d6f4341d9df803ffe86e9042b59c6b6}{TweetController::TweetController}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{classUserRepo}{UserRepo}}\ \_userRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00018}00018\ \ \ \ \ \mbox{\hyperlink{classUser}{User}}\ ur\ =\ \_userRepo.\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(1);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{classTweetRepo}{TweetRepo}}\ \_tweetRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classTweet}{Tweet}}\ tr\ =\ \_tweetRepo.\mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{searchTweetById}}(1);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classLikeRepo}{LikeRepo}}\ \_likeRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{int}\ likeExistis\ =\ \_likeRepo.\mbox{\hyperlink{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}{searchLikeByUserId}}(ur.id(),\ tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00025}00025\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00026}00026\ \ \ \ \ \_options[ValidOptions::EXIT]\ =\ \textcolor{stringliteral}{"{}Voltar\ Para\ Timeline"{}};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00027}00027\ \ \ \ \ \_options[ValidOptions::LIKE]\ =\ (likeExistis)\ ?\ \textcolor{stringliteral}{"{}Remover\ like"{}}\ :\ \textcolor{stringliteral}{"{}Curtir\ Tweet"{}};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00028}00028\ \ \ \ \ \_options[ValidOptions::RETWEET]\ =\ \textcolor{stringliteral}{"{}Retweetar\ Tweet"{}};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00029}00029\ \ \ \ \ \_options[ValidOptions::COMMENT]\ =\ \textcolor{stringliteral}{"{}Comentar\ Tweet"{}};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00032}00032\ \textcolor{comment}{//Render}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00033}00033\ \textcolor{comment}{//Controla\ a\ interface\ de\ usuário\ relacionada\ a\ um\ tweet\ específico,\ permitindo\ a\ interação\ do\ usuário,\ como\ curtir,\ retweetar\ e\ comentar.}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00034}00034\ \textcolor{comment}{//AbstractController*:\ Retorna\ um\ ponteiro\ para\ um\ novo\ controlador,\ representando\ a\ próxima\ tela\ a\ ser\ exibida\ após\ as\ interações\ do\ usuário.}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00035}\mbox{\hyperlink{classTweetController_a79c78068ce245e576683a67746e86484}{00035}}\ \mbox{\hyperlink{classAbstractController}{AbstractController}}\ *\mbox{\hyperlink{classTweetController_a79c78068ce245e576683a67746e86484}{TweetController::render}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classUserRepo}{UserRepo}}\ \_userRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classUser}{User}}\ ur\ =\ \_userRepo.\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(1);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{classTweetRepo}{TweetRepo}}\ \_tweetRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{classTweet}{Tweet}}\ tr\ =\ \_tweetRepo.\mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{searchTweetById}}(1);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{classCommentRepo}{CommentRepo}}\ \_commentRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{classLikeRepo}{LikeRepo}}\ \_likeRepo;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00049}00049\ \ \ \ \ \_tweetScreen.\mbox{\hyperlink{classTweetScreen_a39422db9b6400fe8f929af25e85dfe58}{renderTweet}}(tr);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{int}\ selected\ =\ \_tweetScreen.\mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{renderMenu}}(\_options);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{switch}\ (selected)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sair}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ValidOptions::EXIT:\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Curtir\ e\ remover\ curtida\ do\ tweet}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ValidOptions::LIKE:\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_likeRepo.\mbox{\hyperlink{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}{searchLikeByUserId}}(ur.id(),\ tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}()))\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_likeRepo.\mbox{\hyperlink{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}{deleteLike}}(ur.id(),\ tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_tweetRepo.dislikeTweet(tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Você\ removeu\ a\ curtida\ desse\ tweet!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_likeRepo.\mbox{\hyperlink{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}{addLike}}(ur.id(),\ tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_tweetRepo.likeTweet(tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}());}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Você\ curtiu\ o\ tweet!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTweetController_a4d6f4341d9df803ffe86e9042b59c6b6}{TweetController}}();}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obter\ credenciais\ de\ login}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ValidOptions::COMMENT:\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::string>\ response\ =\ \_tweetScreen.\mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{renderForm}}(\{\textcolor{stringliteral}{"{}Comentário"{}}\});}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ description\ =\ response[\textcolor{stringliteral}{"{}Comentário"{}}];}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classComment}{Comment}}\ comment(ur.id(),\ tr.\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}(),\ description);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \_commentRepo.\mbox{\hyperlink{classCommentRepo_a918183ca04e2fa2c979a71d5153ca85c}{addComment}}(comment);}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classTweetController_a4d6f4341d9df803ffe86e9042b59c6b6}{TweetController}}();}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8cpp_source_l00084}00084\ \}}
+
+\end{DoxyCode}

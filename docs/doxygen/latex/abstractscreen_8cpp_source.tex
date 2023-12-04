@@ -1,0 +1,50 @@
+\doxysection{abstractscreen.\+cpp}
+\hypertarget{abstractscreen_8cpp_source}{}\label{abstractscreen_8cpp_source}\index{abstractscreen.cpp@{abstractscreen.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}screens/abstractscreen.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00005}\mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{00005}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{AbstractScreen::renderMenu}}(\textcolor{keyword}{const}\ std::map<int,\ std::string>\ \&options)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{int}\ selected;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00007}00007\ \ \ \ \ std::cout\ <<\ \_title\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ option\ :\ options)\ \{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ std::cout\ <<\ option.first\ <<\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ <<\ option.second\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00011}00011\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n:\ "{}};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00012}00012\ \ \ \ \ std::cin\ >>\ selected;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{return}\ selected;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00017}\mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{00017}}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{AbstractScreen::renderForm}}(std::vector<std::string>\ fields)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00018}00018\ \ \ \ \ std::map<std::string,\ std::string>\ response;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ field\ :\ fields)\ \{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ std::string\ value;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ std::cout\ <<\ field\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ std::cin.ignore();}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ std::getline(std::cin,\ value);}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ response[field]\ =\ value;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ response;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00032}00032\ \textcolor{comment}{//\ Função\ que\ renderiza\ uma\ mensagem\ na\ tela:}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00033}00033\ \textcolor{keywordtype}{void}\ AbstractScreen::renderMessage(std::string\ message)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00034}00034\ \ \ \ \ std::cout\ <<\ message\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00037}00037\ \textcolor{comment}{//\ Função\ que\ limpa\ a\ tela:}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00038}00038\ \textcolor{keywordtype}{void}\ AbstractScreen::flushConsole()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00039}00039\ \ \ \ \ system(\textcolor{stringliteral}{"{}clear"{}});}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00042}00042\ \textcolor{keywordtype}{void}\ AbstractScreen::renderSeparator()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00043}00043\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}====================================================="{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8cpp_source_l00044}00044\ \}}
+
+\end{DoxyCode}

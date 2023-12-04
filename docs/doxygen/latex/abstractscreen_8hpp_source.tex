@@ -1,0 +1,26 @@
+\doxysection{abstractscreen.\+hpp}
+\hypertarget{abstractscreen_8hpp_source}{}\label{abstractscreen_8hpp_source}\index{abstractscreen.hpp@{abstractscreen.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00007}\mbox{\hyperlink{classAbstractScreen}{00007}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAbstractScreen}{AbstractScreen}}\ \{}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00010}\mbox{\hyperlink{classAbstractScreen_a59a02e8f9b271ccbf6c4d00a81058fcb}{00010}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classAbstractScreen_a59a02e8f9b271ccbf6c4d00a81058fcb}{\string~AbstractScreen}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classAbstractScreen_ae4ca3e3e78394d770e2d1aa7ba62a557}{renderMenu}}(\textcolor{keyword}{const}\ std::map<int,\ std::string>\ \&options)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::map<std::string,\ std::string>\ \mbox{\hyperlink{classAbstractScreen_aaec64c543f4509e9b20793d9cad35cf4}{renderForm}}(std::vector<std::string>\ fields)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ renderMessage(std::string\ message)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ flushConsole()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ renderSeparator()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00023}00023\ \ \ }
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00025}00025\ \ \ \ \ \ \ \ \ std::string\ \_title;}
+\DoxyCodeLine{\Hypertarget{abstractscreen_8hpp_source_l00026}00026\ \};}
+
+\end{DoxyCode}

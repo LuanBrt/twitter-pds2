@@ -1,0 +1,26 @@
+\doxysection{abstractrepo.\+hpp}
+\hypertarget{abstractrepo_8hpp_source}{}\label{abstractrepo_8hpp_source}\index{abstractrepo.hpp@{abstractrepo.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <sqlite3.h>}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00008}\mbox{\hyperlink{classAbstractRepo}{00008}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAbstractRepo}{AbstractRepo}}\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00009}00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee}{AbstractRepo}}();}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f}{\string~AbstractRepo}}();}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(sqlite3\ *db,\ std::string\ sql)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::map<std::string,\ std::string>>\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(sqlite3\ *db,\ std::string\ sql)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00027}00027\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00028}00028\ \ \ \ \ sqlite3\ *\_db;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00029}00029\ \};}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8hpp_source_l00030}00030\ }
+
+\end{DoxyCode}

@@ -1,0 +1,42 @@
+\doxysection{likerepo.\+cpp}
+\hypertarget{likerepo_8cpp_source}{}\label{likerepo_8cpp_source}\index{likerepo.cpp@{likerepo.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}models/likerepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00005}\mbox{\hyperlink{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLikeRepo_ace5754d0e1131f597fea23ad693f319a}{LikeRepo::addLike}}(\textcolor{keywordtype}{int}\ userId,\ \textcolor{keywordtype}{int}\ tweetId)\ \{}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00006}00006\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00007}00007\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}INSERT\ INTO\ like\ (user\_id,\ tweet\_id)\ VALUES\ ("{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00008}00008\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(userId)\ +\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00009}00009\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{});"{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00011}00011\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00013}00013\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00016}\mbox{\hyperlink{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}{00016}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classLikeRepo_a4f994cb80c4b82953557504ee6cbe352}{LikeRepo::searchLikeByUserId}}(\textcolor{keywordtype}{int}\ userId,\ \textcolor{keywordtype}{int}\ tweetId)\ \{}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00017}00017\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00018}00018\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ like\ WHERE\ user\_id\ =\ "{}}\ +\ std::to\_string(userId)\ +\ \textcolor{stringliteral}{"{}\ AND\ "{}}}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tweet\_id\ =\ "{}}\ +\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00021}00021\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00022}00022\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{return}\ result.size();}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00027}\mbox{\hyperlink{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLikeRepo_ac91ec2b229b0a4bb61bb191fffde085c}{LikeRepo::deleteLike}}(\textcolor{keywordtype}{int}\ userId,\ \textcolor{keywordtype}{int}\ tweetId)\ \{}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00028}00028\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00029}00029\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}DELETE\ FROM\ like\ WHERE\ user\_id\ =\ "{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00030}00030\ \ \ \ \ sql\ +=\ std::to\_string(userId)\ +\ \textcolor{stringliteral}{"{}\ AND\ tweet\_id\ =\ "{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00031}00031\ \ \ \ \ sql\ +=\ std::to\_string(tweetId)\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00033}00033\ \ \ \ \ std::cout\ <<\ sql\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00035}00035\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{likerepo_8cpp_source_l00036}00036\ \}}
+
+\end{DoxyCode}

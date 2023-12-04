@@ -1,0 +1,43 @@
+\doxysection{tweet.\+cpp}
+\hypertarget{tweet_8cpp_source}{}\label{tweet_8cpp_source}\index{tweet.cpp@{tweet.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}models/tweet.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}models/comment.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}models/userrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}models/user.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00007}\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{00007}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{Tweet::id}}()\{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00008}00008\ \ \ \textcolor{keywordflow}{return}\ \_id;}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00011}\mbox{\hyperlink{classTweet_a91a6b33c59bae66b0365d48f6095c97b}{00011}}\ \mbox{\hyperlink{classUser}{User}}\ \mbox{\hyperlink{classTweet_a91a6b33c59bae66b0365d48f6095c97b}{Tweet::author}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{classUserRepo}{UserRepo}}\ \_repo;}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{return}\ \_repo.\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(\_authorId);}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00016}\mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{00016}}\ std::string\ \mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{Tweet::description}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ \_description;}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00020}\mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{00020}}\ std::string\ \mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{Tweet::timestamp}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ \_timestamp;}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00024}\mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{00024}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{Tweet::likes}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ \_likes;}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00028}\mbox{\hyperlink{classTweet_a1ff3947b5308df17aa063d136a3f7f11}{00028}}\ \mbox{\hyperlink{classTweet}{Tweet}}\ \mbox{\hyperlink{classTweet_a1ff3947b5308df17aa063d136a3f7f11}{Tweet::getTweetById}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ std::vector<Tweet>\ tweets)\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ tweet\ :\ tweets)\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tweet.id()\ ==\ \mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}})\ \{}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tweet;}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Se\ não\ encontrar,\ retorna\ um\ tweet\ "{}vazio"{}\ (os\ atributos\ não\ são\ garantidos)}}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classTweet_a2e8366800b47e368a2f7ae2d08731baf}{Tweet}}(-\/1,\ -\/1,\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{tweet_8cpp_source_l00037}00037\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,73 @@
+\doxysection{userrepo.\+cpp}
+\hypertarget{userrepo_8cpp_source}{}\label{userrepo_8cpp_source}\index{userrepo.cpp@{userrepo.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}models/userrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00005}\mbox{\hyperlink{classUserRepo_a7c764768b3e6b77a2211368d55150f7a}{00005}}\ \mbox{\hyperlink{classUser}{User}}\ \mbox{\hyperlink{classUserRepo_a7c764768b3e6b77a2211368d55150f7a}{UserRepo::addUser}}(\mbox{\hyperlink{classUser}{User}}\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00006}00006\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00007}00007\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}INSERT\ INTO\ user\ (username,\ password,\ nickname)\ VALUES\ ("{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00008}00008\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}'"{}}\ +\ user.\mbox{\hyperlink{classUser_a3b777377235791d371d175a6c5d13fea}{username}}()\ +\ \textcolor{stringliteral}{"{}',\ "{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00009}00009\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}'"{}}\ +\ user.\mbox{\hyperlink{classUser_ab8764ac53e99ae8833527b8246cbe33c}{password}}()\ +\ \textcolor{stringliteral}{"{}',\ "{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00010}00010\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}'"{}}\ +\ user.\mbox{\hyperlink{classUser_af94a2410e571f9da00a0b30eb7bf16ef}{nickname}}()\ +\ \textcolor{stringliteral}{"{}');"{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ sqlite3\_int64\ lastRowId\ =\ sqlite3\_last\_insert\_rowid(\_db);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Você\ pode\ agora\ buscar\ o\ usuário\ recém-\/criado\ usando\ o\ ID\ obtido}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classUser}{User}}\ newUser\ =\ \mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(lastRowId));}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Retornando\ o\ usuário\ recém-\/criado}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newUser;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{stringliteral}{"{}Usuário\ não\ foi\ adicionado\ ao\ banco\ de\ dados"{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00026}\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{00026}}\ \mbox{\hyperlink{classUser}{User}}\ \mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{UserRepo::searchUserById}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00027}00027\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00028}00028\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ user\ WHERE\ id\ =\ "{}}\ +\ std::to\_string(\textcolor{keywordtype}{id})\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00029}00029\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00030}00030\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{classUser}{User}}\ u(stoi(result[0][\textcolor{stringliteral}{"{}id"{}}]),\ result[0][\textcolor{stringliteral}{"{}username"{}}],\ result[0][\textcolor{stringliteral}{"{}password"{}}],\ result[0][\textcolor{stringliteral}{"{}nickname"{}}]);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{return}\ u;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00035}00035\ \textcolor{comment}{//\ FUNÇÃO\ QUE\ BUSCA\ O\ USUÁRIO\ NO\ BANCO\ DE\ DADOS\ PELO\ NOME}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00036}\mbox{\hyperlink{classUserRepo_a76523cf7151f815c017a3bfa66a167be}{00036}}\ std::vector<User>\ \mbox{\hyperlink{classUserRepo_a76523cf7151f815c017a3bfa66a167be}{UserRepo::searchUser}}(std::string\ keyword)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00037}00037\ \ \ \ \ std::vector<User>\ userVec;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00038}00038\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00039}00039\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ user\ WHERE\ username\ LIKE\ '\%"{}}\ +\ keyword\ +\ \textcolor{stringliteral}{"{}\%'\ LIMIT\ 5;"{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00040}00040\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ userData\ :\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classUser}{User}}\ u(stoi(userData[\textcolor{stringliteral}{"{}id"{}}]),\ userData[\textcolor{stringliteral}{"{}username"{}}],\ userData[\textcolor{stringliteral}{"{}password"{}}],\ userData[\textcolor{stringliteral}{"{}nickname"{}}]);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ userVec.push\_back(u);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00044}00044\ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ userVec;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00049}\mbox{\hyperlink{classUserRepo_a52c5babc49efaad637ddd4017a2c4f51}{00049}}\ std::vector<User>\ \mbox{\hyperlink{classUserRepo_a52c5babc49efaad637ddd4017a2c4f51}{UserRepo::getFollowing}}(\mbox{\hyperlink{classUser}{User}}\ u)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00050}00050\ \ \ \ \ std::vector<User>\ userVec;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00051}00051\ \ \ \ \ std::string\ sql\ =\ \textcolor{stringliteral}{"{}SELECT\ u.id\ FROM\ follow\ f\ JOIN\ user\ u\ ON\ u.id\ =\ f.followed\_id\ WHERE\ follower\_id="{}}+std::to\_string(u.id())+\textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00052}00052\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ userId\ :\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ userVec.push\_back(\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(stoi(userId[\textcolor{stringliteral}{"{}id"{}}])));}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{return}\ userVec;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00061}\mbox{\hyperlink{classUserRepo_a892b14262f00a1e0b4a3bdebf1806a85}{00061}}\ \mbox{\hyperlink{classUser}{User}}\ \mbox{\hyperlink{classUserRepo_a892b14262f00a1e0b4a3bdebf1806a85}{UserRepo::followUser}}(\mbox{\hyperlink{classUser}{User}}\ follower,\ \mbox{\hyperlink{classUser}{User}}\ followed)\ \{}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00062}00062\ \ \ \ \ std::string\ sql\ =\ \textcolor{stringliteral}{"{}INSERT\ INTO\ follow\ (follower\_id,\ followed\_id)\ VALUES\ ("{}}+std::to\_string(follower.id())+\textcolor{stringliteral}{"{},\ "{}}+std::to\_string(followed.id())+\textcolor{stringliteral}{"{});"{}};}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ followed;}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{userrepo_8cpp_source_l00067}00067\ }
+
+\end{DoxyCode}

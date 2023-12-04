@@ -1,0 +1,192 @@
+\doxysection{Comment Class Reference}
+\hypertarget{classComment}{}\label{classComment}\index{Comment@{Comment}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classComment_a39fcb733a1030ac8184c8dadde7dff55}{Comment}} (int author\+Id, int tweet\+Id, std\+::string \mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}})
+\begin{DoxyCompactList}\small\item\em construtor usado para criar um novo comentário \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classComment_a3e5c082e7dd4fa0c840eb9c51cb0fbdc}{Comment}} (int \mbox{\hyperlink{classComment_a69b63a571617835415e078105a21d210}{id}}, int author\+Id, int tweet\+Id, std\+::string \mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}})
+\begin{DoxyCompactList}\small\item\em construtor utilizado quando á se possui um identificador único associado ao comentário \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classComment_a69b63a571617835415e078105a21d210}{id}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o identificador único associado ao comentário. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a descrição do comentário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUser}{User}} \mbox{\hyperlink{classComment_a68abd81410f49593b5b188c156175af2}{author}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o autor do comentário. Cria uma instância de \doxylink{classUser}{User} consultando o repositório de usuários com base no identificador do autor (\+\_\+author\+Id) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTweet}{Tweet}} \mbox{\hyperlink{classComment_aef714c2b4d26767048a2935a5e9432da}{tweet}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o tweet ao qual o comentário está vinculado. Cria uma instância de \doxylink{classTweet}{Tweet} consultando o repositório de tweets com base no identificador do tweet (\+\_\+tweet\+Id). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{comment_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{comment_8hpp_source}{comment.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classComment_a39fcb733a1030ac8184c8dadde7dff55}\label{classComment_a39fcb733a1030ac8184c8dadde7dff55} 
+\index{Comment@{Comment}!Comment@{Comment}}
+\index{Comment@{Comment}!Comment@{Comment}}
+\doxysubsubsection{\texorpdfstring{Comment()}{Comment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Comment\+::\+Comment (\begin{DoxyParamCaption}\item[{int}]{author\+Id,  }\item[{int}]{tweet\+Id,  }\item[{std\+::string}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+construtor usado para criar um novo comentário 
+
+
+\begin{DoxyParams}{Parameters}
+{\em author\+Id} & Identificador único do autor do comentário \\
+\hline
+{\em tweet\+Id} & Identificador único do tweet ao qual o comentário está vinculado \\
+\hline
+{\em description} & Descrição do comentário \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{comment_8hpp_source_l00015}{15}} of file \mbox{\hyperlink{comment_8hpp_source}{comment.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ :\ \_authorId(authorId),\ \_tweetId(tweetId),\ \_description(\mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}})\ \{\}}
+
+\end{DoxyCode}
+\Hypertarget{classComment_a3e5c082e7dd4fa0c840eb9c51cb0fbdc}\label{classComment_a3e5c082e7dd4fa0c840eb9c51cb0fbdc} 
+\index{Comment@{Comment}!Comment@{Comment}}
+\index{Comment@{Comment}!Comment@{Comment}}
+\doxysubsubsection{\texorpdfstring{Comment()}{Comment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Comment\+::\+Comment (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{author\+Id,  }\item[{int}]{tweet\+Id,  }\item[{std\+::string}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+construtor utilizado quando á se possui um identificador único associado ao comentário 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador único do comentário \\
+\hline
+{\em author\+Id} & Identificador único do autor do comentário \\
+\hline
+{\em tweet\+Id} & Identificador único do tweet ao qual o comentário está vinculado \\
+\hline
+{\em description} & Descrição do comentário \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{comment_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{comment_8hpp_source}{comment.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ :\ \_id(\textcolor{keywordtype}{id}),\ \_authorId(authorId),\ \_tweetId(tweetId),\ \_description(\mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}})\ \ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classComment_a68abd81410f49593b5b188c156175af2}\label{classComment_a68abd81410f49593b5b188c156175af2} 
+\index{Comment@{Comment}!author@{author}}
+\index{author@{author}!Comment@{Comment}}
+\doxysubsubsection{\texorpdfstring{author()}{author()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUser}{User}} Comment\+::author (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o autor do comentário. Cria uma instância de \doxylink{classUser}{User} consultando o repositório de usuários com base no identificador do autor (\+\_\+author\+Id) 
+
+\begin{DoxyReturn}{Returns}
+Retorna o autor do comentário 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{comment_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{comment_8cpp_source}{comment.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classUserRepo}{UserRepo}}\ \_repo;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \_repo.\mbox{\hyperlink{classUserRepo_aff58458ec6c6c7c358755e4450fac271}{searchUserById}}(\_authorId);}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classComment_a42badb3c20796582f2efa420b186febe}\label{classComment_a42badb3c20796582f2efa420b186febe} 
+\index{Comment@{Comment}!description@{description}}
+\index{description@{description}!Comment@{Comment}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}}
+{\footnotesize\ttfamily std\+::string Comment\+::description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna a descrição do comentário. 
+
+\begin{DoxyReturn}{Returns}
+Retorna a descrição do comentário 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{comment_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{comment_8cpp_source}{comment.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{return}\ \_description;}
+\DoxyCodeLine{00015\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classComment_a69b63a571617835415e078105a21d210}\label{classComment_a69b63a571617835415e078105a21d210} 
+\index{Comment@{Comment}!id@{id}}
+\index{id@{id}!Comment@{Comment}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily int Comment\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o identificador único associado ao comentário. 
+
+\begin{DoxyReturn}{Returns}
+Retorna o identificador único associado ao comentário 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{comment_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{comment_8cpp_source}{comment.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{return}\ \_id;}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classComment_aef714c2b4d26767048a2935a5e9432da}\label{classComment_aef714c2b4d26767048a2935a5e9432da} 
+\index{Comment@{Comment}!tweet@{tweet}}
+\index{tweet@{tweet}!Comment@{Comment}}
+\doxysubsubsection{\texorpdfstring{tweet()}{tweet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTweet}{Tweet}} Comment\+::tweet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o tweet ao qual o comentário está vinculado. Cria uma instância de \doxylink{classTweet}{Tweet} consultando o repositório de tweets com base no identificador do tweet (\+\_\+tweet\+Id). 
+
+\begin{DoxyReturn}{Returns}
+Retorna o tweet ao qual o comentário está vinculado. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{comment_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{comment_8cpp_source}{comment.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classTweetRepo}{TweetRepo}}\ \_repo;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \_repo.\mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{searchTweetById}}(\_tweetId);}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+comment.\+hpp\item 
+comment.\+cpp\end{DoxyCompactItemize}

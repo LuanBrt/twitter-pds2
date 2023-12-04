@@ -1,0 +1,61 @@
+\doxysection{abstractrepo.\+cpp}
+\hypertarget{abstractrepo_8cpp_source}{}\label{abstractrepo_8cpp_source}\index{abstractrepo.cpp@{abstractrepo.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}models/abstractrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00005}\mbox{\hyperlink{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee}{00005}}\ \mbox{\hyperlink{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee}{AbstractRepo::AbstractRepo}}()\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00006}00006\ \ \ \ \ sqlite3\_open(getenv(\textcolor{stringliteral}{"{}DBNAME"{}}),\ \&\_db);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00009}\mbox{\hyperlink{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f}{00009}}\ \mbox{\hyperlink{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f}{AbstractRepo::\string~AbstractRepo}}()\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00010}00010\ \ \ \ \ sqlite3\_close(\_db);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00013}\mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{00013}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{AbstractRepo::executeInsert}}(sqlite3\ *db,\ std::string\ sql)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{char}\ *zErrMsg\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{int}\ rc;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00017}00017\ \ \ \ \ rc\ =\ sqlite3\_exec(db,\ sql.c\_str(),\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \&zErrMsg);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (rc\ !=\ SQLITE\_OK)\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ std::cout\ <<\ zErrMsg;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ sqlite3\_free(zErrMsg);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00022}00022\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00027}\mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{00027}}\ std::vector<std::map<std::string,\ std::string>>\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{AbstractRepo::executeSelect}}(sqlite3\ *db,\ std::string\ sql)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00028}00028\ \ \ \ \ sqlite3\_stmt\ *stmt;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00029}00029\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Prepara\ consulta}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (sqlite3\_prepare\_v2(db,\ sql.c\_str(),\ -\/1,\ \&stmt,\ \textcolor{keyword}{nullptr})\ !=\ SQLITE\_OK)\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{while}\ (sqlite3\_step(stmt)\ ==\ SQLITE\_ROW)\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ colCount\ =\ sqlite3\_column\_count(stmt);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::string>\ line;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ colCount;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *colName\ =\ sqlite3\_column\_name(stmt,\ i);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *colValue\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(sqlite3\_column\_text(stmt,\ i));}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adiciona\ o\ par\ coluna-\/valor\ ao\ mapa}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ line[colName]\ =\ colValue;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adiciona\ o\ mapa\ ao\ vetor\ de\ resultados}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ result.push\_back(line);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Libera\ os\ recursos}}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00053}00053\ \ \ \ \ sqlite3\_finalize(stmt);}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{abstractrepo_8cpp_source_l00055}00055\ \}}
+
+\end{DoxyCode}

@@ -5,8 +5,10 @@
 #include <vector>
 #include <string>
 
-class LoginScreen : public AbstractScreen {
-    public:
-        /// @brief Construtor padrao
-        LoginScreen();
-};
+namespace screen {
+    class LoginScreen : public AbstractScreen {
+        public:
+            /// @brief Construtor padrao
+            LoginScreen();
+    };
+} 

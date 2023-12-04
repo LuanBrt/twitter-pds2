@@ -9,41 +9,43 @@
  
 #include <vector>
 
-class TimelineController: public AbstractController {
-public:
-    /// @brief Construtor da classe, que recebe o usuário a qual a timeline pertence
-    /// @param u O usuario
-    TimelineController(User u);
+namespace controller {
+    class TimelineController: public AbstractController {
+    public:
+        /// @brief Construtor da classe, que recebe o usuário a qual a timeline pertence
+        /// @param u O usuario
+        TimelineController(model::User u);
 
 
-    /// @brief Obtem os tweets do repositorio, e envia para a view exibir
-    void getTweets();
-    /// @brief Busca tweets no repositorio
-    void searchTweets();
-    /// @brief Busca usuarios no repositorio
-    void searchUsers();
+        /// @brief Obtem os tweets do repositorio, e envia para a view exibir
+        void getTweets();
+        /// @brief Busca tweets no repositorio
+        void searchTweets();
+        /// @brief Busca usuarios no repositorio
+        void searchUsers();
 
 
-    /// @brief Metodo virtual dos controllers
-    /// @return O proximo controller
-    AbstractController *render() override;
+        /// @brief Metodo virtual dos controllers
+        /// @return O proximo controller
+        AbstractController *render() override;
 
-private:
-    enum ValidOptions {
-        EXIT,
-        USERCONFIG,
-        SEEUSER,
-        SEARCHTWEET,
-        OPENTREND,
-        OPENTWEET,
-        SENDTWEET,
-        SEARCHUSER,
+    private:
+        enum ValidOptions {
+            EXIT,
+            USERCONFIG,
+            SEEUSER,
+            SEARCHTWEET,
+            OPENTREND,
+            OPENTWEET,
+            SENDTWEET,
+            SEARCHUSER,
+        };
+        std::map<int, std::string> _options;
+
+        model::User _user;
+        screen::TimelineScreen _view;
+        repo::TweetRepo _tweetRepo;
+        repo::UserRepo _userRepo;
+
     };
-    std::map<int, std::string> _options;
-
-    User _user;
-    TimelineScreen _view;
-    TweetRepo _tweetRepo;
-    UserRepo _userRepo;
-
-};
+}

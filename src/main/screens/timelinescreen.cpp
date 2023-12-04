@@ -1,26 +1,28 @@
 #include "screens/timelinescreen.hpp"
 
-void TimelineScreen::renderTweetList(std::vector<Tweet> tweets) {
-    std::cout << "\nSeus tweets: \n\n";
-    for (auto tweet : tweets) {
-        std::cout << tweet.author().username() << " - " << tweet.description() << std::endl;
+namespace screen {
+    void TimelineScreen::renderTweetList(std::vector<model::Tweet> tweets) {
+        std::cout << "\nSeus tweets: \n\n";
+        for (auto tweet : tweets) {
+            std::cout << tweet.author().username() << " - " << tweet.description() << std::endl;
+        }
     }
-}
 
-void TimelineScreen::renderTextSearchUser(std::vector<User> users){
+    void TimelineScreen::renderTextSearchUser(std::vector<model::User> users){
 
-    if(users.empty()){
+        if(users.empty()){
 
-        std::cout<<"Desculpe, mas não encotramos nenhum usuário"<<std::endl;
+            std::cout<<"Desculpe, mas não encotramos nenhum usuário"<<std::endl;
 
-    }else{
+        }else{
 
-        for(auto it: users){
+            for(auto it: users){
 
-            std::cout<<it.username()<<std::endl<<it.nickname()<<std::endl;
+                std::cout<<it.username()<<std::endl<<it.nickname()<<std::endl;
+
+            }
 
         }
 
     }
-
 }

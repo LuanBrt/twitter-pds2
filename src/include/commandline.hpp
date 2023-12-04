@@ -7,5 +7,5 @@ class CommandLine {
         /// @brief Comando utilizado para rodar a aplicação
         void run();
     private:
-        AbstractController *_controller;
+        controller::AbstractController *_controller;
 };

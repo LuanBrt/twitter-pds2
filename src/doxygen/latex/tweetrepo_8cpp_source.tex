@@ -1,0 +1,114 @@
+\doxysection{tweetrepo.\+cpp}
+\hypertarget{tweetrepo_8cpp_source}{}\label{tweetrepo_8cpp_source}\index{tweetrepo.cpp@{tweetrepo.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}models/tweetrepo.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cctype>}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00007}\mbox{\hyperlink{classTweetRepo_a6c9f402ff6caa68175032fb55c4a40f3}{00007}}\ \mbox{\hyperlink{classTweet}{Tweet}}\ \mbox{\hyperlink{classTweetRepo_a6c9f402ff6caa68175032fb55c4a40f3}{TweetRepo::addTweet}}(\mbox{\hyperlink{classTweet}{Tweet}}\ tweet)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00008}00008\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00009}00009\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}INSERT\ INTO\ tweet\ (author\_id,\ description,\ timestamp,\ likes)\ VALUES\ ("{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00010}00010\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(tweet.\mbox{\hyperlink{classTweet_a91a6b33c59bae66b0365d48f6095c97b}{author}}().id())\ +\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00011}00011\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}'"{}}\ +\ tweet.\mbox{\hyperlink{classTweet_afef8008a8305610862cfb38f718f68e9}{description}}()\ +\ \textcolor{stringliteral}{"{}',\ "{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00012}00012\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}'"{}}\ +\ tweet.\mbox{\hyperlink{classTweet_a8d0f8d16c5a1e2fc2aa07433440873c9}{timestamp}}()\ +\ \textcolor{stringliteral}{"{}',\ "{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00013}00013\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}"{}}\ +\ std::to\_string(tweet.\mbox{\hyperlink{classTweet_a8783cb651e503b234bdf15c19c66c83f}{likes}}())\ +\ \textcolor{stringliteral}{"{});"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00017}00017\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ sqlite3\_int64\ lastRowId\ =\ sqlite3\_last\_insert\_rowid(\_db);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Você\ pode\ agora\ buscar\ o\ tweet\ recém-\/criado\ usando\ o\ ID\ obtido}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTweet}{Tweet}}\ newTweet\ =\ \mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{searchTweetById}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(lastRowId));}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Retornando\ o\ tweet\ recém-\/criado}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ newTweet;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{stringliteral}{"{}Tweet\ não\ foi\ adicionado\ ao\ banco\ de\ dados"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00031}\mbox{\hyperlink{classTweetRepo_ab6cf833780eb1a9cf4cb56918aecf181}{00031}}\ std::vector<Tweet>\ \mbox{\hyperlink{classTweetRepo_ab6cf833780eb1a9cf4cb56918aecf181}{TweetRepo::getTweets}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00032}00032\ \ \ std::vector<Tweet>\ tweetVec;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00033}00033\ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00034}00034\ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ tweet;"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00035}00035\ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00036}00036\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ tweetData\ :\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00037}00037\ \ \ \ \ \ \ \mbox{\hyperlink{classTweet}{Tweet}}\ t(stoi(tweetData[\textcolor{stringliteral}{"{}id"{}}]),stoi(tweetData[\textcolor{stringliteral}{"{}author\_id"{}}]),\ tweetData[\textcolor{stringliteral}{"{}description"{}}],\ tweetData[\textcolor{stringliteral}{"{}timestamp"{}}],\ stoi(tweetData[\textcolor{stringliteral}{"{}likes"{}}]));}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00038}00038\ \ \ \ \ \ \ tweetVec.push\_back(t);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00039}00039\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00041}00041\ \ \ \textcolor{keywordflow}{return}\ tweetVec;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00044}\mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{00044}}\ \mbox{\hyperlink{classTweet}{Tweet}}\ \mbox{\hyperlink{classTweetRepo_ab0c75a4d4c2aeeb7a51957fbd834ab89}{TweetRepo::searchTweetById}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00045}00045\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00046}00046\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}SELECT\ *\ FROM\ tweet\ WHERE\ id\ =\ "{}}\ +\ std::to\_string(\textcolor{keywordtype}{id})\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00047}00047\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{classTweet}{Tweet}}\ t(stoi(result[0][\textcolor{stringliteral}{"{}id"{}}]),\ stoi(result[0][\textcolor{stringliteral}{"{}author\_id"{}}]),\ result[0][\textcolor{stringliteral}{"{}description"{}}],\ result[0][\textcolor{stringliteral}{"{}timestamp"{}}],\ stoi(result[0][\textcolor{stringliteral}{"{}likes"{}}]));}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00053}00053\ \textcolor{keywordtype}{void}\ TweetRepo::likeTweet(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00054}00054\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00055}00055\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}UPDATE\ tweet\ SET\ likes\ =\ likes\ +\ 1\ WHERE\ id\ =\ "{}}\ +\ std::to\_string(\textcolor{keywordtype}{id})\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00058}00058\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00061}00061\ \textcolor{keywordtype}{void}\ TweetRepo::dislikeTweet(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00062}00062\ \ \ \ \ std::string\ sql;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00063}00063\ \ \ \ \ sql\ +=\ \textcolor{stringliteral}{"{}UPDATE\ tweet\ SET\ likes\ =\ likes\ -\/\ 1\ WHERE\ id\ =\ "{}}\ +\ std::to\_string(\textcolor{keywordtype}{id})\ +\ \textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00066}00066\ \ \ \ \ std::cout\ <<\ r\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00069}\mbox{\hyperlink{classTweetRepo_a252f18a2e19843b78cf4b5f834c5f2de}{00069}}\ std::vector<Tweet>\ \mbox{\hyperlink{classTweetRepo_a252f18a2e19843b78cf4b5f834c5f2de}{TweetRepo::getUserTimeline}}(\mbox{\hyperlink{classUser}{User}}\ u)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00070}00070\ \ \ \ \ std::vector<Tweet>\ response;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00072}00072\ \ \ \ \ std::string\ sql\ =\ \textcolor{stringliteral}{"{}SELECT\ t.*\ FROM\ follow\ f\ JOIN\ tweet\ t\ ON\ f.followed\_id\ =\ t.author\_id\ WHERE\ f.follower\_id="{}}+std::to\_string(u.id())+\textcolor{stringliteral}{"{}\ UNION\ "{}}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}SELECT\ t.*\ FROM\ tweet\ t\ WHERE\ t.author\_id="{}}+std::to\_string(u.id())+\textcolor{stringliteral}{"{};"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00075}00075\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ tweetData\ :\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ response.push\_back(\mbox{\hyperlink{classTweet}{Tweet}}(stoi(tweetData[\textcolor{stringliteral}{"{}id"{}}]),\ stoi(tweetData[\textcolor{stringliteral}{"{}author\_id"{}}]),\ tweetData[\textcolor{stringliteral}{"{}description"{}}],\ tweetData[\textcolor{stringliteral}{"{}timestamp"{}}],\ stoi(tweetData[\textcolor{stringliteral}{"{}likes"{}}])));}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{return}\ response;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00084}00084\ std::vector<Tweet>\ TweetRepo::searchTweets(std::string\ searchString)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ tolower\ na\ string\ de\ busca}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00086}00086\ \ \ \ \ std::transform(searchString.begin(),\ searchString.end(),\ searchString.begin(),\ ::tolower);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ criando\ um\ vetor\ para\ armazenar\ os\ tweets\ com\ a\ palavra\ chave}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00089}00089\ \ \ \ \ std::vector<Tweet>\ matchingTweets;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ consulta\ SQL\ para\ buscar\ tweets\ no\ banco\ de\ dados}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00092}00092\ \ \ \ \ std::string\ sql\ =\ \textcolor{stringliteral}{"{}SELECT\ DISTINCT\ *\ FROM\ tweet\ WHERE\ LOWER(description)\ LIKE\ '\%"{}}\ +\ searchString\ +\ \textcolor{stringliteral}{"{}\%';"{}};}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00094}00094\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result\ =\ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db,\ sql);}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ adicionando\ os\ tweets\ com\ a\ palavra\ chave\ ao\ vetor\ }}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ tweetData\ :\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ matchingTweets.push\_back(\mbox{\hyperlink{classTweet}{Tweet}}(}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ stoi(tweetData[\textcolor{stringliteral}{"{}id"{}}]),}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ stoi(tweetData[\textcolor{stringliteral}{"{}author\_id"{}}]),}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ tweetData[\textcolor{stringliteral}{"{}description"{}}],}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ tweetData[\textcolor{stringliteral}{"{}timestamp"{}}],}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ stoi(tweetData[\textcolor{stringliteral}{"{}likes"{}}])}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ ));}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{return}\ matchingTweets;}
+\DoxyCodeLine{\Hypertarget{tweetrepo_8cpp_source_l00108}00108\ \}}
+
+\end{DoxyCode}

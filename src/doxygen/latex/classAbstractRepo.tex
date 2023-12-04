@@ -1,0 +1,196 @@
+\doxysection{Abstract\+Repo Class Reference}
+\hypertarget{classAbstractRepo}{}\label{classAbstractRepo}\index{AbstractRepo@{AbstractRepo}}
+Inheritance diagram for Abstract\+Repo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAbstractRepo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee}{Abstract\+Repo}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Repo}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor padrao. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{execute\+Insert}} (sqlite3 \texorpdfstring{$\ast$}{*}db, std\+::string sql) const
+\begin{DoxyCompactList}\small\item\em Executa um insert sql. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ std\+::map$<$ std\+::string, std\+::string $>$ $>$ \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{execute\+Select}} (sqlite3 \texorpdfstring{$\ast$}{*}db, std\+::string sql) const
+\begin{DoxyCompactList}\small\item\em Executa um select sql. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sqlite3 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classAbstractRepo_aa49e51230be6d753539ce265a998e24c}{\+\_\+db}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{abstractrepo_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{abstractrepo_8hpp_source}{abstractrepo.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee}\label{classAbstractRepo_a45996b2f964eb581aec08c0b6da679ee} 
+\index{AbstractRepo@{AbstractRepo}!AbstractRepo@{AbstractRepo}}
+\index{AbstractRepo@{AbstractRepo}!AbstractRepo@{AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{AbstractRepo()}{AbstractRepo()}}
+{\footnotesize\ttfamily Abstract\+Repo\+::\+Abstract\+Repo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construtor padrao. 
+
+
+
+Definition at line \mbox{\hyperlink{abstractrepo_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{abstractrepo_8cpp_source}{abstractrepo.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ \ sqlite3\_open(getenv(\textcolor{stringliteral}{"{}DBNAME"{}}),\ \&\_db);}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f}\label{classAbstractRepo_a200bbb9e75fc2df4f8822ee558c9055f} 
+\index{AbstractRepo@{AbstractRepo}!````~AbstractRepo@{\texorpdfstring{$\sim$}{\string~}AbstractRepo}}
+\index{````~AbstractRepo@{\texorpdfstring{$\sim$}{\string~}AbstractRepo}!AbstractRepo@{AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AbstractRepo()}{\string~AbstractRepo()}}
+{\footnotesize\ttfamily Abstract\+Repo\+::\texorpdfstring{$\sim$}{\string~}\+Abstract\+Repo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destrutor padrao. 
+
+
+
+Definition at line \mbox{\hyperlink{abstractrepo_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{abstractrepo_8cpp_source}{abstractrepo.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ sqlite3\_close(\_db);}
+\DoxyCodeLine{00011\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}\label{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06} 
+\index{AbstractRepo@{AbstractRepo}!executeInsert@{executeInsert}}
+\index{executeInsert@{executeInsert}!AbstractRepo@{AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{executeInsert()}{executeInsert()}}
+{\footnotesize\ttfamily int Abstract\+Repo\+::execute\+Insert (\begin{DoxyParamCaption}\item[{sqlite3 \texorpdfstring{$\ast$}{*}}]{db,  }\item[{std\+::string}]{sql }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Executa um insert sql. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Conexao com banco de dados \\
+\hline
+{\em sql} & Insert a ser executada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um inteiro representando sucesso ou falha na execucao do insert 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{abstractrepo_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{abstractrepo_8cpp_source}{abstractrepo.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{char}\ *zErrMsg\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ rc;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ rc\ =\ sqlite3\_exec(db,\ sql.c\_str(),\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \&zErrMsg);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (rc\ !=\ SQLITE\_OK)\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::cout\ <<\ zErrMsg;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ sqlite3\_free(zErrMsg);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}\label{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf} 
+\index{AbstractRepo@{AbstractRepo}!executeSelect@{executeSelect}}
+\index{executeSelect@{executeSelect}!AbstractRepo@{AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{executeSelect()}{executeSelect()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::map$<$ std\+::string, std\+::string $>$ $>$ Abstract\+Repo\+::execute\+Select (\begin{DoxyParamCaption}\item[{sqlite3 \texorpdfstring{$\ast$}{*}}]{db,  }\item[{std\+::string}]{sql }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Executa um select sql. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Conexao com banco de dados \\
+\hline
+{\em sql} & Select a ser executada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um mapa contendo as informações obtidas no select 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{abstractrepo_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{abstractrepo_8cpp_source}{abstractrepo.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ sqlite3\_stmt\ *stmt;}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<std::map<std::string,\ std::string>>\ result;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Prepara\ consulta}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (sqlite3\_prepare\_v2(db,\ sql.c\_str(),\ -\/1,\ \&stmt,\ \textcolor{keyword}{nullptr})\ !=\ SQLITE\_OK)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{while}\ (sqlite3\_step(stmt)\ ==\ SQLITE\_ROW)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ colCount\ =\ sqlite3\_column\_count(stmt);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::string>\ line;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ colCount;\ ++i)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *colName\ =\ sqlite3\_column\_name(stmt,\ i);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *colValue\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(sqlite3\_column\_text(stmt,\ i));}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adiciona\ o\ par\ coluna-\/valor\ ao\ mapa}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ line[colName]\ =\ colValue;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adiciona\ o\ mapa\ ao\ vetor\ de\ resultados}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ result.push\_back(line);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Libera\ os\ recursos}}
+\DoxyCodeLine{00053\ \ \ \ \ sqlite3\_finalize(stmt);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classAbstractRepo_aa49e51230be6d753539ce265a998e24c}\label{classAbstractRepo_aa49e51230be6d753539ce265a998e24c} 
+\index{AbstractRepo@{AbstractRepo}!\_db@{\_db}}
+\index{\_db@{\_db}!AbstractRepo@{AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{\_db}{\_db}}
+{\footnotesize\ttfamily sqlite3\texorpdfstring{$\ast$}{*} Abstract\+Repo\+::\+\_\+db\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{abstractrepo_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{abstractrepo_8hpp_source}{abstractrepo.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+abstractrepo.\+hpp\item 
+abstractrepo.\+cpp\end{DoxyCompactItemize}

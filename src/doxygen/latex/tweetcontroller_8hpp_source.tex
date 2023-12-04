@@ -1,0 +1,30 @@
+\doxysection{tweetcontroller.\+hpp}
+\hypertarget{tweetcontroller_8hpp_source}{}\label{tweetcontroller_8hpp_source}\index{tweetcontroller.hpp@{tweetcontroller.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}controllers/abstractcontroller.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}screens/tweetscreen.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00009}\mbox{\hyperlink{classTweetController}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTweetController}{TweetController}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classAbstractController}{AbstractController}}\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00010}00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{classTweetController_a4d6f4341d9df803ffe86e9042b59c6b6}{TweetController}}();}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{classAbstractController}{AbstractController}}\ *\mbox{\hyperlink{classTweetController_a79c78068ce245e576683a67746e86484}{render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00016}00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//enum\ com\ as\ opções\ de\ interação\ do\ usuário\ com\ o\ tweet}}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{enum}\ ValidOptions\ \{}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00019}00019\ \ \ \ \ \ \ \ \ EXIT,}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00020}00020\ \ \ \ \ \ \ \ \ LIKE,}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00021}00021\ \ \ \ \ \ \ \ \ RETWEET,}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00022}00022\ \ \ \ \ \ \ \ \ COMMENT,\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00023}00023\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00024}00024\ \ \ \ \ std::map<int,\ std::string>\ \_options;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classTweetScreen}{TweetScreen}}\ \_tweetScreen;}
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{tweetcontroller_8hpp_source_l00027}00027\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,54 @@
+\doxysection{Command\+Line Class Reference}
+\hypertarget{classCommandLine}{}\label{classCommandLine}\index{CommandLine@{CommandLine}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCommandLine_a966c67917fbf224b6f6f9c9cde94d1e9}{run}} ()
+\begin{DoxyCompactList}\small\item\em Comando utilizado para rodar a aplicação. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{commandline_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{commandline_8hpp_source}{commandline.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCommandLine_a966c67917fbf224b6f6f9c9cde94d1e9}\label{classCommandLine_a966c67917fbf224b6f6f9c9cde94d1e9} 
+\index{CommandLine@{CommandLine}!run@{run}}
+\index{run@{run}!CommandLine@{CommandLine}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Command\+Line\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Comando utilizado para rodar a aplicação. 
+
+
+
+Definition at line \mbox{\hyperlink{commandline_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{commandline_8cpp_source}{commandline.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \_controller\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classAuthController}{AuthController}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//\ O\ programa\ executa\ até\ que\ a\ proxima\ tela\ de\ redirecionamento\ seja\ nula}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordflow}{while}\ (\_controller\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractController}{AbstractController}}*\ old\_controller\ =\ \_controller;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Renderizando\ o\ proximo\ controller}}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \_controller\ =\ \_controller-\/>\mbox{\hyperlink{classAbstractController_aecb747b5bb190425879c3797dd470c2c}{render}}();}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Deletando\ o\ controller\ que\ nao\ será\ mais\ utilizado}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ old\_controller;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+commandline.\+hpp\item 
+commandline.\+cpp\end{DoxyCompactItemize}

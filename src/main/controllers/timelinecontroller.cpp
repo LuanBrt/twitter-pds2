@@ -10,11 +10,8 @@
 namespace controller {
     TimelineController::TimelineController(model::User u) : _user(u) {
         _options[ValidOptions::EXIT] = "Sair";
-        _options[ValidOptions::USERCONFIG] = "Configurar usuário";
         _options[ValidOptions::SEEUSER] = "Ver perfil de usuário";
         _options[ValidOptions::SEARCHTWEET] = "Buscar Tweet";
-        _options[ValidOptions::OPENTREND] = "Abrir trending topics";
-        _options[ValidOptions::OPENTWEET] = "Abrir tweet";
         _options[ValidOptions::SENDTWEET] = "Tweetar";
         _options[ValidOptions::SEARCHUSER] = "Buscar Usuário";
     }
@@ -36,7 +33,7 @@ namespace controller {
                 return new TimelineController(_user);
             };
 
-        case SENDTWEET: {
+            case SENDTWEET: {
                 sendTweet();
                 return new TimelineController(_user);
             };
@@ -57,8 +54,8 @@ namespace controller {
 
     void TimelineController::seeUser() {
         _timelineScreen.flushConsole();
-        std::map<std::string,std::string> response = _timelineScreen.renderForm({"Digite o nome do usuário que deseja ver:"});
-        model::User* resultUser = _userRepo.searchUserByUsername(response["Digite o nome do usuário que deseja ver:"]);
+        std::map<std::string,std::string> response = _timelineScreen.renderForm({"Digite o nome do usuário que deseja ver"});
+        model::User* resultUser = _userRepo.searchUserByUsername(response["Digite o nome do usuário que deseja ver"]);
         if (resultUser == nullptr) {
             _timelineScreen.renderMessage("Não existe usuário com esse nome!");
         } else {

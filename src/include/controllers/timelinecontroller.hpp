@@ -39,11 +39,8 @@ namespace controller {
     private:
         enum ValidOptions {
             EXIT,
-            USERCONFIG,
             SEEUSER,
             SEARCHTWEET,
-            OPENTREND,
-            OPENTWEET,
             SENDTWEET,
             SEARCHUSER,
         };

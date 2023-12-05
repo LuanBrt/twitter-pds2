@@ -1,0 +1,94 @@
+\hypertarget{classscreen_1_1LoginScreen}{}\doxysection{screen\+::Login\+Screen Class Reference}
+\label{classscreen_1_1LoginScreen}\index{screen::LoginScreen@{screen::LoginScreen}}
+Inheritance diagram for screen\+::Login\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classscreen_1_1LoginScreen}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classscreen_1_1LoginScreen_ac33973c39ed2f1b6ccc40e99afee8b95}\label{classscreen_1_1LoginScreen_ac33973c39ed2f1b6ccc40e99afee8b95}} 
+\mbox{\hyperlink{classscreen_1_1LoginScreen_ac33973c39ed2f1b6ccc40e99afee8b95}{Login\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscreen_1_1LoginScreen_a36cfa286cd1a2e6eec386fe3dc023295}{successful\+Login}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} authenticated\+User)
+\begin{DoxyCompactList}\small\item\em Imprime na tela mensagem de sucesso de login. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscreen_1_1LoginScreen_a9e6cdaa001478c570d8310696333ae03}{sucessful\+Register}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} register\+User)
+\begin{DoxyCompactList}\small\item\em Imprime na tela mensagem de sucesso de registro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 10 of file loginscreen.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classscreen_1_1LoginScreen_a36cfa286cd1a2e6eec386fe3dc023295}\label{classscreen_1_1LoginScreen_a36cfa286cd1a2e6eec386fe3dc023295}} 
+\index{screen::LoginScreen@{screen::LoginScreen}!successfulLogin@{successfulLogin}}
+\index{successfulLogin@{successfulLogin}!screen::LoginScreen@{screen::LoginScreen}}
+\doxysubsubsection{\texorpdfstring{successfulLogin()}{successfulLogin()}}
+{\footnotesize\ttfamily void screen\+::\+Login\+Screen\+::successful\+Login (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{authenticated\+User }\end{DoxyParamCaption})}
+
+
+
+Imprime na tela mensagem de sucesso de login. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em authenticated\+User} & usúario autenticado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 9 of file loginscreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9                                                                  \{}
+\DoxyCodeLine{10         flushConsole();}
+\DoxyCodeLine{11         renderMessage(\textcolor{stringliteral}{"Login bem sucedido."});}
+\DoxyCodeLine{12         renderMessage(\textcolor{stringliteral}{"Bem-\/vindo, "} + authenticatedUser.\mbox{\hyperlink{classmodel_1_1User_afa30c6bf1ffae551ae1b797bf18ff88f}{nickname}}() + \textcolor{stringliteral}{"."});}
+\DoxyCodeLine{13         renderMessage(\textcolor{stringliteral}{"Direcionando para a timeline..."});}
+\DoxyCodeLine{14     \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classscreen_1_1LoginScreen_a9e6cdaa001478c570d8310696333ae03}\label{classscreen_1_1LoginScreen_a9e6cdaa001478c570d8310696333ae03}} 
+\index{screen::LoginScreen@{screen::LoginScreen}!sucessfulRegister@{sucessfulRegister}}
+\index{sucessfulRegister@{sucessfulRegister}!screen::LoginScreen@{screen::LoginScreen}}
+\doxysubsubsection{\texorpdfstring{sucessfulRegister()}{sucessfulRegister()}}
+{\footnotesize\ttfamily void screen\+::\+Login\+Screen\+::sucessful\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{register\+User }\end{DoxyParamCaption})}
+
+
+
+Imprime na tela mensagem de sucesso de registro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em register\+User} & usúario registrado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file loginscreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                                               \{}
+\DoxyCodeLine{17         flushConsole();}
+\DoxyCodeLine{18         renderMessage(\textcolor{stringliteral}{"Registro feito com sucesso!"});}
+\DoxyCodeLine{19         renderMessage(\textcolor{stringliteral}{"O Usuário "} + registerUser.\mbox{\hyperlink{classmodel_1_1User_af747820045a09181da5b5e970e6d852b}{username}}() + \textcolor{stringliteral}{" foi criado!"});}
+\DoxyCodeLine{20         renderMessage(\textcolor{stringliteral}{"Voltando para a página inicial...."});}
+\DoxyCodeLine{21         renderMessage(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{22     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+loginscreen.\+hpp\item 
+loginscreen.\+cpp\end{DoxyCompactItemize}

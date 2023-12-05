@@ -76,121 +76,123 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cctype&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classTweetRepo.html#a6c9f402ff6caa68175032fb55c4a40f3">    7</a></span>&#160;<a class="code" href="classTweet.html">Tweet</a> <a class="code" href="classTweetRepo.html#a6c9f402ff6caa68175032fb55c4a40f3">TweetRepo::addTweet</a>(<a class="code" href="classTweet.html">Tweet</a> tweet) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    std::string sql;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    sql += <span class="stringliteral">&quot;INSERT INTO tweet (author_id, description, timestamp, likes) VALUES (&quot;</span>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    sql += <span class="stringliteral">&quot;&quot;</span> + std::to_string(tweet.<a class="code" href="classTweet.html#a91a6b33c59bae66b0365d48f6095c97b">author</a>().id()) + <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    sql += <span class="stringliteral">&quot;&#39;&quot;</span> + tweet.<a class="code" href="classTweet.html#afef8008a8305610862cfb38f718f68e9">description</a>() + <span class="stringliteral">&quot;&#39;, &quot;</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    sql += <span class="stringliteral">&quot;&#39;&quot;</span> + tweet.<a class="code" href="classTweet.html#a8d0f8d16c5a1e2fc2aa07433440873c9">timestamp</a>() + <span class="stringliteral">&quot;&#39;, &quot;</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    sql += <span class="stringliteral">&quot;&quot;</span> + std::to_string(tweet.<a class="code" href="classTweet.html#a8783cb651e503b234bdf15c19c66c83f">likes</a>()) + <span class="stringliteral">&quot;);&quot;</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> r = <a class="code" href="classAbstractRepo.html#ac5942793beb49d527fcd9ae8a6a95d06">executeInsert</a>(_db, sql);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (r != 0) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(_db);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">// Você pode agora buscar o tweet recém-criado usando o ID obtido</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classTweet.html">Tweet</a> newTweet = <a class="code" href="classTweetRepo.html#ab0c75a4d4c2aeeb7a51957fbd834ab89">searchTweetById</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(lastRowId));</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">// Retornando o tweet recém-criado</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> newTweet;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">throw</span> <span class="stringliteral">&quot;Tweet não foi adicionado ao banco de dados&quot;</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classTweetRepo.html#ab6cf833780eb1a9cf4cb56918aecf181">   31</a></span>&#160;std::vector&lt;Tweet&gt; <a class="code" href="classTweetRepo.html#ab6cf833780eb1a9cf4cb56918aecf181">TweetRepo::getTweets</a>() {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::vector&lt;Tweet&gt; tweetVec;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  std::string sql;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  sql += <span class="stringliteral">&quot;SELECT * FROM tweet;&quot;</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classAbstractRepo.html#ab4fa6ec748e3218ebc2dc116c2435cdf">executeSelect</a>(_db, sql);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> tweetData : result) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <a class="code" href="classTweet.html">Tweet</a> t(stoi(tweetData[<span class="stringliteral">&quot;id&quot;</span>]),stoi(tweetData[<span class="stringliteral">&quot;author_id&quot;</span>]), tweetData[<span class="stringliteral">&quot;description&quot;</span>], tweetData[<span class="stringliteral">&quot;timestamp&quot;</span>], stoi(tweetData[<span class="stringliteral">&quot;likes&quot;</span>]));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      tweetVec.push_back(t);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">return</span> tweetVec;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classTweetRepo.html#ab0c75a4d4c2aeeb7a51957fbd834ab89">   44</a></span>&#160;<a class="code" href="classTweet.html">Tweet</a> <a class="code" href="classTweetRepo.html#ab0c75a4d4c2aeeb7a51957fbd834ab89">TweetRepo::searchTweetById</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::string sql;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    sql += <span class="stringliteral">&quot;SELECT * FROM tweet WHERE id = &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classAbstractRepo.html#ab4fa6ec748e3218ebc2dc116c2435cdf">executeSelect</a>(_db, sql);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classTweet.html">Tweet</a> t(stoi(result[0][<span class="stringliteral">&quot;id&quot;</span>]), stoi(result[0][<span class="stringliteral">&quot;author_id&quot;</span>]), result[0][<span class="stringliteral">&quot;description&quot;</span>], result[0][<span class="stringliteral">&quot;timestamp&quot;</span>], stoi(result[0][<span class="stringliteral">&quot;likes&quot;</span>]));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> t;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> TweetRepo::likeTweet(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::string sql;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    sql += <span class="stringliteral">&quot;UPDATE tweet SET likes = likes + 1 WHERE id = &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> r = <a class="code" href="classAbstractRepo.html#ac5942793beb49d527fcd9ae8a6a95d06">executeInsert</a>(_db, sql);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::cout &lt;&lt; r &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> TweetRepo::dislikeTweet(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::string sql;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    sql += <span class="stringliteral">&quot;UPDATE tweet SET likes = likes - 1 WHERE id = &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> r = <a class="code" href="classAbstractRepo.html#ac5942793beb49d527fcd9ae8a6a95d06">executeInsert</a>(_db, sql);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::cout &lt;&lt; r &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classTweetRepo.html#a252f18a2e19843b78cf4b5f834c5f2de">   69</a></span>&#160;std::vector&lt;Tweet&gt; <a class="code" href="classTweetRepo.html#a252f18a2e19843b78cf4b5f834c5f2de">TweetRepo::getUserTimeline</a>(<a class="code" href="classUser.html">User</a> u) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::vector&lt;Tweet&gt; response;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::string sql = <span class="stringliteral">&quot;SELECT t.* FROM follow f JOIN tweet t ON f.followed_id = t.author_id WHERE f.follower_id=&quot;</span>+std::to_string(u.id())+<span class="stringliteral">&quot; UNION &quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="stringliteral">&quot;SELECT t.* FROM tweet t WHERE t.author_id=&quot;</span>+std::to_string(u.id())+<span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classAbstractRepo.html#ab4fa6ec748e3218ebc2dc116c2435cdf">executeSelect</a>(_db, sql);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> tweetData : result) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        response.push_back(<a class="code" href="classTweet.html">Tweet</a>(stoi(tweetData[<span class="stringliteral">&quot;id&quot;</span>]), stoi(tweetData[<span class="stringliteral">&quot;author_id&quot;</span>]), tweetData[<span class="stringliteral">&quot;description&quot;</span>], tweetData[<span class="stringliteral">&quot;timestamp&quot;</span>], stoi(tweetData[<span class="stringliteral">&quot;likes&quot;</span>])));</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> response;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;std::vector&lt;Tweet&gt; TweetRepo::searchTweets(std::string searchString) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// tolower na string de busca</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// criando um vetor para armazenar os tweets com a palavra chave</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::vector&lt;Tweet&gt; matchingTweets;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// consulta SQL para buscar tweets no banco de dados</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::string sql = <span class="stringliteral">&quot;SELECT DISTINCT * FROM tweet WHERE LOWER(description) LIKE &#39;%&quot;</span> + searchString + <span class="stringliteral">&quot;%&#39;;&quot;</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classAbstractRepo.html#ab4fa6ec748e3218ebc2dc116c2435cdf">executeSelect</a>(_db, sql);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// adicionando os tweets com a palavra chave ao vetor </span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> tweetData : result) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        matchingTweets.push_back(<a class="code" href="classTweet.html">Tweet</a>(</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            stoi(tweetData[<span class="stringliteral">&quot;id&quot;</span>]),</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            stoi(tweetData[<span class="stringliteral">&quot;author_id&quot;</span>]),</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            tweetData[<span class="stringliteral">&quot;description&quot;</span>],</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            tweetData[<span class="stringliteral">&quot;timestamp&quot;</span>],</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            stoi(tweetData[<span class="stringliteral">&quot;likes&quot;</span>])</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        ));</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> matchingTweets;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>repo {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classrepo_1_1TweetRepo.html#afd26b370ce3c09f6bc753f6b2e2017a7">    8</a></span>&#160;    <a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a> <a class="code" href="classrepo_1_1TweetRepo.html#afd26b370ce3c09f6bc753f6b2e2017a7">TweetRepo::addTweet</a>(<a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a> tweet) {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        std::string sql;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        sql += <span class="stringliteral">&quot;INSERT INTO tweet (author_id, description, timestamp, likes) VALUES (&quot;</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        sql += <span class="stringliteral">&quot;&quot;</span> + std::to_string(tweet.<a class="code" href="classmodel_1_1Tweet.html#ae28774fa19dc87cfd624b334b78db901">author</a>().id()) + <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        sql += <span class="stringliteral">&quot;&#39;&quot;</span> + tweet.<a class="code" href="classmodel_1_1Tweet.html#a8cef4a3d0f0828cd269173dc38875473">description</a>() + <span class="stringliteral">&quot;&#39;, &quot;</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        sql += <span class="stringliteral">&quot;&#39;&quot;</span> + tweet.<a class="code" href="classmodel_1_1Tweet.html#ad6c2bfbe868ec2040d6d1f50848b46bb">timestamp</a>() + <span class="stringliteral">&quot;&#39;, &quot;</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        sql += <span class="stringliteral">&quot;&quot;</span> + std::to_string(tweet.<a class="code" href="classmodel_1_1Tweet.html#ae1532b3719af233e2e54e2f6817874f0">likes</a>()) + <span class="stringliteral">&quot;);&quot;</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">int</span> r = <a class="code" href="classrepo_1_1AbstractRepo.html#abecbbf012d9640e349d2ac6c5ddb61d8">executeInsert</a>(_db, sql);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (r != 0) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            sqlite3_int64 lastRowId = sqlite3_last_insert_rowid(_db);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="comment">// Você pode agora buscar o tweet recém-criado usando o ID obtido</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a> newTweet = <a class="code" href="classrepo_1_1TweetRepo.html#ab7cdf5b9cfce1784dec6ae3e6a117f1f">searchTweetById</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(lastRowId));</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// Retornando o tweet recém-criado</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> newTweet;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">throw</span> <span class="stringliteral">&quot;Tweet não foi adicionado ao banco de dados&quot;</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classrepo_1_1TweetRepo.html#ab051f9774acb2f086f10c3f059a964a9">   32</a></span>&#160;    std::vector&lt;model::Tweet&gt; <a class="code" href="classrepo_1_1TweetRepo.html#ab051f9774acb2f086f10c3f059a964a9">TweetRepo::getTweets</a>() {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::vector&lt;model::Tweet&gt; tweetVec;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::string sql;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    sql += <span class="stringliteral">&quot;SELECT * FROM tweet;&quot;</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classrepo_1_1AbstractRepo.html#a33d5c20bf8231b998a22cce01e5923ed">executeSelect</a>(_db, sql);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> tweetData : result) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a> t(stoi(tweetData[<span class="stringliteral">&quot;id&quot;</span>]),stoi(tweetData[<span class="stringliteral">&quot;author_id&quot;</span>]), tweetData[<span class="stringliteral">&quot;description&quot;</span>], tweetData[<span class="stringliteral">&quot;timestamp&quot;</span>], stoi(tweetData[<span class="stringliteral">&quot;likes&quot;</span>]));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        tweetVec.push_back(t);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> tweetVec;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classrepo_1_1TweetRepo.html#ab7cdf5b9cfce1784dec6ae3e6a117f1f">   45</a></span>&#160;    <a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a> <a class="code" href="classrepo_1_1TweetRepo.html#ab7cdf5b9cfce1784dec6ae3e6a117f1f">TweetRepo::searchTweetById</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::string sql;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        sql += <span class="stringliteral">&quot;SELECT * FROM tweet WHERE id = &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot;;&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classrepo_1_1AbstractRepo.html#a33d5c20bf8231b998a22cce01e5923ed">executeSelect</a>(_db, sql);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a> t(stoi(result[0][<span class="stringliteral">&quot;id&quot;</span>]), stoi(result[0][<span class="stringliteral">&quot;author_id&quot;</span>]), result[0][<span class="stringliteral">&quot;description&quot;</span>], result[0][<span class="stringliteral">&quot;timestamp&quot;</span>], stoi(result[0][<span class="stringliteral">&quot;likes&quot;</span>]));</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> t;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> TweetRepo::likeTweet(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::string sql;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        sql += <span class="stringliteral">&quot;UPDATE tweet SET likes = likes + 1 WHERE id = &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot;;&quot;</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> r = <a class="code" href="classrepo_1_1AbstractRepo.html#abecbbf012d9640e349d2ac6c5ddb61d8">executeInsert</a>(_db, sql);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        std::cout &lt;&lt; r &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> TweetRepo::dislikeTweet(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        std::string sql;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        sql += <span class="stringliteral">&quot;UPDATE tweet SET likes = likes - 1 WHERE id = &quot;</span> + std::to_string(<span class="keywordtype">id</span>) + <span class="stringliteral">&quot;;&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">int</span> r = <a class="code" href="classrepo_1_1AbstractRepo.html#abecbbf012d9640e349d2ac6c5ddb61d8">executeInsert</a>(_db, sql);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        std::cout &lt;&lt; r &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classrepo_1_1TweetRepo.html#a0612ac45f0c502e76bac3c19e390fca4">   70</a></span>&#160;    std::vector&lt;model::Tweet&gt; <a class="code" href="classrepo_1_1TweetRepo.html#a0612ac45f0c502e76bac3c19e390fca4">TweetRepo::getUserTimeline</a>(<a class="code" href="classmodel_1_1User.html">model::User</a> u) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::vector&lt;model::Tweet&gt; response;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        std::string sql = <span class="stringliteral">&quot;SELECT t.* FROM follow f JOIN tweet t ON f.followed_id = t.author_id WHERE f.follower_id=&quot;</span>+std::to_string(u.id())+<span class="stringliteral">&quot; UNION &quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                            <span class="stringliteral">&quot;SELECT t.* FROM tweet t WHERE t.author_id=&quot;</span>+std::to_string(u.id())+<span class="stringliteral">&quot;;&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classrepo_1_1AbstractRepo.html#a33d5c20bf8231b998a22cce01e5923ed">executeSelect</a>(_db, sql);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> tweetData : result) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            response.push_back(<a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a>(stoi(tweetData[<span class="stringliteral">&quot;id&quot;</span>]), stoi(tweetData[<span class="stringliteral">&quot;author_id&quot;</span>]), tweetData[<span class="stringliteral">&quot;description&quot;</span>], tweetData[<span class="stringliteral">&quot;timestamp&quot;</span>], stoi(tweetData[<span class="stringliteral">&quot;likes&quot;</span>])));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> response;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::vector&lt;model::Tweet&gt; TweetRepo::searchTweets(std::string searchString) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// tolower na string de busca</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">// criando um vetor para armazenar os tweets com a palavra chave</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        std::vector&lt;model::Tweet&gt; matchingTweets;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// consulta SQL para buscar tweets no banco de dados</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        std::string sql = <span class="stringliteral">&quot;SELECT DISTINCT * FROM tweet WHERE LOWER(description) LIKE &#39;%&quot;</span> + searchString + <span class="stringliteral">&quot;%&#39;;&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        std::vector&lt;std::map&lt;std::string, std::string&gt;&gt; result = <a class="code" href="classrepo_1_1AbstractRepo.html#a33d5c20bf8231b998a22cce01e5923ed">executeSelect</a>(_db, sql);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="comment">// adicionando os tweets com a palavra chave ao vetor </span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> tweetData : result) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            matchingTweets.push_back(<a class="code" href="classmodel_1_1Tweet.html">model::Tweet</a>(</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                stoi(tweetData[<span class="stringliteral">&quot;id&quot;</span>]),</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                stoi(tweetData[<span class="stringliteral">&quot;author_id&quot;</span>]),</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                tweetData[<span class="stringliteral">&quot;description&quot;</span>],</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                tweetData[<span class="stringliteral">&quot;timestamp&quot;</span>],</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                stoi(tweetData[<span class="stringliteral">&quot;likes&quot;</span>])</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            ));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> matchingTweets;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassTweetRepo_html_a252f18a2e19843b78cf4b5f834c5f2de"><div class="ttname"><a href="classTweetRepo.html#a252f18a2e19843b78cf4b5f834c5f2de">TweetRepo::getUserTimeline</a></div><div class="ttdeci">std::vector&lt; Tweet &gt; getUserTimeline(User u)</div><div class="ttdoc">Obtem os tweets para a timeline de determinado user.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00069">tweetrepo.cpp:69</a></div></div>
-<div class="ttc" id="aclassAbstractRepo_html_ac5942793beb49d527fcd9ae8a6a95d06"><div class="ttname"><a href="classAbstractRepo.html#ac5942793beb49d527fcd9ae8a6a95d06">AbstractRepo::executeInsert</a></div><div class="ttdeci">virtual int executeInsert(sqlite3 *db, std::string sql) const</div><div class="ttdoc">Executa um insert sql.</div><div class="ttdef"><b>Definition:</b> <a href="abstractrepo_8cpp_source.html#l00013">abstractrepo.cpp:13</a></div></div>
-<div class="ttc" id="aclassTweetRepo_html_ab0c75a4d4c2aeeb7a51957fbd834ab89"><div class="ttname"><a href="classTweetRepo.html#ab0c75a4d4c2aeeb7a51957fbd834ab89">TweetRepo::searchTweetById</a></div><div class="ttdeci">Tweet searchTweetById(int id)</div><div class="ttdoc">Busca um tweet específico com esse id.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00044">tweetrepo.cpp:44</a></div></div>
-<div class="ttc" id="aclassTweetRepo_html_ab6cf833780eb1a9cf4cb56918aecf181"><div class="ttname"><a href="classTweetRepo.html#ab6cf833780eb1a9cf4cb56918aecf181">TweetRepo::getTweets</a></div><div class="ttdeci">std::vector&lt; Tweet &gt; getTweets()</div><div class="ttdoc">Pega todos os tweets do banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00031">tweetrepo.cpp:31</a></div></div>
-<div class="ttc" id="aclassTweet_html_a91a6b33c59bae66b0365d48f6095c97b"><div class="ttname"><a href="classTweet.html#a91a6b33c59bae66b0365d48f6095c97b">Tweet::author</a></div><div class="ttdeci">User author()</div><div class="ttdoc">Retorna o autor do tweet. Cria uma instância de User consultando o repositório de usuários (UserRepo)...</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00011">tweet.cpp:11</a></div></div>
-<div class="ttc" id="aclassTweet_html_afef8008a8305610862cfb38f718f68e9"><div class="ttname"><a href="classTweet.html#afef8008a8305610862cfb38f718f68e9">Tweet::description</a></div><div class="ttdeci">std::string description()</div><div class="ttdoc">Retorna a descrição do tweet.</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00016">tweet.cpp:16</a></div></div>
-<div class="ttc" id="aclassAbstractRepo_html_ab4fa6ec748e3218ebc2dc116c2435cdf"><div class="ttname"><a href="classAbstractRepo.html#ab4fa6ec748e3218ebc2dc116c2435cdf">AbstractRepo::executeSelect</a></div><div class="ttdeci">virtual std::vector&lt; std::map&lt; std::string, std::string &gt; &gt; executeSelect(sqlite3 *db, std::string sql) const</div><div class="ttdoc">Executa uma operação DELETE no banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="abstractrepo_8cpp_source.html#l00027">abstractrepo.cpp:27</a></div></div>
-<div class="ttc" id="aclassTweet_html_a8783cb651e503b234bdf15c19c66c83f"><div class="ttname"><a href="classTweet.html#a8783cb651e503b234bdf15c19c66c83f">Tweet::likes</a></div><div class="ttdeci">int likes()</div><div class="ttdoc">Retorna a quantidade de curtidas que o tweet recebeu.</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00024">tweet.cpp:24</a></div></div>
-<div class="ttc" id="aclassUser_html"><div class="ttname"><a href="classUser.html">User</a></div><div class="ttdef"><b>Definition:</b> <a href="user_8hpp_source.html#l00005">user.hpp:5</a></div></div>
-<div class="ttc" id="aclassTweet_html_a8d0f8d16c5a1e2fc2aa07433440873c9"><div class="ttname"><a href="classTweet.html#a8d0f8d16c5a1e2fc2aa07433440873c9">Tweet::timestamp</a></div><div class="ttdeci">std::string timestamp()</div><div class="ttdoc">Retorna o carimbo de data/hora associado ao tweet.</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00020">tweet.cpp:20</a></div></div>
-<div class="ttc" id="aclassTweetRepo_html_a6c9f402ff6caa68175032fb55c4a40f3"><div class="ttname"><a href="classTweetRepo.html#a6c9f402ff6caa68175032fb55c4a40f3">TweetRepo::addTweet</a></div><div class="ttdeci">Tweet addTweet(Tweet tweet)</div><div class="ttdoc">Adiciona um tweet ao banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00007">tweetrepo.cpp:7</a></div></div>
-<div class="ttc" id="aclassTweet_html"><div class="ttname"><a href="classTweet.html">Tweet</a></div><div class="ttdef"><b>Definition:</b> <a href="tweet_8hpp_source.html#l00006">tweet.hpp:6</a></div></div>
+<div class="ttc" id="aclassrepo_1_1TweetRepo_html_afd26b370ce3c09f6bc753f6b2e2017a7"><div class="ttname"><a href="classrepo_1_1TweetRepo.html#afd26b370ce3c09f6bc753f6b2e2017a7">repo::TweetRepo::addTweet</a></div><div class="ttdeci">model::Tweet addTweet(model::Tweet tweet)</div><div class="ttdoc">Adiciona um tweet ao banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00008">tweetrepo.cpp:8</a></div></div>
+<div class="ttc" id="aclassmodel_1_1Tweet_html_ad6c2bfbe868ec2040d6d1f50848b46bb"><div class="ttname"><a href="classmodel_1_1Tweet.html#ad6c2bfbe868ec2040d6d1f50848b46bb">model::Tweet::timestamp</a></div><div class="ttdeci">std::string timestamp()</div><div class="ttdoc">Retorna o carimbo de data/hora associado ao tweet.</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00020">tweet.cpp:20</a></div></div>
+<div class="ttc" id="aclassmodel_1_1Tweet_html_ae28774fa19dc87cfd624b334b78db901"><div class="ttname"><a href="classmodel_1_1Tweet.html#ae28774fa19dc87cfd624b334b78db901">model::Tweet::author</a></div><div class="ttdeci">User author()</div><div class="ttdoc">Retorna o autor do tweet. Cria uma instância de User consultando o repositório de usuários (UserRepo)...</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00011">tweet.cpp:11</a></div></div>
+<div class="ttc" id="aclassrepo_1_1AbstractRepo_html_abecbbf012d9640e349d2ac6c5ddb61d8"><div class="ttname"><a href="classrepo_1_1AbstractRepo.html#abecbbf012d9640e349d2ac6c5ddb61d8">repo::AbstractRepo::executeInsert</a></div><div class="ttdeci">virtual int executeInsert(sqlite3 *db, std::string sql) const</div><div class="ttdoc">Executa um insert sql.</div><div class="ttdef"><b>Definition:</b> <a href="abstractrepo_8cpp_source.html#l00014">abstractrepo.cpp:14</a></div></div>
+<div class="ttc" id="aclassrepo_1_1TweetRepo_html_a0612ac45f0c502e76bac3c19e390fca4"><div class="ttname"><a href="classrepo_1_1TweetRepo.html#a0612ac45f0c502e76bac3c19e390fca4">repo::TweetRepo::getUserTimeline</a></div><div class="ttdeci">std::vector&lt; model::Tweet &gt; getUserTimeline(model::User u)</div><div class="ttdoc">Obtem os tweets para a timeline de determinado user.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00070">tweetrepo.cpp:70</a></div></div>
+<div class="ttc" id="aclassrepo_1_1AbstractRepo_html_a33d5c20bf8231b998a22cce01e5923ed"><div class="ttname"><a href="classrepo_1_1AbstractRepo.html#a33d5c20bf8231b998a22cce01e5923ed">repo::AbstractRepo::executeSelect</a></div><div class="ttdeci">virtual std::vector&lt; std::map&lt; std::string, std::string &gt; &gt; executeSelect(sqlite3 *db, std::string sql) const</div><div class="ttdoc">Executa uma operação SELECT no banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="abstractrepo_8cpp_source.html#l00028">abstractrepo.cpp:28</a></div></div>
+<div class="ttc" id="aclassmodel_1_1User_html"><div class="ttname"><a href="classmodel_1_1User.html">model::User</a></div><div class="ttdef"><b>Definition:</b> <a href="user_8hpp_source.html#l00006">user.hpp:6</a></div></div>
+<div class="ttc" id="aclassmodel_1_1Tweet_html"><div class="ttname"><a href="classmodel_1_1Tweet.html">model::Tweet</a></div><div class="ttdef"><b>Definition:</b> <a href="tweet_8hpp_source.html#l00007">tweet.hpp:7</a></div></div>
+<div class="ttc" id="aclassmodel_1_1Tweet_html_a8cef4a3d0f0828cd269173dc38875473"><div class="ttname"><a href="classmodel_1_1Tweet.html#a8cef4a3d0f0828cd269173dc38875473">model::Tweet::description</a></div><div class="ttdeci">std::string description()</div><div class="ttdoc">Retorna a descrição do tweet.</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00016">tweet.cpp:16</a></div></div>
+<div class="ttc" id="aclassmodel_1_1Tweet_html_ae1532b3719af233e2e54e2f6817874f0"><div class="ttname"><a href="classmodel_1_1Tweet.html#ae1532b3719af233e2e54e2f6817874f0">model::Tweet::likes</a></div><div class="ttdeci">int likes()</div><div class="ttdoc">Retorna a quantidade de curtidas que o tweet recebeu.</div><div class="ttdef"><b>Definition:</b> <a href="tweet_8cpp_source.html#l00024">tweet.cpp:24</a></div></div>
+<div class="ttc" id="aclassrepo_1_1TweetRepo_html_ab7cdf5b9cfce1784dec6ae3e6a117f1f"><div class="ttname"><a href="classrepo_1_1TweetRepo.html#ab7cdf5b9cfce1784dec6ae3e6a117f1f">repo::TweetRepo::searchTweetById</a></div><div class="ttdeci">model::Tweet searchTweetById(int id)</div><div class="ttdoc">Busca um tweet específico com esse id.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00045">tweetrepo.cpp:45</a></div></div>
+<div class="ttc" id="aclassrepo_1_1TweetRepo_html_ab051f9774acb2f086f10c3f059a964a9"><div class="ttname"><a href="classrepo_1_1TweetRepo.html#ab051f9774acb2f086f10c3f059a964a9">repo::TweetRepo::getTweets</a></div><div class="ttdeci">std::vector&lt; model::Tweet &gt; getTweets()</div><div class="ttdoc">Pega todos os tweets do banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="tweetrepo_8cpp_source.html#l00032">tweetrepo.cpp:32</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

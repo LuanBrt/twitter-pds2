@@ -78,28 +78,30 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classTweetController.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTweetController.html">TweetController</a>: <span class="keyword">public</span> <a class="code" href="classAbstractController.html">AbstractController</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classTweetController.html#a4d6f4341d9df803ffe86e9042b59c6b6">TweetController</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classAbstractController.html">AbstractController</a> *<a class="code" href="classTweetController.html#a79c78068ce245e576683a67746e86484">render</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">//enum com as opções de interação do usuário com o tweet</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">enum</span> ValidOptions {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        EXIT,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        LIKE,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        RETWEET,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        COMMENT, </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::map&lt;int, std::string&gt; _options;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classTweetScreen.html">TweetScreen</a> _tweetScreen;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>controller {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classcontroller_1_1TweetController.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classcontroller_1_1TweetController.html">TweetController</a>: <span class="keyword">public</span> <a class="code" href="classcontroller_1_1AbstractController.html">AbstractController</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classcontroller_1_1TweetController.html#ae53efb43f0d5c5a7083c0a9684beea60">TweetController</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classcontroller_1_1AbstractController.html">AbstractController</a> *<a class="code" href="classcontroller_1_1TweetController.html#ab7ab9f2cbb23111b22f159c946c48e97">render</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">//enum com as opções de interação do usuário com o tweet</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">enum</span> ValidOptions {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            EXIT,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            LIKE,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            RETWEET,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            COMMENT, </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        };</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::map&lt;int, std::string&gt; _options;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="classscreen_1_1TweetScreen.html">screen::TweetScreen</a> _tweetScreen;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassTweetController_html_a79c78068ce245e576683a67746e86484"><div class="ttname"><a href="classTweetController.html#a79c78068ce245e576683a67746e86484">TweetController::render</a></div><div class="ttdeci">AbstractController * render() override</div><div class="ttdoc">Controla a interface de usuário relacionada a um tweet específico, permitindo a interação do usuário,...</div><div class="ttdef"><b>Definition:</b> <a href="tweetcontroller_8cpp_source.html#l00035">tweetcontroller.cpp:35</a></div></div>
-<div class="ttc" id="aclassAbstractController_html"><div class="ttname"><a href="classAbstractController.html">AbstractController</a></div><div class="ttdef"><b>Definition:</b> <a href="abstractcontroller_8hpp_source.html#l00005">abstractcontroller.hpp:5</a></div></div>
-<div class="ttc" id="aclassTweetController_html"><div class="ttname"><a href="classTweetController.html">TweetController</a></div><div class="ttdef"><b>Definition:</b> <a href="tweetcontroller_8hpp_source.html#l00009">tweetcontroller.hpp:9</a></div></div>
-<div class="ttc" id="aclassTweetScreen_html"><div class="ttname"><a href="classTweetScreen.html">TweetScreen</a></div><div class="ttdef"><b>Definition:</b> <a href="tweetscreen_8hpp_source.html#l00009">tweetscreen.hpp:9</a></div></div>
-<div class="ttc" id="aclassTweetController_html_a4d6f4341d9df803ffe86e9042b59c6b6"><div class="ttname"><a href="classTweetController.html#a4d6f4341d9df803ffe86e9042b59c6b6">TweetController::TweetController</a></div><div class="ttdeci">TweetController()</div><div class="ttdoc">Inicializa um controlador de tweets, configurando opções com base no estado atual do tweet,...</div><div class="ttdef"><b>Definition:</b> <a href="tweetcontroller_8cpp_source.html#l00016">tweetcontroller.cpp:16</a></div></div>
+<div class="ttc" id="aclasscontroller_1_1AbstractController_html"><div class="ttname"><a href="classcontroller_1_1AbstractController.html">controller::AbstractController</a></div><div class="ttdef"><b>Definition:</b> <a href="abstractcontroller_8hpp_source.html#l00006">abstractcontroller.hpp:6</a></div></div>
+<div class="ttc" id="aclassscreen_1_1TweetScreen_html"><div class="ttname"><a href="classscreen_1_1TweetScreen.html">screen::TweetScreen</a></div><div class="ttdef"><b>Definition:</b> <a href="tweetscreen_8hpp_source.html#l00010">tweetscreen.hpp:10</a></div></div>
+<div class="ttc" id="aclasscontroller_1_1TweetController_html_ab7ab9f2cbb23111b22f159c946c48e97"><div class="ttname"><a href="classcontroller_1_1TweetController.html#ab7ab9f2cbb23111b22f159c946c48e97">controller::TweetController::render</a></div><div class="ttdeci">AbstractController * render() override</div><div class="ttdoc">Controla a interface de usuário relacionada a um tweet específico, permitindo a interação do usuário,...</div><div class="ttdef"><b>Definition:</b> <a href="tweetcontroller_8cpp_source.html#l00036">tweetcontroller.cpp:36</a></div></div>
+<div class="ttc" id="aclasscontroller_1_1TweetController_html_ae53efb43f0d5c5a7083c0a9684beea60"><div class="ttname"><a href="classcontroller_1_1TweetController.html#ae53efb43f0d5c5a7083c0a9684beea60">controller::TweetController::TweetController</a></div><div class="ttdeci">TweetController()</div><div class="ttdoc">Inicializa um controlador de tweets, configurando opções com base no estado atual do tweet,...</div><div class="ttdef"><b>Definition:</b> <a href="tweetcontroller_8cpp_source.html#l00017">tweetcontroller.cpp:17</a></div></div>
+<div class="ttc" id="aclasscontroller_1_1TweetController_html"><div class="ttname"><a href="classcontroller_1_1TweetController.html">controller::TweetController</a></div><div class="ttdef"><b>Definition:</b> <a href="tweetcontroller_8hpp_source.html#l00010">tweetcontroller.hpp:10</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

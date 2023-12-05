@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['comment_228',['Comment',['../classComment.html#a39fcb733a1030ac8184c8dadde7dff55',1,'Comment::Comment(int authorId, int tweetId, std::string description)'],['../classComment.html#a3e5c082e7dd4fa0c840eb9c51cb0fbdc',1,'Comment::Comment(int id, int authorId, int tweetId, std::string description)']]],
-  ['createdb_229',['createDb',['../classDatabase.html#ad57d95233aa3465be57efecf787ba72e',1,'Database']]],
-  ['createtable_230',['createTable',['../classDatabase.html#a5538cb1e46c3ba2a81e7da4d951578f1',1,'Database']]]
+  ['comment_229',['Comment',['../classmodel_1_1Comment.html#a4c3d520681eea25aebc6e3a974d3f3a0',1,'model::Comment::Comment(int authorId, int tweetId, std::string description)'],['../classmodel_1_1Comment.html#a651ec78d0eaccd65645cfddee57f7af7',1,'model::Comment::Comment(int id, int authorId, int tweetId, std::string description)']]],
+  ['createdb_230',['createDb',['../classrepo_1_1Database.html#a6663277f98d48cef0de2cad3f3db7206',1,'repo::Database']]],
+  ['createtable_231',['createTable',['../classrepo_1_1Database.html#a5a1355355095e15b2b0f05cb50220ae2',1,'repo::Database']]]
 ];

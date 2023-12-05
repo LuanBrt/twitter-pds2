@@ -1,0 +1,126 @@
+\hypertarget{classscreen_1_1AbstractScreen}{}\doxysection{screen\+::Abstract\+Screen Class Reference}
+\label{classscreen_1_1AbstractScreen}\index{screen::AbstractScreen@{screen::AbstractScreen}}
+Inheritance diagram for screen\+::Abstract\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.656805cm]{classscreen_1_1AbstractScreen}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_ab595076f633d088aa73e249f4701fd56}\label{classscreen_1_1AbstractScreen_ab595076f633d088aa73e249f4701fd56}} 
+virtual \mbox{\hyperlink{classscreen_1_1AbstractScreen_ab595076f633d088aa73e249f4701fd56}{$\sim$\+Abstract\+Screen}} ()=default
+\begin{DoxyCompactList}\small\item\em Destrutor padrão. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classscreen_1_1AbstractScreen_ae8ef032aa0a46a0f17eacd06dbd7326a}{render\+Menu}} (const std\+::map$<$ int, std\+::string $>$ \&options) const
+\begin{DoxyCompactList}\small\item\em Mostra ao usuário as possíveis ações a serem tomadas. \end{DoxyCompactList}\item 
+virtual std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classscreen_1_1AbstractScreen_aeaf30f5abe84f212010ed1af41df1543}{render\+Form}} (std\+::vector$<$ std\+::string $>$ fields) const
+\begin{DoxyCompactList}\small\item\em Mostra ao usuário um formulário exigindo os campos selecionados. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_a8c19ae7172a8acc45a91d8c1a7acf04a}\label{classscreen_1_1AbstractScreen_a8c19ae7172a8acc45a91d8c1a7acf04a}} 
+virtual void {\bfseries render\+Message} (std\+::string message) const
+\item 
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_aac313a10f38396845161b1c01168a49e}\label{classscreen_1_1AbstractScreen_aac313a10f38396845161b1c01168a49e}} 
+virtual void {\bfseries flush\+Console} () const
+\item 
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_a249583e0a32e1f3d1793a1ee429ed9e0}\label{classscreen_1_1AbstractScreen_a249583e0a32e1f3d1793a1ee429ed9e0}} 
+virtual void {\bfseries render\+Separator} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_a9ddb9e0c51a02a8ae3eba27de49faee5}\label{classscreen_1_1AbstractScreen_a9ddb9e0c51a02a8ae3eba27de49faee5}} 
+std\+::string {\bfseries \+\_\+title}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 8 of file abstractscreen.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_aeaf30f5abe84f212010ed1af41df1543}\label{classscreen_1_1AbstractScreen_aeaf30f5abe84f212010ed1af41df1543}} 
+\index{screen::AbstractScreen@{screen::AbstractScreen}!renderForm@{renderForm}}
+\index{renderForm@{renderForm}!screen::AbstractScreen@{screen::AbstractScreen}}
+\doxysubsubsection{\texorpdfstring{renderForm()}{renderForm()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::string $>$ screen\+::\+Abstract\+Screen\+::render\+Form (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{fields }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mostra ao usuário um formulário exigindo os campos selecionados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fields} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um mapa representando o valor passado pelo usuário a cada campo 
+\end{DoxyReturn}
+
+
+Definition at line 34 of file abstractscreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34                                                                                              \{}
+\DoxyCodeLine{35         std::map<std::string, std::string> response;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} field : fields) \{}
+\DoxyCodeLine{38             std::string value;}
+\DoxyCodeLine{39             std::cout << field << \textcolor{stringliteral}{" : "};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41             std::getline(std::cin >> std::ws, value);}
+\DoxyCodeLine{42             response[field] = value;    }
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \textcolor{keywordflow}{return} response;}
+\DoxyCodeLine{46     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classscreen_1_1AbstractScreen_ae8ef032aa0a46a0f17eacd06dbd7326a}\label{classscreen_1_1AbstractScreen_ae8ef032aa0a46a0f17eacd06dbd7326a}} 
+\index{screen::AbstractScreen@{screen::AbstractScreen}!renderMenu@{renderMenu}}
+\index{renderMenu@{renderMenu}!screen::AbstractScreen@{screen::AbstractScreen}}
+\doxysubsubsection{\texorpdfstring{renderMenu()}{renderMenu()}}
+{\footnotesize\ttfamily int screen\+::\+Abstract\+Screen\+::render\+Menu (\begin{DoxyParamCaption}\item[{const std\+::map$<$ int, std\+::string $>$ \&}]{options }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Mostra ao usuário as possíveis ações a serem tomadas. 
+
+\begin{DoxyReturn}{Returns}
+A opção selecionada 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file abstractscreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                                                               \{}
+\DoxyCodeLine{17         std::string selected;}
+\DoxyCodeLine{18         std::cout << \_title << std::endl;}
+\DoxyCodeLine{19         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} option : options) \{}
+\DoxyCodeLine{20             std::cout << option.first << \textcolor{stringliteral}{" -\/ "} << option.second << std::endl;}
+\DoxyCodeLine{21         \}}
+\DoxyCodeLine{22         std::cout << \textcolor{stringliteral}{"\(\backslash\)n: "};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordtype}{int} selectedNum;}
+\DoxyCodeLine{25         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{26             std::cin >> selected;}
+\DoxyCodeLine{27             selectedNum = checkStoiFunction(selected);}
+\DoxyCodeLine{28             \textcolor{keywordflow}{if}(selectedNum == -\/1) renderMessage(\textcolor{stringliteral}{"Digite um número corretamente\(\backslash\)n"});}
+\DoxyCodeLine{29         \} \textcolor{keywordflow}{while} (selectedNum < 0);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keywordflow}{return} selectedNum;}
+\DoxyCodeLine{32     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+abstractscreen.\+hpp\item 
+abstractscreen.\+cpp\end{DoxyCompactItemize}

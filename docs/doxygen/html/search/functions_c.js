@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['timelinecontroller_266',['TimelineController',['../classTimelineController.html#ad35c26ce516976279f56fc3dccf687c9',1,'TimelineController']]],
-  ['timestamp_267',['timestamp',['../classTweet.html#a8d0f8d16c5a1e2fc2aa07433440873c9',1,'Tweet']]],
-  ['tweet_268',['Tweet',['../classTweet.html#a2e8366800b47e368a2f7ae2d08731baf',1,'Tweet::Tweet(int authorId, std::string description, std::string timestamp, int likes)'],['../classTweet.html#a9cd1de303d49ae6afabae8ea71ae2dfb',1,'Tweet::Tweet(int id, int authorId, std::string description, std::string timestamp, int likes)'],['../classComment.html#aef714c2b4d26767048a2935a5e9432da',1,'Comment::tweet()']]],
-  ['tweetcontroller_269',['TweetController',['../classTweetController.html#a4d6f4341d9df803ffe86e9042b59c6b6',1,'TweetController']]],
-  ['tweetscreen_270',['TweetScreen',['../classTweetScreen.html#aa6f94171ec0d08e2cc98b8196d5758f0',1,'TweetScreen']]]
+  ['timelinecontroller_270',['TimelineController',['../classcontroller_1_1TimelineController.html#aac99aceccc52e8dd924aacda3c5509c8',1,'controller::TimelineController']]],
+  ['timestamp_271',['timestamp',['../classmodel_1_1Tweet.html#ad6c2bfbe868ec2040d6d1f50848b46bb',1,'model::Tweet']]],
+  ['tweet_272',['Tweet',['../classmodel_1_1Tweet.html#ae01a62397fe45c9b63721fee5db038f4',1,'model::Tweet::Tweet(int authorId, std::string description, std::string timestamp, int likes)'],['../classmodel_1_1Tweet.html#a630c2b4aec1f6fc6562ac2d225de5afb',1,'model::Tweet::Tweet(int id, int authorId, std::string description, std::string timestamp, int likes)'],['../classmodel_1_1Comment.html#a83ad3c90a45604bf5c837123b2fc9768',1,'model::Comment::tweet()']]],
+  ['tweetcontroller_273',['TweetController',['../classcontroller_1_1TweetController.html#ae53efb43f0d5c5a7083c0a9684beea60',1,'controller::TweetController']]],
+  ['tweetscreen_274',['TweetScreen',['../classscreen_1_1TweetScreen.html#ab852869278cf027c326b09b743a15985',1,'screen::TweetScreen']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['id_243',['id',['../classComment.html#a69b63a571617835415e078105a21d210',1,'Comment::id()'],['../classTweet.html#a9400780825c1deb7b8f87f378596f0c0',1,'Tweet::id()']]],
-  ['isuserfollow_244',['isUserFollow',['../classUserRepo.html#a90ea034d7829ba7970263bc0c27fb868',1,'UserRepo']]]
+  ['id_245',['id',['../classmodel_1_1Comment.html#a3c0e27b3e9c47d53fe1093fc42bfdf9e',1,'model::Comment::id()'],['../classmodel_1_1Tweet.html#a28e321ed57fdd07686f07b961bfe2049',1,'model::Tweet::id()']]],
+  ['isuserfollow_246',['isUserFollow',['../classrepo_1_1UserRepo.html#af6d5a65b0543e35ba57c382c512d417e',1,'repo::UserRepo']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nickname_68',['nickname',['../classUser.html#af94a2410e571f9da00a0b30eb7bf16ef',1,'User']]]
+  ['nickname_69',['nickname',['../classmodel_1_1User.html#afa30c6bf1ffae551ae1b797bf18ff88f',1,'model::User']]]
 ];

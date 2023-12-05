@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['likerepo_63',['LikeRepo',['../classLikeRepo.html',1,'']]],
-  ['likes_64',['likes',['../classTweet.html#a8783cb651e503b234bdf15c19c66c83f',1,'Tweet']]],
-  ['loginscreen_65',['LoginScreen',['../classLoginScreen.html',1,'LoginScreen'],['../classLoginScreen.html#aec37192b228273e97a92333a0f1d24ed',1,'LoginScreen::LoginScreen()']]]
+  ['likerepo_64',['LikeRepo',['../classrepo_1_1LikeRepo.html',1,'repo']]],
+  ['likes_65',['likes',['../classmodel_1_1Tweet.html#ae1532b3719af233e2e54e2f6817874f0',1,'model::Tweet']]],
+  ['loginscreen_66',['LoginScreen',['../classscreen_1_1LoginScreen.html',1,'screen::LoginScreen'],['../classscreen_1_1LoginScreen.html#ac33973c39ed2f1b6ccc40e99afee8b95',1,'screen::LoginScreen::LoginScreen()']]]
 ];

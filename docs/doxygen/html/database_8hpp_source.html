@@ -74,24 +74,26 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classDatabase.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDatabase.html">Database</a> {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classDatabase.html#a4703c80e6969d33565ea340f768fdadf">Database</a>();</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classDatabase.html#a84d399a2ad58d69daab9b05330e1316d">~Database</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDatabase.html#ad57d95233aa3465be57efecf787ba72e">createDb</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDatabase.html#a5538cb1e46c3ba2a81e7da4d951578f1">createTable</a>(std::string tableName, std::string sql);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    sqlite3 *_db;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>repo {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classrepo_1_1Database.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classrepo_1_1Database.html">Database</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classrepo_1_1Database.html#a5795c26c01bbc9fcb45cb49813e40eff">Database</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classrepo_1_1Database.html#ac6a349d61692f63e799d21b81f61b45e">~Database</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classrepo_1_1Database.html#a6663277f98d48cef0de2cad3f3db7206">createDb</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classrepo_1_1Database.html#a5a1355355095e15b2b0f05cb50220ae2">createTable</a>(std::string tableName, std::string sql);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        sqlite3 *_db;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassDatabase_html_a84d399a2ad58d69daab9b05330e1316d"><div class="ttname"><a href="classDatabase.html#a84d399a2ad58d69daab9b05330e1316d">Database::~Database</a></div><div class="ttdeci">~Database()</div><div class="ttdoc">Construtor padrao.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00012">database.cpp:12</a></div></div>
-<div class="ttc" id="aclassDatabase_html_a4703c80e6969d33565ea340f768fdadf"><div class="ttname"><a href="classDatabase.html#a4703c80e6969d33565ea340f768fdadf">Database::Database</a></div><div class="ttdeci">Database()</div><div class="ttdoc">Destrutor padrao.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00008">database.cpp:8</a></div></div>
-<div class="ttc" id="aclassDatabase_html_ad57d95233aa3465be57efecf787ba72e"><div class="ttname"><a href="classDatabase.html#ad57d95233aa3465be57efecf787ba72e">Database::createDb</a></div><div class="ttdeci">void createDb()</div><div class="ttdoc">Comando para criar o banco de dados e todas as tabelas.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00016">database.cpp:16</a></div></div>
-<div class="ttc" id="aclassDatabase_html"><div class="ttname"><a href="classDatabase.html">Database</a></div><div class="ttdef"><b>Definition:</b> <a href="database_8hpp_source.html#l00005">database.hpp:5</a></div></div>
-<div class="ttc" id="aclassDatabase_html_a5538cb1e46c3ba2a81e7da4d951578f1"><div class="ttname"><a href="classDatabase.html#a5538cb1e46c3ba2a81e7da4d951578f1">Database::createTable</a></div><div class="ttdeci">void createTable(std::string tableName, std::string sql)</div><div class="ttdoc">Comando para criar uma tabela no banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00045">database.cpp:45</a></div></div>
+<div class="ttc" id="aclassrepo_1_1Database_html_a5795c26c01bbc9fcb45cb49813e40eff"><div class="ttname"><a href="classrepo_1_1Database.html#a5795c26c01bbc9fcb45cb49813e40eff">repo::Database::Database</a></div><div class="ttdeci">Database()</div><div class="ttdoc">Destrutor padrao.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00009">database.cpp:9</a></div></div>
+<div class="ttc" id="aclassrepo_1_1Database_html"><div class="ttname"><a href="classrepo_1_1Database.html">repo::Database</a></div><div class="ttdef"><b>Definition:</b> <a href="database_8hpp_source.html#l00006">database.hpp:6</a></div></div>
+<div class="ttc" id="aclassrepo_1_1Database_html_ac6a349d61692f63e799d21b81f61b45e"><div class="ttname"><a href="classrepo_1_1Database.html#ac6a349d61692f63e799d21b81f61b45e">repo::Database::~Database</a></div><div class="ttdeci">~Database()</div><div class="ttdoc">Construtor padrao.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00013">database.cpp:13</a></div></div>
+<div class="ttc" id="aclassrepo_1_1Database_html_a6663277f98d48cef0de2cad3f3db7206"><div class="ttname"><a href="classrepo_1_1Database.html#a6663277f98d48cef0de2cad3f3db7206">repo::Database::createDb</a></div><div class="ttdeci">void createDb()</div><div class="ttdoc">Comando para criar o banco de dados e todas as tabelas.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00017">database.cpp:17</a></div></div>
+<div class="ttc" id="aclassrepo_1_1Database_html_a5a1355355095e15b2b0f05cb50220ae2"><div class="ttname"><a href="classrepo_1_1Database.html#a5a1355355095e15b2b0f05cb50220ae2">repo::Database::createTable</a></div><div class="ttdeci">void createTable(std::string tableName, std::string sql)</div><div class="ttdoc">Comando para criar uma tabela no banco de dados.</div><div class="ttdef"><b>Definition:</b> <a href="database_8cpp_source.html#l00046">database.cpp:46</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

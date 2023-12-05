@@ -1,0 +1,107 @@
+\hypertarget{classcontroller_1_1TweetController}{}\doxysection{controller\+::Tweet\+Controller Class Reference}
+\label{classcontroller_1_1TweetController}\index{controller::TweetController@{controller::TweetController}}
+Inheritance diagram for controller\+::Tweet\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcontroller_1_1TweetController}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcontroller_1_1TweetController_ae53efb43f0d5c5a7083c0a9684beea60}\label{classcontroller_1_1TweetController_ae53efb43f0d5c5a7083c0a9684beea60}} 
+\mbox{\hyperlink{classcontroller_1_1TweetController_ae53efb43f0d5c5a7083c0a9684beea60}{Tweet\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa um controlador de tweets, configurando opções com base no estado atual do tweet, como curtidas existentes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcontroller_1_1AbstractController}{Abstract\+Controller}} $\ast$ \mbox{\hyperlink{classcontroller_1_1TweetController_ab7ab9f2cbb23111b22f159c946c48e97}{render}} () override
+\begin{DoxyCompactList}\small\item\em Controla a interface de usuário relacionada a um tweet específico, permitindo a interação do usuário, como curtir, retweetar e comentar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 10 of file tweetcontroller.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcontroller_1_1TweetController_ab7ab9f2cbb23111b22f159c946c48e97}\label{classcontroller_1_1TweetController_ab7ab9f2cbb23111b22f159c946c48e97}} 
+\index{controller::TweetController@{controller::TweetController}!render@{render}}
+\index{render@{render}!controller::TweetController@{controller::TweetController}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcontroller_1_1AbstractController}{Abstract\+Controller}} $\ast$ controller\+::\+Tweet\+Controller\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Controla a interface de usuário relacionada a um tweet específico, permitindo a interação do usuário, como curtir, retweetar e comentar. 
+
+\begin{DoxyReturn}{Returns}
+Retorna um ponteiro para um novo controlador, representando a próxima tela a ser exibida após as interações do usuário. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcontroller_1_1AbstractController_ae3673d23215b9bf7b23f756638feaf86}{controller\+::\+Abstract\+Controller}}.
+
+
+
+Definition at line 36 of file tweetcontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36                                                 \{}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \mbox{\hyperlink{classrepo_1_1UserRepo}{repo::UserRepo}} \_userRepo;}
+\DoxyCodeLine{39         \mbox{\hyperlink{classmodel_1_1User}{model::User}} ur = \_userRepo.\mbox{\hyperlink{classrepo_1_1UserRepo_a970a0aa268df0ae785f77b4f984c8d30}{searchUserById}}(1);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \mbox{\hyperlink{classrepo_1_1TweetRepo}{repo::TweetRepo}} \_tweetRepo;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43         \mbox{\hyperlink{classmodel_1_1Tweet}{model::Tweet}} tr = \_tweetRepo.\mbox{\hyperlink{classrepo_1_1TweetRepo_ab7cdf5b9cfce1784dec6ae3e6a117f1f}{searchTweetById}}(1);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45         \mbox{\hyperlink{classrepo_1_1CommentRepo}{repo::CommentRepo}} \_commentRepo;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \mbox{\hyperlink{classrepo_1_1LikeRepo}{repo::LikeRepo}} \_likeRepo;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \_tweetScreen.\mbox{\hyperlink{classscreen_1_1TweetScreen_a9897aefb76ca9b9106de8a13ba2e4622}{renderTweet}}(tr);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         \textcolor{keywordtype}{int} selected = \_tweetScreen.\mbox{\hyperlink{classscreen_1_1AbstractScreen_ae8ef032aa0a46a0f17eacd06dbd7326a}{renderMenu}}(\_options);}
+\DoxyCodeLine{53         \textcolor{keywordflow}{switch} (selected) \{}
+\DoxyCodeLine{54             }
+\DoxyCodeLine{55             \textcolor{comment}{// Sair}}
+\DoxyCodeLine{56             \textcolor{keywordflow}{case} ValidOptions::EXIT: \{}
+\DoxyCodeLine{57                 exit(0);}
+\DoxyCodeLine{58                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{59             \}}
+\DoxyCodeLine{60             \textcolor{comment}{// Curtir e remover curtida do tweet}}
+\DoxyCodeLine{61             \textcolor{keywordflow}{case} ValidOptions::LIKE: \{}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{if} (\_likeRepo.\mbox{\hyperlink{classrepo_1_1LikeRepo_a40f99b6c9a38e96d9f27a650fb68f727}{searchLikeByUserId}}(ur.id(), tr.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}())) \{}
+\DoxyCodeLine{63                     \_likeRepo.\mbox{\hyperlink{classrepo_1_1LikeRepo_aeb61b9cd2a3ed411aca03da31435e037}{deleteLike}}(ur.id(), tr.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}());}
+\DoxyCodeLine{64                     \_tweetRepo.dislikeTweet(tr.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}());}
+\DoxyCodeLine{65                     std::cout << \textcolor{stringliteral}{"Você removeu a curtida desse tweet!"} << std::endl;}
+\DoxyCodeLine{66                 \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{67                     \_likeRepo.\mbox{\hyperlink{classrepo_1_1LikeRepo_aab58e9003eb16d49fc79c5811c16b964}{addLike}}(ur.id(), tr.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}());}
+\DoxyCodeLine{68                     \_tweetRepo.likeTweet(tr.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}());}
+\DoxyCodeLine{69                     std::cout << \textcolor{stringliteral}{"Você curtiu o tweet!"} << std::endl;}
+\DoxyCodeLine{70                 \}}
+\DoxyCodeLine{71                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classcontroller_1_1TweetController_ae53efb43f0d5c5a7083c0a9684beea60}{TweetController}}();}
+\DoxyCodeLine{72             \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74             \textcolor{comment}{// Obter credenciais de login}}
+\DoxyCodeLine{75             \textcolor{keywordflow}{case} ValidOptions::COMMENT: \{}
+\DoxyCodeLine{76                 std::map<std::string, std::string> response = \_tweetScreen.\mbox{\hyperlink{classscreen_1_1AbstractScreen_aeaf30f5abe84f212010ed1af41df1543}{renderForm}}(\{\textcolor{stringliteral}{"Comentário"}\});}
+\DoxyCodeLine{77                 std::string description = response[\textcolor{stringliteral}{"Comentário"}];}
+\DoxyCodeLine{78                 \mbox{\hyperlink{classmodel_1_1Comment}{model::Comment}} comment(ur.id(), tr.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}(), description);}
+\DoxyCodeLine{79                 \_commentRepo.\mbox{\hyperlink{classrepo_1_1CommentRepo_a0b2e980529a1205ede2eebcf0b6ea12a}{addComment}}(comment);}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classcontroller_1_1TweetController_ae53efb43f0d5c5a7083c0a9684beea60}{TweetController}}();}
+\DoxyCodeLine{81             \}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{85     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tweetcontroller.\+hpp\item 
+tweetcontroller.\+cpp\end{DoxyCompactItemize}

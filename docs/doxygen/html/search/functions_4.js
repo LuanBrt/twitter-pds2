@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['followuser_236',['followUser',['../classUserProfileController.html#a7644c39d2e11211b2212ea87f7aa08a0',1,'UserProfileController::followUser()'],['../classUserRepo.html#a892b14262f00a1e0b4a3bdebf1806a85',1,'UserRepo::followUser()']]]
+  ['followuser_238',['followUser',['../classcontroller_1_1UserProfileController.html#a55b79913876f54b3f3ee59d15d31302e',1,'controller::UserProfileController::followUser()'],['../classrepo_1_1UserRepo.html#a3710fc64fa4b6515eec29f2929ef23aa',1,'repo::UserRepo::followUser()']]]
 ];

@@ -1,0 +1,184 @@
+\hypertarget{classrepo_1_1AbstractRepo}{}\doxysection{repo\+::Abstract\+Repo Class Reference}
+\label{classrepo_1_1AbstractRepo}\index{repo::AbstractRepo@{repo::AbstractRepo}}
+Inheritance diagram for repo\+::Abstract\+Repo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrepo_1_1AbstractRepo}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrepo_1_1AbstractRepo_abcc30ee6a161403b271454613d54932e}\label{classrepo_1_1AbstractRepo_abcc30ee6a161403b271454613d54932e}} 
+\mbox{\hyperlink{classrepo_1_1AbstractRepo_abcc30ee6a161403b271454613d54932e}{Abstract\+Repo}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrepo_1_1AbstractRepo_a74f0b4707e747243918361330b174d86}\label{classrepo_1_1AbstractRepo_a74f0b4707e747243918361330b174d86}} 
+\mbox{\hyperlink{classrepo_1_1AbstractRepo_a74f0b4707e747243918361330b174d86}{$\sim$\+Abstract\+Repo}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor padrao. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classrepo_1_1AbstractRepo_abecbbf012d9640e349d2ac6c5ddb61d8}{execute\+Insert}} (sqlite3 $\ast$db, std\+::string sql) const
+\begin{DoxyCompactList}\small\item\em Executa um insert sql. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ std\+::map$<$ std\+::string, std\+::string $>$ $>$ \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{execute\+Select}} (sqlite3 $\ast$db, std\+::string sql) const
+\begin{DoxyCompactList}\small\item\em Executa uma operação S\+E\+L\+E\+CT no banco de dados. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classrepo_1_1AbstractRepo_ac3b7e906d921ba432e48e8cc1065ee28}{execute\+Delete}} (sqlite3 $\ast$db, std\+::string sql) const
+\begin{DoxyCompactList}\small\item\em Executa uma operação D\+E\+L\+E\+TE no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrepo_1_1AbstractRepo_aefa0e231f8f14400ee15572f6a2d6b0f}\label{classrepo_1_1AbstractRepo_aefa0e231f8f14400ee15572f6a2d6b0f}} 
+sqlite3 $\ast$ {\bfseries \+\_\+db}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file abstractrepo.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrepo_1_1AbstractRepo_ac3b7e906d921ba432e48e8cc1065ee28}\label{classrepo_1_1AbstractRepo_ac3b7e906d921ba432e48e8cc1065ee28}} 
+\index{repo::AbstractRepo@{repo::AbstractRepo}!executeDelete@{executeDelete}}
+\index{executeDelete@{executeDelete}!repo::AbstractRepo@{repo::AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{executeDelete()}{executeDelete()}}
+{\footnotesize\ttfamily int repo\+::\+Abstract\+Repo\+::execute\+Delete (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db,  }\item[{std\+::string}]{sql }\end{DoxyParamCaption}) const}
+
+
+
+Executa uma operação D\+E\+L\+E\+TE no banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Conexão com o banco de dados \\
+\hline
+{\em sql} & Comando D\+E\+L\+E\+TE a ser executado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna 1 se a operação D\+E\+L\+E\+TE foi bem-\/sucedida, caso contrário, retorna 0 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file abstractrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58                                                                     \{}
+\DoxyCodeLine{59         \textcolor{keywordtype}{char} *zErrMsg = 0;}
+\DoxyCodeLine{60         \textcolor{keywordtype}{int} rc;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         rc = sqlite3\_exec(db, sql.c\_str(), \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr}, \&zErrMsg);}
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} (rc != SQLITE\_OK) \{}
+\DoxyCodeLine{64             std::cout << zErrMsg;}
+\DoxyCodeLine{65             sqlite3\_free(zErrMsg);}
+\DoxyCodeLine{66             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{67         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{68             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1AbstractRepo_abecbbf012d9640e349d2ac6c5ddb61d8}\label{classrepo_1_1AbstractRepo_abecbbf012d9640e349d2ac6c5ddb61d8}} 
+\index{repo::AbstractRepo@{repo::AbstractRepo}!executeInsert@{executeInsert}}
+\index{executeInsert@{executeInsert}!repo::AbstractRepo@{repo::AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{executeInsert()}{executeInsert()}}
+{\footnotesize\ttfamily int repo\+::\+Abstract\+Repo\+::execute\+Insert (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db,  }\item[{std\+::string}]{sql }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Executa um insert sql. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Conexao com banco de dados \\
+\hline
+{\em sql} & Insert a ser executada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um inteiro representando sucesso ou falha na execucao do insert 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file abstractrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                                                                     \{}
+\DoxyCodeLine{15         \textcolor{keywordtype}{char} *zErrMsg = 0;}
+\DoxyCodeLine{16         \textcolor{keywordtype}{int} rc;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         rc = sqlite3\_exec(db, sql.c\_str(), \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr}, \&zErrMsg);}
+\DoxyCodeLine{19         \textcolor{keywordflow}{if} (rc != SQLITE\_OK) \{}
+\DoxyCodeLine{20             std::cout << zErrMsg;}
+\DoxyCodeLine{21             sqlite3\_free(zErrMsg);}
+\DoxyCodeLine{22             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{23         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{24             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{25         \}}
+\DoxyCodeLine{26     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}\label{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}} 
+\index{repo::AbstractRepo@{repo::AbstractRepo}!executeSelect@{executeSelect}}
+\index{executeSelect@{executeSelect}!repo::AbstractRepo@{repo::AbstractRepo}}
+\doxysubsubsection{\texorpdfstring{executeSelect()}{executeSelect()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::map$<$ std\+::string, std\+::string $>$ $>$ repo\+::\+Abstract\+Repo\+::execute\+Select (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db,  }\item[{std\+::string}]{sql }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Executa uma operação S\+E\+L\+E\+CT no banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Conexão com o banco de dados \\
+\hline
+{\em sql} & Comando S\+E\+L\+E\+CT a ser executado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna um vetor com o resultado da busca 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file abstractrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                                                                         \{}
+\DoxyCodeLine{29         sqlite3\_stmt *stmt;}
+\DoxyCodeLine{30         std::vector<std::map<std::string, std::string>> result;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{comment}{// Prepara consulta}}
+\DoxyCodeLine{33         \textcolor{keywordflow}{if} (sqlite3\_prepare\_v2(db, sql.c\_str(), -\/1, \&stmt, \textcolor{keyword}{nullptr}) != SQLITE\_OK) \{}
+\DoxyCodeLine{34             \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{35         \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \textcolor{keywordflow}{while} (sqlite3\_step(stmt) == SQLITE\_ROW) \{}
+\DoxyCodeLine{38             \textcolor{keywordtype}{int} colCount = sqlite3\_column\_count(stmt);}
+\DoxyCodeLine{39             std::map<std::string, std::string> line;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < colCount; ++i) \{}
+\DoxyCodeLine{42                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *colName = sqlite3\_column\_name(stmt, i);}
+\DoxyCodeLine{43                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *colValue = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char} *\textcolor{keyword}{>}(sqlite3\_column\_text(stmt, i));}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45                 \textcolor{comment}{// Adiciona o par coluna-\/valor ao mapa}}
+\DoxyCodeLine{46                 line[colName] = colValue;}
+\DoxyCodeLine{47             \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49             \textcolor{comment}{// Adiciona o mapa ao vetor de resultados}}
+\DoxyCodeLine{50             result.push\_back(line);}
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         \textcolor{comment}{// Libera os recursos}}
+\DoxyCodeLine{54         sqlite3\_finalize(stmt);}
+\DoxyCodeLine{55         \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{56     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+abstractrepo.\+hpp\item 
+abstractrepo.\+cpp\end{DoxyCompactItemize}

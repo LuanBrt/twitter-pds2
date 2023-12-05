@@ -1,0 +1,76 @@
+\hypertarget{classscreen_1_1TweetScreen}{}\doxysection{screen\+::Tweet\+Screen Class Reference}
+\label{classscreen_1_1TweetScreen}\index{screen::TweetScreen@{screen::TweetScreen}}
+Inheritance diagram for screen\+::Tweet\+Screen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classscreen_1_1TweetScreen}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classscreen_1_1TweetScreen_ab852869278cf027c326b09b743a15985}\label{classscreen_1_1TweetScreen_ab852869278cf027c326b09b743a15985}} 
+\mbox{\hyperlink{classscreen_1_1TweetScreen_ab852869278cf027c326b09b743a15985}{Tweet\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em O construtor inicializa a tela de tweet com o título padrão \char`\"{}\+Opções\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscreen_1_1TweetScreen_a9897aefb76ca9b9106de8a13ba2e4622}{render\+Tweet}} (\mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} tweet)
+\begin{DoxyCompactList}\small\item\em Renderiza as informações detalhadas de um tweet, incluindo autor, conteúdo, número de curtidas, horário de postagem e comentários associados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 10 of file tweetscreen.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classscreen_1_1TweetScreen_a9897aefb76ca9b9106de8a13ba2e4622}\label{classscreen_1_1TweetScreen_a9897aefb76ca9b9106de8a13ba2e4622}} 
+\index{screen::TweetScreen@{screen::TweetScreen}!renderTweet@{renderTweet}}
+\index{renderTweet@{renderTweet}!screen::TweetScreen@{screen::TweetScreen}}
+\doxysubsubsection{\texorpdfstring{renderTweet()}{renderTweet()}}
+{\footnotesize\ttfamily void screen\+::\+Tweet\+Screen\+::render\+Tweet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}}}]{tweet }\end{DoxyParamCaption})}
+
+
+
+Renderiza as informações detalhadas de um tweet, incluindo autor, conteúdo, número de curtidas, horário de postagem e comentários associados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tweet} & O tweet a ser renderizado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file tweetscreen.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                                                   \{}
+\DoxyCodeLine{15         \mbox{\hyperlink{classrepo_1_1CommentRepo}{repo::CommentRepo}} \_commentRepo;}
+\DoxyCodeLine{16         \mbox{\hyperlink{classrepo_1_1TweetRepo}{repo::TweetRepo}} \_tweetRepo;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         \mbox{\hyperlink{classmodel_1_1Tweet}{model::Tweet}} tr = \_tweetRepo.\mbox{\hyperlink{classrepo_1_1TweetRepo_ab7cdf5b9cfce1784dec6ae3e6a117f1f}{searchTweetById}}(tweet.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}());}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         std::cout << \textcolor{stringliteral}{"AUTOR: "} << tr.\mbox{\hyperlink{classmodel_1_1Tweet_ae28774fa19dc87cfd624b334b78db901}{author}}().\mbox{\hyperlink{classmodel_1_1User_af747820045a09181da5b5e970e6d852b}{username}}() << std::endl;}
+\DoxyCodeLine{21         std::cout << \textcolor{stringliteral}{"CONTEÚDO: \(\backslash\)n"} << \textcolor{stringliteral}{"    -\/ "} << tr.\mbox{\hyperlink{classmodel_1_1Tweet_a8cef4a3d0f0828cd269173dc38875473}{description}}() << std::endl;}
+\DoxyCodeLine{22         std::cout << \textcolor{stringliteral}{"LIKES: "} << tr.\mbox{\hyperlink{classmodel_1_1Tweet_ae1532b3719af233e2e54e2f6817874f0}{likes}}() <<}
+\DoxyCodeLine{23             \textcolor{stringliteral}{"   HORÁRIO: "} << tr.\mbox{\hyperlink{classmodel_1_1Tweet_ad6c2bfbe868ec2040d6d1f50848b46bb}{timestamp}}() << std::endl;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         std::vector<model::Comment> commentVector = \_commentRepo.\mbox{\hyperlink{classrepo_1_1CommentRepo_ac5b3bcd0b53dd1679718e2b20cdeef82}{getCommentsByTweetId}}(tweet.\mbox{\hyperlink{classmodel_1_1Tweet_a28e321ed57fdd07686f07b961bfe2049}{id}}());}
+\DoxyCodeLine{26         \textcolor{keywordflow}{if} (commentVector.size() > 0) \{}
+\DoxyCodeLine{27             std::cout << \textcolor{stringliteral}{"COMENTÁRIOS: "} << std::endl;}
+\DoxyCodeLine{28         \}}
+\DoxyCodeLine{29         \textcolor{keywordflow}{for} (\mbox{\hyperlink{classmodel_1_1Comment}{model::Comment}} comment : commentVector) \{}
+\DoxyCodeLine{30             std::cout << \textcolor{stringliteral}{"  Autor do Comentário: "} << comment.author().username() << std::endl;}
+\DoxyCodeLine{31             std::cout << \textcolor{stringliteral}{"      Descrição do Comentário: \(\backslash\)n"} << \textcolor{stringliteral}{"           -\/ "} <<comment.description() << std::endl;}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tweetscreen.\+hpp\item 
+tweetscreen.\+cpp\end{DoxyCompactItemize}

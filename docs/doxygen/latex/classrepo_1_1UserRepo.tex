@@ -1,0 +1,338 @@
+\hypertarget{classrepo_1_1UserRepo}{}\doxysection{repo\+::User\+Repo Class Reference}
+\label{classrepo_1_1UserRepo}\index{repo::UserRepo@{repo::UserRepo}}
+Inheritance diagram for repo\+::User\+Repo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrepo_1_1UserRepo}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} \mbox{\hyperlink{classrepo_1_1UserRepo_a93ba22486d180aaf93ade1d62d9e5dd8}{add\+User}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} user)
+\begin{DoxyCompactList}\small\item\em Adiciona um usuario ao banco de dados. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $>$ \mbox{\hyperlink{classrepo_1_1UserRepo_acbf98e8197108f98371af841ce347374}{search\+User}} (std\+::string keyword)
+\begin{DoxyCompactList}\small\item\em Busca usuário baseado em uma keyword. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $\ast$ \mbox{\hyperlink{classrepo_1_1UserRepo_aa741d3e2bf5da286471624972c80ccd3}{search\+User\+By\+Username}} (std\+::string username)
+\begin{DoxyCompactList}\small\item\em Busca usuário baseado no seu username. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} \mbox{\hyperlink{classrepo_1_1UserRepo_a970a0aa268df0ae785f77b4f984c8d30}{search\+User\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Busca usúario baseado em um id. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $>$ \mbox{\hyperlink{classrepo_1_1UserRepo_a28c41843f56b30db30ce05ff067abf93}{get\+Following}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} u)
+\begin{DoxyCompactList}\small\item\em Obtem uma lista de todos os seguidos de um usuario. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classrepo_1_1UserRepo_af6d5a65b0543e35ba57c382c512d417e}{is\+User\+Follow}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} follower, \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} followed)
+\begin{DoxyCompactList}\small\item\em Checa se o usuário já foi seguido. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} \mbox{\hyperlink{classrepo_1_1UserRepo_a3710fc64fa4b6515eec29f2929ef23aa}{follow\+User}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} follower, \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} followed)
+\begin{DoxyCompactList}\small\item\em Adiciona o following a lista de seguidors do follower. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classrepo_1_1UserRepo_a048b20041ecaaa74c41d424660165b60}{unfollow\+User}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} follower, \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} followed)
+\begin{DoxyCompactList}\small\item\em Remove o following da lista de seguidors do follower. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 10 of file userrepo.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_a93ba22486d180aaf93ade1d62d9e5dd8}\label{classrepo_1_1UserRepo_a93ba22486d180aaf93ade1d62d9e5dd8}} 
+\index{repo::UserRepo@{repo::UserRepo}!addUser@{addUser}}
+\index{addUser@{addUser}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{addUser()}{addUser()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} repo\+::\+User\+Repo\+::add\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Adiciona um usuario ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o próprio usuário criado caso sucesso e um throw de erro caso dê errado 
+\end{DoxyReturn}
+
+
+Definition at line 6 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                                               \{}
+\DoxyCodeLine{7         std::string sql;}
+\DoxyCodeLine{8         sql += \textcolor{stringliteral}{"INSERT INTO user (username, password, nickname) VALUES ("};}
+\DoxyCodeLine{9         sql += \textcolor{stringliteral}{"'"} + user.\mbox{\hyperlink{classmodel_1_1User_af747820045a09181da5b5e970e6d852b}{username}}() + \textcolor{stringliteral}{"', "};}
+\DoxyCodeLine{10         sql += \textcolor{stringliteral}{"'"} + user.\mbox{\hyperlink{classmodel_1_1User_a6f923bc6bfe2aeadef4ea65b6fbccde8}{password}}() + \textcolor{stringliteral}{"', "};}
+\DoxyCodeLine{11         sql += \textcolor{stringliteral}{"'"} + user.\mbox{\hyperlink{classmodel_1_1User_afa30c6bf1ffae551ae1b797bf18ff88f}{nickname}}() + \textcolor{stringliteral}{"');"};}
+\DoxyCodeLine{12         \textcolor{keywordtype}{int} r = \mbox{\hyperlink{classrepo_1_1AbstractRepo_abecbbf012d9640e349d2ac6c5ddb61d8}{executeInsert}}(\_db, sql);}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14         \textcolor{keywordflow}{if} (r != 0) \{}
+\DoxyCodeLine{15             sqlite3\_int64 lastRowId = sqlite3\_last\_insert\_rowid(\_db);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17             \textcolor{comment}{// Você pode agora buscar o usuário recém-\/criado usando o ID obtido}}
+\DoxyCodeLine{18             \mbox{\hyperlink{classmodel_1_1User}{model::User}} newUser = \mbox{\hyperlink{classrepo_1_1UserRepo_a970a0aa268df0ae785f77b4f984c8d30}{searchUserById}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(lastRowId));}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20             \textcolor{comment}{// Retornando o usuário recém-\/criado}}
+\DoxyCodeLine{21             \textcolor{keywordflow}{return} newUser;}
+\DoxyCodeLine{22         \}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Usuário não foi adicionado ao banco de dados"};}
+\DoxyCodeLine{25     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_a3710fc64fa4b6515eec29f2929ef23aa}\label{classrepo_1_1UserRepo_a3710fc64fa4b6515eec29f2929ef23aa}} 
+\index{repo::UserRepo@{repo::UserRepo}!followUser@{followUser}}
+\index{followUser@{followUser}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{followUser()}{followUser()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} repo\+::\+User\+Repo\+::follow\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{follower,  }\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{followed }\end{DoxyParamCaption})}
+
+
+
+Adiciona o following a lista de seguidors do follower. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em follower} & Usuario que vai seguir \\
+\hline
+{\em followed} & Usuario seguido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+O usuario seguido 
+\end{DoxyReturn}
+
+
+Definition at line 83 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{83                                                                          \{}
+\DoxyCodeLine{84         std::string sql = \textcolor{stringliteral}{"INSERT INTO follow (follower\_id, followed\_id) VALUES ("}+std::to\_string(follower.id())+\textcolor{stringliteral}{", "}+std::to\_string(followed.id())+\textcolor{stringliteral}{");"};}
+\DoxyCodeLine{85         \textcolor{keywordtype}{int} r = \mbox{\hyperlink{classrepo_1_1AbstractRepo_abecbbf012d9640e349d2ac6c5ddb61d8}{executeInsert}}(\_db, sql);}
+\DoxyCodeLine{86         \textcolor{keywordflow}{return} followed;}
+\DoxyCodeLine{87     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_a28c41843f56b30db30ce05ff067abf93}\label{classrepo_1_1UserRepo_a28c41843f56b30db30ce05ff067abf93}} 
+\index{repo::UserRepo@{repo::UserRepo}!getFollowing@{getFollowing}}
+\index{getFollowing@{getFollowing}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{getFollowing()}{getFollowing()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $>$ repo\+::\+User\+Repo\+::get\+Following (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{u }\end{DoxyParamCaption})}
+
+
+
+Obtem uma lista de todos os seguidos de um usuario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & O usuário \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um vetor com os seguidos 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63                                                            \{}
+\DoxyCodeLine{64         std::vector<model::User> userVec;}
+\DoxyCodeLine{65         std::string sql = \textcolor{stringliteral}{"SELECT u.id FROM follow f JOIN user u ON u.id = f.followed\_id WHERE follower\_id="}+std::to\_string(u.id())+\textcolor{stringliteral}{";"};}
+\DoxyCodeLine{66         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{67         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} userId : result) \{}
+\DoxyCodeLine{68             }
+\DoxyCodeLine{69             userVec.push\_back(\mbox{\hyperlink{classrepo_1_1UserRepo_a970a0aa268df0ae785f77b4f984c8d30}{searchUserById}}(stoi(userId[\textcolor{stringliteral}{"id"}])));}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         \textcolor{keywordflow}{return} userVec;}
+\DoxyCodeLine{73     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_af6d5a65b0543e35ba57c382c512d417e}\label{classrepo_1_1UserRepo_af6d5a65b0543e35ba57c382c512d417e}} 
+\index{repo::UserRepo@{repo::UserRepo}!isUserFollow@{isUserFollow}}
+\index{isUserFollow@{isUserFollow}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{isUserFollow()}{isUserFollow()}}
+{\footnotesize\ttfamily int repo\+::\+User\+Repo\+::is\+User\+Follow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{follower,  }\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{followed }\end{DoxyParamCaption})}
+
+
+
+Checa se o usuário já foi seguido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em follower} & Usuario seguidor \\
+\hline
+{\em followed} & Usuario seguido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna 1 se o usuário realmente é seguido pelo follower e 0 caso contrário 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75                                                                      \{}
+\DoxyCodeLine{76         std::vector<model::User> userVec;}
+\DoxyCodeLine{77         std::string sql = \textcolor{stringliteral}{"SELECT u.id FROM follow f JOIN user u ON u.id = f.followed\_id WHERE follower\_id="}+std::to\_string(follower.id())+\textcolor{stringliteral}{" "}}
+\DoxyCodeLine{78                         \textcolor{stringliteral}{"AND followed\_id="}+std::to\_string(followed.id())+\textcolor{stringliteral}{";"};}
+\DoxyCodeLine{79         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{80         \textcolor{keywordflow}{return} result.size();}
+\DoxyCodeLine{81     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_acbf98e8197108f98371af841ce347374}\label{classrepo_1_1UserRepo_acbf98e8197108f98371af841ce347374}} 
+\index{repo::UserRepo@{repo::UserRepo}!searchUser@{searchUser}}
+\index{searchUser@{searchUser}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{searchUser()}{searchUser()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $>$ repo\+::\+User\+Repo\+::search\+User (\begin{DoxyParamCaption}\item[{std\+::string}]{keyword }\end{DoxyParamCaption})}
+
+
+
+Busca usuário baseado em uma keyword. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna uma lista de usuarios que contenham a chave especificada no userame 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{50                                                                \{}
+\DoxyCodeLine{51         std::vector<model::User> userVec;}
+\DoxyCodeLine{52         std::string sql;}
+\DoxyCodeLine{53         sql += \textcolor{stringliteral}{"SELECT * FROM user WHERE username LIKE '\%"} + keyword + \textcolor{stringliteral}{"\%' LIMIT 5;"};}
+\DoxyCodeLine{54         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{55         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} userData : result) \{}
+\DoxyCodeLine{56             \mbox{\hyperlink{classmodel_1_1User}{model::User}} u(stoi(userData[\textcolor{stringliteral}{"id"}]), userData[\textcolor{stringliteral}{"username"}], userData[\textcolor{stringliteral}{"password"}], userData[\textcolor{stringliteral}{"nickname"}]);}
+\DoxyCodeLine{57             userVec.push\_back(u);}
+\DoxyCodeLine{58         \} }
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         \textcolor{keywordflow}{return} userVec;}
+\DoxyCodeLine{61     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_a970a0aa268df0ae785f77b4f984c8d30}\label{classrepo_1_1UserRepo_a970a0aa268df0ae785f77b4f984c8d30}} 
+\index{repo::UserRepo@{repo::UserRepo}!searchUserById@{searchUserById}}
+\index{searchUserById@{searchUserById}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{searchUserById()}{searchUserById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} repo\+::\+User\+Repo\+::search\+User\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Busca usúario baseado em um id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o usuário específico com esse id 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27                                              \{}
+\DoxyCodeLine{28         std::string sql;}
+\DoxyCodeLine{29         sql += \textcolor{stringliteral}{"SELECT * FROM user WHERE id = "} + std::to\_string(\textcolor{keywordtype}{id}) + \textcolor{stringliteral}{";"};}
+\DoxyCodeLine{30         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{31         }
+\DoxyCodeLine{32         \mbox{\hyperlink{classmodel_1_1User}{model::User}} u(stoi(result[0][\textcolor{stringliteral}{"id"}]), result[0][\textcolor{stringliteral}{"username"}], result[0][\textcolor{stringliteral}{"password"}], result[0][\textcolor{stringliteral}{"nickname"}]);}
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} u;}
+\DoxyCodeLine{34     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_aa741d3e2bf5da286471624972c80ccd3}\label{classrepo_1_1UserRepo_aa741d3e2bf5da286471624972c80ccd3}} 
+\index{repo::UserRepo@{repo::UserRepo}!searchUserByUsername@{searchUserByUsername}}
+\index{searchUserByUsername@{searchUserByUsername}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{searchUserByUsername()}{searchUserByUsername()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $\ast$ repo\+::\+User\+Repo\+::search\+User\+By\+Username (\begin{DoxyParamCaption}\item[{std\+::string}]{username }\end{DoxyParamCaption})}
+
+
+
+Busca usuário baseado no seu username. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna um usuário especifico 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36                                                                 \{}
+\DoxyCodeLine{37         std::string sql;}
+\DoxyCodeLine{38         sql += \textcolor{stringliteral}{"SELECT * FROM user WHERE username = '"} + username + \textcolor{stringliteral}{"';"};}
+\DoxyCodeLine{39         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{40         }
+\DoxyCodeLine{41         \textcolor{keywordflow}{if} (!result.empty()) \{}
+\DoxyCodeLine{42             \mbox{\hyperlink{classmodel_1_1User}{model::User}}* u = \textcolor{keyword}{new} \mbox{\hyperlink{classmodel_1_1User}{model::User}}(stoi(result[0][\textcolor{stringliteral}{"id"}]), result[0][\textcolor{stringliteral}{"username"}], result[0][\textcolor{stringliteral}{"password"}], result[0][\textcolor{stringliteral}{"nickname"}]);}
+\DoxyCodeLine{43             \textcolor{keywordflow}{return} u;}
+\DoxyCodeLine{44         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{45             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr}; \textcolor{comment}{// Retorna um ponteiro nulo se não encontrar o usuário}}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1UserRepo_a048b20041ecaaa74c41d424660165b60}\label{classrepo_1_1UserRepo_a048b20041ecaaa74c41d424660165b60}} 
+\index{repo::UserRepo@{repo::UserRepo}!unfollowUser@{unfollowUser}}
+\index{unfollowUser@{unfollowUser}!repo::UserRepo@{repo::UserRepo}}
+\doxysubsubsection{\texorpdfstring{unfollowUser()}{unfollowUser()}}
+{\footnotesize\ttfamily int repo\+::\+User\+Repo\+::unfollow\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{follower,  }\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{followed }\end{DoxyParamCaption})}
+
+
+
+Remove o following da lista de seguidors do follower. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em follower} & Usuario seguidor \\
+\hline
+{\em followed} & Usuario seguido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna 1 se a remoção foi bem-\/sucedida, caso contrário, retorna 0 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file userrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89                                                                      \{}
+\DoxyCodeLine{90         std::string sql = \textcolor{stringliteral}{"DELETE FROM follow WHERE follower\_id="}+std::to\_string(follower.id())+\textcolor{stringliteral}{" "}}
+\DoxyCodeLine{91                         \textcolor{stringliteral}{"AND followed\_id="}+std::to\_string(followed.id())+\textcolor{stringliteral}{";"};}
+\DoxyCodeLine{92         \textcolor{keywordflow}{return} \mbox{\hyperlink{classrepo_1_1AbstractRepo_ac3b7e906d921ba432e48e8cc1065ee28}{executeDelete}}(\_db, sql);}
+\DoxyCodeLine{93     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+userrepo.\+hpp\item 
+userrepo.\+cpp\end{DoxyCompactItemize}

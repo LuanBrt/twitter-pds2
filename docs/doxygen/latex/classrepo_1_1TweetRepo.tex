@@ -1,0 +1,201 @@
+\hypertarget{classrepo_1_1TweetRepo}{}\doxysection{repo\+::Tweet\+Repo Class Reference}
+\label{classrepo_1_1TweetRepo}\index{repo::TweetRepo@{repo::TweetRepo}}
+Inheritance diagram for repo\+::Tweet\+Repo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrepo_1_1TweetRepo}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} \mbox{\hyperlink{classrepo_1_1TweetRepo_afd26b370ce3c09f6bc753f6b2e2017a7}{add\+Tweet}} (\mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} tweet)
+\begin{DoxyCompactList}\small\item\em Adiciona um tweet ao banco de dados. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} $>$ \mbox{\hyperlink{classrepo_1_1TweetRepo_ab051f9774acb2f086f10c3f059a964a9}{get\+Tweets}} ()
+\begin{DoxyCompactList}\small\item\em Pega todos os tweets do banco de dados. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} \mbox{\hyperlink{classrepo_1_1TweetRepo_ab7cdf5b9cfce1784dec6ae3e6a117f1f}{search\+Tweet\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Busca um tweet específico com esse id. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_a8b3908bfcabfb6b52933ebf8d92bb76e}\label{classrepo_1_1TweetRepo_a8b3908bfcabfb6b52933ebf8d92bb76e}} 
+void {\bfseries like\+Tweet} (int id)
+\item 
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_ae0b08d2ef019b5ef6c72b70e840b35a5}\label{classrepo_1_1TweetRepo_ae0b08d2ef019b5ef6c72b70e840b35a5}} 
+void {\bfseries dislike\+Tweet} (int id)
+\item 
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_a4c586b5122e4c4c67e221653cbce2091}\label{classrepo_1_1TweetRepo_a4c586b5122e4c4c67e221653cbce2091}} 
+std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} $>$ {\bfseries search\+Tweets} (std\+::string search\+String)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} $>$ \mbox{\hyperlink{classrepo_1_1TweetRepo_a0612ac45f0c502e76bac3c19e390fca4}{get\+User\+Timeline}} (\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} u)
+\begin{DoxyCompactList}\small\item\em Obtem os tweets para a timeline de determinado user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 10 of file tweetrepo.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_afd26b370ce3c09f6bc753f6b2e2017a7}\label{classrepo_1_1TweetRepo_afd26b370ce3c09f6bc753f6b2e2017a7}} 
+\index{repo::TweetRepo@{repo::TweetRepo}!addTweet@{addTweet}}
+\index{addTweet@{addTweet}!repo::TweetRepo@{repo::TweetRepo}}
+\doxysubsubsection{\texorpdfstring{addTweet()}{addTweet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} repo\+::\+Tweet\+Repo\+::add\+Tweet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}}}]{tweet }\end{DoxyParamCaption})}
+
+
+
+Adiciona um tweet ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tweet} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o próprio tweet criado caso sucesso e um throw de erro caso dê errado 
+\end{DoxyReturn}
+
+
+Definition at line 8 of file tweetrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8                                                    \{}
+\DoxyCodeLine{9         std::string sql;}
+\DoxyCodeLine{10         sql += \textcolor{stringliteral}{"INSERT INTO tweet (author\_id, description, timestamp, likes) VALUES ("};}
+\DoxyCodeLine{11         sql += \textcolor{stringliteral}{""} + std::to\_string(tweet.\mbox{\hyperlink{classmodel_1_1Tweet_ae28774fa19dc87cfd624b334b78db901}{author}}().id()) + \textcolor{stringliteral}{", "};}
+\DoxyCodeLine{12         sql += \textcolor{stringliteral}{"'"} + tweet.\mbox{\hyperlink{classmodel_1_1Tweet_a8cef4a3d0f0828cd269173dc38875473}{description}}() + \textcolor{stringliteral}{"', "};}
+\DoxyCodeLine{13         sql += \textcolor{stringliteral}{"'"} + tweet.\mbox{\hyperlink{classmodel_1_1Tweet_ad6c2bfbe868ec2040d6d1f50848b46bb}{timestamp}}() + \textcolor{stringliteral}{"', "};}
+\DoxyCodeLine{14         sql += \textcolor{stringliteral}{""} + std::to\_string(tweet.\mbox{\hyperlink{classmodel_1_1Tweet_ae1532b3719af233e2e54e2f6817874f0}{likes}}()) + \textcolor{stringliteral}{");"};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16         \textcolor{keywordtype}{int} r = \mbox{\hyperlink{classrepo_1_1AbstractRepo_abecbbf012d9640e349d2ac6c5ddb61d8}{executeInsert}}(\_db, sql);}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         }
+\DoxyCodeLine{19         \textcolor{keywordflow}{if} (r != 0) \{}
+\DoxyCodeLine{20             sqlite3\_int64 lastRowId = sqlite3\_last\_insert\_rowid(\_db);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22             \textcolor{comment}{// Você pode agora buscar o tweet recém-\/criado usando o ID obtido}}
+\DoxyCodeLine{23             \mbox{\hyperlink{classmodel_1_1Tweet}{model::Tweet}} newTweet = \mbox{\hyperlink{classrepo_1_1TweetRepo_ab7cdf5b9cfce1784dec6ae3e6a117f1f}{searchTweetById}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(lastRowId));}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25             \textcolor{comment}{// Retornando o tweet recém-\/criado}}
+\DoxyCodeLine{26             \textcolor{keywordflow}{return} newTweet;}
+\DoxyCodeLine{27         \}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Tweet não foi adicionado ao banco de dados"};}
+\DoxyCodeLine{30     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_ab051f9774acb2f086f10c3f059a964a9}\label{classrepo_1_1TweetRepo_ab051f9774acb2f086f10c3f059a964a9}} 
+\index{repo::TweetRepo@{repo::TweetRepo}!getTweets@{getTweets}}
+\index{getTweets@{getTweets}!repo::TweetRepo@{repo::TweetRepo}}
+\doxysubsubsection{\texorpdfstring{getTweets()}{getTweets()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} $>$ repo\+::\+Tweet\+Repo\+::get\+Tweets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Pega todos os tweets do banco de dados. 
+
+\begin{DoxyReturn}{Returns}
+Retorna uma lista de todos os tweets do banco de dados 
+\end{DoxyReturn}
+
+
+Definition at line 32 of file tweetrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32                                                \{}
+\DoxyCodeLine{33     std::vector<model::Tweet> tweetVec;}
+\DoxyCodeLine{34     std::string sql;}
+\DoxyCodeLine{35     sql += \textcolor{stringliteral}{"SELECT * FROM tweet;"};}
+\DoxyCodeLine{36     std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{37     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} tweetData : result) \{}
+\DoxyCodeLine{38         \mbox{\hyperlink{classmodel_1_1Tweet}{model::Tweet}} t(stoi(tweetData[\textcolor{stringliteral}{"id"}]),stoi(tweetData[\textcolor{stringliteral}{"author\_id"}]), tweetData[\textcolor{stringliteral}{"description"}], tweetData[\textcolor{stringliteral}{"timestamp"}], stoi(tweetData[\textcolor{stringliteral}{"likes"}]));}
+\DoxyCodeLine{39         tweetVec.push\_back(t);}
+\DoxyCodeLine{40     \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordflow}{return} tweetVec;}
+\DoxyCodeLine{43     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_a0612ac45f0c502e76bac3c19e390fca4}\label{classrepo_1_1TweetRepo_a0612ac45f0c502e76bac3c19e390fca4}} 
+\index{repo::TweetRepo@{repo::TweetRepo}!getUserTimeline@{getUserTimeline}}
+\index{getUserTimeline@{getUserTimeline}!repo::TweetRepo@{repo::TweetRepo}}
+\doxysubsubsection{\texorpdfstring{getUserTimeline()}{getUserTimeline()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} $>$ repo\+::\+Tweet\+Repo\+::get\+User\+Timeline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}}}]{u }\end{DoxyParamCaption})}
+
+
+
+Obtem os tweets para a timeline de determinado user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & O usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Um vetor com os tweets 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file tweetrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70                                                                 \{}
+\DoxyCodeLine{71         std::vector<model::Tweet> response;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         std::string sql = \textcolor{stringliteral}{"SELECT t.* FROM follow f JOIN tweet t ON f.followed\_id = t.author\_id WHERE f.follower\_id="}+std::to\_string(u.id())+\textcolor{stringliteral}{" UNION "}}
+\DoxyCodeLine{74                             \textcolor{stringliteral}{"SELECT t.* FROM tweet t WHERE t.author\_id="}+std::to\_string(u.id())+\textcolor{stringliteral}{";"};}
+\DoxyCodeLine{75         }
+\DoxyCodeLine{76         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} tweetData : result) \{}
+\DoxyCodeLine{79             response.push\_back(\mbox{\hyperlink{classmodel_1_1Tweet}{model::Tweet}}(stoi(tweetData[\textcolor{stringliteral}{"id"}]), stoi(tweetData[\textcolor{stringliteral}{"author\_id"}]), tweetData[\textcolor{stringliteral}{"description"}], tweetData[\textcolor{stringliteral}{"timestamp"}], stoi(tweetData[\textcolor{stringliteral}{"likes"}])));}
+\DoxyCodeLine{80         \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} response;}
+\DoxyCodeLine{83     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classrepo_1_1TweetRepo_ab7cdf5b9cfce1784dec6ae3e6a117f1f}\label{classrepo_1_1TweetRepo_ab7cdf5b9cfce1784dec6ae3e6a117f1f}} 
+\index{repo::TweetRepo@{repo::TweetRepo}!searchTweetById@{searchTweetById}}
+\index{searchTweetById@{searchTweetById}!repo::TweetRepo@{repo::TweetRepo}}
+\doxysubsubsection{\texorpdfstring{searchTweetById()}{searchTweetById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1Tweet}{model\+::\+Tweet}} repo\+::\+Tweet\+Repo\+::search\+Tweet\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Busca um tweet específico com esse id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o tweet que contém o id especificado 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file tweetrepo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45                                                 \{}
+\DoxyCodeLine{46         std::string sql;}
+\DoxyCodeLine{47         sql += \textcolor{stringliteral}{"SELECT * FROM tweet WHERE id = "} + std::to\_string(\textcolor{keywordtype}{id}) + \textcolor{stringliteral}{";"};}
+\DoxyCodeLine{48         std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classrepo_1_1AbstractRepo_a33d5c20bf8231b998a22cce01e5923ed}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{49         }
+\DoxyCodeLine{50         \mbox{\hyperlink{classmodel_1_1Tweet}{model::Tweet}} t(stoi(result[0][\textcolor{stringliteral}{"id"}]), stoi(result[0][\textcolor{stringliteral}{"author\_id"}]), result[0][\textcolor{stringliteral}{"description"}], result[0][\textcolor{stringliteral}{"timestamp"}], stoi(result[0][\textcolor{stringliteral}{"likes"}]));}
+\DoxyCodeLine{51         \textcolor{keywordflow}{return} t;}
+\DoxyCodeLine{52     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tweetrepo.\+hpp\item 
+tweetrepo.\+cpp\end{DoxyCompactItemize}

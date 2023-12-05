@@ -1,0 +1,199 @@
+\hypertarget{classcontroller_1_1AuthController}{}\doxysection{controller\+::Auth\+Controller Class Reference}
+\label{classcontroller_1_1AuthController}\index{controller::AuthController@{controller::AuthController}}
+Inheritance diagram for controller\+::Auth\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcontroller_1_1AuthController}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcontroller_1_1AuthController_a107858b8caf8751d1a5a0845da348ae4}\label{classcontroller_1_1AuthController_a107858b8caf8751d1a5a0845da348ae4}} 
+\mbox{\hyperlink{classcontroller_1_1AuthController_a107858b8caf8751d1a5a0845da348ae4}{Auth\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcontroller_1_1AbstractController}{Abstract\+Controller}} $\ast$ \mbox{\hyperlink{classcontroller_1_1AuthController_a0e8139c3f50c81f2b73afc7cf07b549e}{render}} () override
+\begin{DoxyCompactList}\small\item\em Renderiza uma tela para o usuario e obtem inputs do mesmo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcontroller_1_1AuthController_aff51fed0f27b15c84c4f56ddc1bdf275}{validate\+User}} (std\+::map$<$ std\+::string, std\+::string $>$ possible\+User)
+\begin{DoxyCompactList}\small\item\em Função que valida os dados fornecidos para o registro de um novo usuário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $\ast$ \mbox{\hyperlink{classcontroller_1_1AuthController_ac45dfc2858ee9fe5fe3f5745387bca31}{validate\+Login}} (std\+::map$<$ std\+::string, std\+::string $>$ possible\+User)
+\begin{DoxyCompactList}\small\item\em Função que valida as credenciais de login de um usuário. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 11 of file authcontroller.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcontroller_1_1AuthController_a0e8139c3f50c81f2b73afc7cf07b549e}\label{classcontroller_1_1AuthController_a0e8139c3f50c81f2b73afc7cf07b549e}} 
+\index{controller::AuthController@{controller::AuthController}!render@{render}}
+\index{render@{render}!controller::AuthController@{controller::AuthController}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcontroller_1_1AbstractController}{Abstract\+Controller}} $\ast$ controller\+::\+Auth\+Controller\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renderiza uma tela para o usuario e obtem inputs do mesmo. 
+
+\begin{DoxyReturn}{Returns}
+Novo controlador de uma nova tela 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcontroller_1_1AbstractController_ae3673d23215b9bf7b23f756638feaf86}{controller\+::\+Abstract\+Controller}}.
+
+
+
+Definition at line 80 of file authcontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80                                                \{}
+\DoxyCodeLine{81         \textcolor{keywordtype}{int} selected = \_loginScreen.\mbox{\hyperlink{classscreen_1_1AbstractScreen_ae8ef032aa0a46a0f17eacd06dbd7326a}{renderMenu}}(\_options);}
+\DoxyCodeLine{82         \textcolor{keywordflow}{switch} (selected) \{ }
+\DoxyCodeLine{83             }
+\DoxyCodeLine{84             \textcolor{comment}{// Sair}}
+\DoxyCodeLine{85             \textcolor{keywordflow}{case} ValidOptions::EXIT: \{}
+\DoxyCodeLine{86                 exit(0);}
+\DoxyCodeLine{87                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{88             \}}
+\DoxyCodeLine{89             }
+\DoxyCodeLine{90             \textcolor{comment}{// Obter credenciais de login:}}
+\DoxyCodeLine{91             \textcolor{keywordflow}{case} ValidOptions::LOGIN: \{}
+\DoxyCodeLine{92                 \_loginScreen.flushConsole();}
+\DoxyCodeLine{93                 std::map<std::string, std::string> response = \_loginScreen.\mbox{\hyperlink{classscreen_1_1AbstractScreen_aeaf30f5abe84f212010ed1af41df1543}{renderForm}}(\{\textcolor{stringliteral}{"Usuario"}, \textcolor{stringliteral}{"Senha"}\});}
+\DoxyCodeLine{94                 \mbox{\hyperlink{classmodel_1_1User}{model::User}}* authenticatedUser = \mbox{\hyperlink{classcontroller_1_1AuthController_ac45dfc2858ee9fe5fe3f5745387bca31}{validateLogin}}(response);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{classcontroller_1_1AuthController_ac45dfc2858ee9fe5fe3f5745387bca31}{validateLogin}}(response) == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{97                     \textcolor{comment}{// LÓGICA DE LOGIN MAL SUCEDIDO:}}
+\DoxyCodeLine{98                     \_loginScreen.renderMessage(\textcolor{stringliteral}{"Login mal sucedido, voltando para a tela inicial...."});}
+\DoxyCodeLine{99                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classcontroller_1_1AuthController_a107858b8caf8751d1a5a0845da348ae4}{AuthController}};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101                 \}}
+\DoxyCodeLine{102                 \textcolor{keywordflow}{else} \{  }
+\DoxyCodeLine{103                     \textcolor{comment}{// LÓGICA DE LOGIN BEM SUCEDIDO:}}
+\DoxyCodeLine{104                     \_loginScreen.\mbox{\hyperlink{classscreen_1_1LoginScreen_a36cfa286cd1a2e6eec386fe3dc023295}{successfulLogin}}(*authenticatedUser);}
+\DoxyCodeLine{105                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} TimelineController(*authenticatedUser);}
+\DoxyCodeLine{106                 \}}
+\DoxyCodeLine{107             \}}
+\DoxyCodeLine{108             \textcolor{comment}{// Implementação da escolha REGISTER:}}
+\DoxyCodeLine{109             \textcolor{keywordflow}{case} ValidOptions::REGISTER: \{}
+\DoxyCodeLine{110                 \_loginScreen.flushConsole();}
+\DoxyCodeLine{111                 std::map<std::string, std::string> response = \_loginScreen.\mbox{\hyperlink{classscreen_1_1AbstractScreen_aeaf30f5abe84f212010ed1af41df1543}{renderForm}}(\{\textcolor{stringliteral}{"Usuario"}, \textcolor{stringliteral}{"Apelido"}, \textcolor{stringliteral}{"Senha"}, \textcolor{stringliteral}{"Confirmação de Senha"}\});}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113                 \textcolor{comment}{//Código a seguir é um feedback do registro, se ele foi bem ou mal sucedido:}}
+\DoxyCodeLine{114                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{classcontroller_1_1AuthController_aff51fed0f27b15c84c4f56ddc1bdf275}{validateUser}}(response) == 1) \{}
+\DoxyCodeLine{115                     \mbox{\hyperlink{classmodel_1_1User}{model::User}} tempUser(response[\textcolor{stringliteral}{"Usuario"}],response[\textcolor{stringliteral}{"Senha"}],response[\textcolor{stringliteral}{"Apelido"}]);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117                     \mbox{\hyperlink{classmodel_1_1User}{model::User}} registerUser = \_repo.\mbox{\hyperlink{classrepo_1_1UserRepo_a93ba22486d180aaf93ade1d62d9e5dd8}{addUser}}(tempUser);}
+\DoxyCodeLine{118                     \_loginScreen.\mbox{\hyperlink{classscreen_1_1LoginScreen_a9e6cdaa001478c570d8310696333ae03}{sucessfulRegister}}(registerUser);}
+\DoxyCodeLine{119                 \}}
+\DoxyCodeLine{120                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{121                     \_loginScreen.renderMessage(\textcolor{stringliteral}{"Dados para registro inválidos"});}
+\DoxyCodeLine{122                     \_loginScreen.renderMessage(\textcolor{stringliteral}{"Voltando para a página inicial..."});}
+\DoxyCodeLine{123                 \}}
+\DoxyCodeLine{124             \}}
+\DoxyCodeLine{125             \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classcontroller_1_1AuthController_a107858b8caf8751d1a5a0845da348ae4}{AuthController}};}
+\DoxyCodeLine{126         \}}
+\DoxyCodeLine{127         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{128     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcontroller_1_1AuthController_ac45dfc2858ee9fe5fe3f5745387bca31}\label{classcontroller_1_1AuthController_ac45dfc2858ee9fe5fe3f5745387bca31}} 
+\index{controller::AuthController@{controller::AuthController}!validateLogin@{validateLogin}}
+\index{validateLogin@{validateLogin}!controller::AuthController@{controller::AuthController}}
+\doxysubsubsection{\texorpdfstring{validateLogin()}{validateLogin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmodel_1_1User}{model\+::\+User}} $\ast$ controller\+::\+Auth\+Controller\+::validate\+Login (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, std\+::string $>$}]{possible\+User }\end{DoxyParamCaption})}
+
+
+
+Função que valida as credenciais de login de um usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em possible\+User} & \char`\"{}\+Mapa-\/resposta\char`\"{} dos campos do formulário de login de usuário para seus valores correspondentes (usuario, apelido, senha). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna um ponteiro para o objeto User autenticado se as credenciais estiverem corretas. Retorna nullptr se as credenciais forem inválidas. 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file authcontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58                                                                                       \{}
+\DoxyCodeLine{59         std::vector<model::User> dbResponse = \_repo.\mbox{\hyperlink{classrepo_1_1UserRepo_acbf98e8197108f98371af841ce347374}{searchUser}}(possibleUser[\textcolor{stringliteral}{"Usuario"}]); }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}\& user : dbResponse) \{}
+\DoxyCodeLine{62             \textcolor{keywordflow}{if} (user.username() == possibleUser[\textcolor{stringliteral}{"Usuario"}] \&\& user.password() == possibleUser[\textcolor{stringliteral}{"Senha"}]) \{}
+\DoxyCodeLine{63                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{classmodel_1_1User}{model::User}}(user);}
+\DoxyCodeLine{64             \};}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{68     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcontroller_1_1AuthController_aff51fed0f27b15c84c4f56ddc1bdf275}\label{classcontroller_1_1AuthController_aff51fed0f27b15c84c4f56ddc1bdf275}} 
+\index{controller::AuthController@{controller::AuthController}!validateUser@{validateUser}}
+\index{validateUser@{validateUser}!controller::AuthController@{controller::AuthController}}
+\doxysubsubsection{\texorpdfstring{validateUser()}{validateUser()}}
+{\footnotesize\ttfamily bool controller\+::\+Auth\+Controller\+::validate\+User (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, std\+::string $>$}]{possible\+User }\end{DoxyParamCaption})}
+
+
+
+Função que valida os dados fornecidos para o registro de um novo usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em possible\+User} & \char`\"{}\+Mapa-\/resposta\char`\"{} dos campos do formulário de registro de usuário para seus valores correspondentes (usuario, apelido, senha, confirmação de senha). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna verdadeiro se os dados forem válidos e o registro puder ser concluído com sucesso. Retorna falso se houver problemas com os dados fornecidos. 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file authcontroller.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{26                                                                                \{}
+\DoxyCodeLine{27         \textcolor{keywordtype}{bool} userExists = \textcolor{keyword}{false};}
+\DoxyCodeLine{28         std::vector<model::User> dbResponse = \_repo.\mbox{\hyperlink{classrepo_1_1UserRepo_acbf98e8197108f98371af841ce347374}{searchUser}}(possibleUser[\textcolor{stringliteral}{"Usuario"}]);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} user : dbResponse) \{}
+\DoxyCodeLine{31             std::cout<<user.username()<<std::endl;}
+\DoxyCodeLine{32             }
+\DoxyCodeLine{33             \textcolor{keywordflow}{if} (user.username() == possibleUser[\textcolor{stringliteral}{"Usuario"}]) \{}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35             \_loginScreen.renderMessage(\textcolor{stringliteral}{"Já existe um usuário com o mesmo nome!\(\backslash\)n"});}
+\DoxyCodeLine{36                 userExists = \textcolor{keyword}{true};}
+\DoxyCodeLine{37             \};}
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \textcolor{keywordflow}{if} (possibleUser[\textcolor{stringliteral}{"Apelido"}] == \textcolor{stringliteral}{""} ||}
+\DoxyCodeLine{41             possibleUser[\textcolor{stringliteral}{"Usuario"}] == \textcolor{stringliteral}{""} ||}
+\DoxyCodeLine{42             possibleUser[\textcolor{stringliteral}{"Senha"}] == \textcolor{stringliteral}{""} ||}
+\DoxyCodeLine{43             possibleUser[\textcolor{stringliteral}{"Confirmação de Senha"}] == \textcolor{stringliteral}{""} ||}
+\DoxyCodeLine{44             possibleUser[\textcolor{stringliteral}{"Senha"}].size() < 8 ||}
+\DoxyCodeLine{45             possibleUser[\textcolor{stringliteral}{"Senha"}] != possibleUser[\textcolor{stringliteral}{"Confirmação de Senha"}] ||}
+\DoxyCodeLine{46             userExists == \textcolor{keyword}{true}) \{}
+\DoxyCodeLine{47             \textcolor{keywordflow}{return} \textcolor{keyword}{false};  \textcolor{comment}{// Se alguma verificação falhar, retorna falso}}
+\DoxyCodeLine{48         \}}
+\DoxyCodeLine{49         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \};}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+authcontroller.\+hpp\item 
+authcontroller.\+cpp\end{DoxyCompactItemize}

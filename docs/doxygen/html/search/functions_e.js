@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['validatelogin_277',['validateLogin',['../classAuthController.html#accedaa93ade079b12ee705d3eecd74af',1,'AuthController']]],
-  ['validateuser_278',['validateUser',['../classAuthController.html#a0aca3236f9a82de0c6b6b1f2aa9eabef',1,'AuthController']]]
+  ['validatelogin_280',['validateLogin',['../classcontroller_1_1AuthController.html#ac45dfc2858ee9fe5fe3f5745387bca31',1,'controller::AuthController']]],
+  ['validateuser_281',['validateUser',['../classcontroller_1_1AuthController.html#aff51fed0f27b15c84c4f56ddc1bdf275',1,'controller::AuthController']]]
 ];

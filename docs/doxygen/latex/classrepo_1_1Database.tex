@@ -1,0 +1,71 @@
+\hypertarget{classrepo_1_1Database}{}\doxysection{repo\+::Database Class Reference}
+\label{classrepo_1_1Database}\index{repo::Database@{repo::Database}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classrepo_1_1Database_a5795c26c01bbc9fcb45cb49813e40eff}\label{classrepo_1_1Database_a5795c26c01bbc9fcb45cb49813e40eff}} 
+\mbox{\hyperlink{classrepo_1_1Database_a5795c26c01bbc9fcb45cb49813e40eff}{Database}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor padrao. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrepo_1_1Database_ac6a349d61692f63e799d21b81f61b45e}\label{classrepo_1_1Database_ac6a349d61692f63e799d21b81f61b45e}} 
+\mbox{\hyperlink{classrepo_1_1Database_ac6a349d61692f63e799d21b81f61b45e}{$\sim$\+Database}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrao. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classrepo_1_1Database_a6663277f98d48cef0de2cad3f3db7206}\label{classrepo_1_1Database_a6663277f98d48cef0de2cad3f3db7206}} 
+void \mbox{\hyperlink{classrepo_1_1Database_a6663277f98d48cef0de2cad3f3db7206}{create\+Db}} ()
+\begin{DoxyCompactList}\small\item\em Comando para criar o banco de dados e todas as tabelas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classrepo_1_1Database_a5a1355355095e15b2b0f05cb50220ae2}{create\+Table}} (std\+::string table\+Name, std\+::string sql)
+\begin{DoxyCompactList}\small\item\em Comando para criar uma tabela no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 6 of file database.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classrepo_1_1Database_a5a1355355095e15b2b0f05cb50220ae2}\label{classrepo_1_1Database_a5a1355355095e15b2b0f05cb50220ae2}} 
+\index{repo::Database@{repo::Database}!createTable@{createTable}}
+\index{createTable@{createTable}!repo::Database@{repo::Database}}
+\doxysubsubsection{\texorpdfstring{createTable()}{createTable()}}
+{\footnotesize\ttfamily void repo\+::\+Database\+::create\+Table (\begin{DoxyParamCaption}\item[{std\+::string}]{table\+Name,  }\item[{std\+::string}]{sql }\end{DoxyParamCaption})}
+
+
+
+Comando para criar uma tabela no banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & Nome da tabela. \\
+\hline
+{\em sql} & mapa contendo nome do atributo e restricoes do mesmo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 46 of file database.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46                                                                  \{}
+\DoxyCodeLine{47         \textcolor{keywordtype}{char} *zErrMsg = 0;}
+\DoxyCodeLine{48         \textcolor{keywordtype}{int} rc;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \textcolor{comment}{// executando o comando de criação}}
+\DoxyCodeLine{51         rc = sqlite3\_exec(\_db, sql.c\_str(), \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr}, \&zErrMsg);}
+\DoxyCodeLine{52         \textcolor{keywordflow}{if}( rc != SQLITE\_OK )\{}
+\DoxyCodeLine{53             std::cout << \textcolor{stringliteral}{"SQL error: "} << zErrMsg << std::endl;}
+\DoxyCodeLine{54             sqlite3\_free(zErrMsg);}
+\DoxyCodeLine{55         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{56             std::cout << \textcolor{stringliteral}{"Table created\(\backslash\)n"};}
+\DoxyCodeLine{57         \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+database.\+hpp\item 
+database.\+cpp\end{DoxyCompactItemize}

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['database_231',['Database',['../classDatabase.html#a4703c80e6969d33565ea340f768fdadf',1,'Database']]],
-  ['deletelike_232',['deleteLike',['../classLikeRepo.html#ac91ec2b229b0a4bb61bb191fffde085c',1,'LikeRepo']]],
-  ['description_233',['description',['../classComment.html#a42badb3c20796582f2efa420b186febe',1,'Comment::description()'],['../classTweet.html#afef8008a8305610862cfb38f718f68e9',1,'Tweet::description()']]]
+  ['database_232',['Database',['../classrepo_1_1Database.html#a5795c26c01bbc9fcb45cb49813e40eff',1,'repo::Database']]],
+  ['deletelike_233',['deleteLike',['../classrepo_1_1LikeRepo.html#aeb61b9cd2a3ed411aca03da31435e037',1,'repo::LikeRepo']]],
+  ['description_234',['description',['../classmodel_1_1Comment.html#a867a2fe91ce9c448c8e1bc2e7c23abd4',1,'model::Comment::description()'],['../classmodel_1_1Tweet.html#a8cef4a3d0f0828cd269173dc38875473',1,'model::Tweet::description()']]]
 ];

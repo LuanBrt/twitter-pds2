@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['getcommentsbytweetid_237',['getCommentsByTweetId',['../classCommentRepo.html#a418b7a40ebeddec0dd3f5f35d8d13007',1,'CommentRepo']]],
-  ['getfollowing_238',['getFollowing',['../classUserRepo.html#a52c5babc49efaad637ddd4017a2c4f51',1,'UserRepo']]],
-  ['gettweetbyid_239',['getTweetById',['../classTweet.html#a1ff3947b5308df17aa063d136a3f7f11',1,'Tweet']]],
-  ['gettweets_240',['getTweets',['../classTimelineController.html#a78427a259e7d3c43053497874ca62cf6',1,'TimelineController::getTweets()'],['../classTweetRepo.html#ab6cf833780eb1a9cf4cb56918aecf181',1,'TweetRepo::getTweets()']]],
-  ['getuser_241',['getUser',['../classUserProfileController.html#acbb5d3900d506d50a381b5f544687aff',1,'UserProfileController']]],
-  ['getusertimeline_242',['getUserTimeline',['../classTweetRepo.html#a252f18a2e19843b78cf4b5f834c5f2de',1,'TweetRepo']]]
+  ['getcommentsbytweetid_239',['getCommentsByTweetId',['../classrepo_1_1CommentRepo.html#ac5b3bcd0b53dd1679718e2b20cdeef82',1,'repo::CommentRepo']]],
+  ['getfollowing_240',['getFollowing',['../classrepo_1_1UserRepo.html#a28c41843f56b30db30ce05ff067abf93',1,'repo::UserRepo']]],
+  ['gettweetbyid_241',['getTweetById',['../classmodel_1_1Tweet.html#a258e46b66352b639f2df85574584e880',1,'model::Tweet']]],
+  ['gettweets_242',['getTweets',['../classcontroller_1_1TimelineController.html#a546b0f82241b8532900038f5e766644b',1,'controller::TimelineController::getTweets()'],['../classrepo_1_1TweetRepo.html#ab051f9774acb2f086f10c3f059a964a9',1,'repo::TweetRepo::getTweets()']]],
+  ['getuser_243',['getUser',['../classcontroller_1_1UserProfileController.html#a50ade2a2a3fa7b7c9dba528aa292fc25',1,'controller::UserProfileController']]],
+  ['getusertimeline_244',['getUserTimeline',['../classrepo_1_1TweetRepo.html#a0612ac45f0c502e76bac3c19e390fca4',1,'repo::TweetRepo']]]
 ];

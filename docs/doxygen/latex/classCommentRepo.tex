@@ -1,0 +1,160 @@
+\hypertarget{classCommentRepo}{}\doxysection{Comment\+Repo Class Reference}
+\label{classCommentRepo}\index{CommentRepo@{CommentRepo}}
+Inheritance diagram for Comment\+Repo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCommentRepo}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classComment}{Comment}} \mbox{\hyperlink{classCommentRepo_a918183ca04e2fa2c979a71d5153ca85c}{add\+Comment}} (\mbox{\hyperlink{classComment}{Comment}} comment)
+\begin{DoxyCompactList}\small\item\em Adiciona um comentário ao banco de dados. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classComment}{Comment}} $>$ \mbox{\hyperlink{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}{get\+Comments\+By\+Tweet\+Id}} (int tweet\+Id)
+\begin{DoxyCompactList}\small\item\em Pega todos os tweets do banco de dados. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classComment}{Comment}} \mbox{\hyperlink{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}{search\+Comment\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Busca tweets que foram enviados por um usuario com esse username. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file commentrepo.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCommentRepo_a918183ca04e2fa2c979a71d5153ca85c}\label{classCommentRepo_a918183ca04e2fa2c979a71d5153ca85c}} 
+\index{CommentRepo@{CommentRepo}!addComment@{addComment}}
+\index{addComment@{addComment}!CommentRepo@{CommentRepo}}
+\doxysubsubsection{\texorpdfstring{addComment()}{addComment()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classComment}{Comment}} Comment\+Repo\+::add\+Comment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classComment}{Comment}}}]{comment }\end{DoxyParamCaption})}
+
+
+
+Adiciona um comentário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comment} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o próprio comentário criado caso sucesso e um throw de erro caso dê errado 
+\end{DoxyReturn}
+
+
+Definition at line 5 of file commentreppo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5                                                \{}
+\DoxyCodeLine{6     std::string sql;}
+\DoxyCodeLine{7     sql += \textcolor{stringliteral}{"INSERT INTO comment (author\_id, tweet\_id, description) VALUES ("};}
+\DoxyCodeLine{8     sql += \textcolor{stringliteral}{""} + std::to\_string(comment.\mbox{\hyperlink{classComment_a68abd81410f49593b5b188c156175af2}{author}}().id()) + \textcolor{stringliteral}{", "};}
+\DoxyCodeLine{9     sql += \textcolor{stringliteral}{""} + std::to\_string(comment.\mbox{\hyperlink{classComment_aef714c2b4d26767048a2935a5e9432da}{tweet}}().\mbox{\hyperlink{classTweet_a9400780825c1deb7b8f87f378596f0c0}{id}}()) + \textcolor{stringliteral}{", "};}
+\DoxyCodeLine{10     sql += \textcolor{stringliteral}{"'"} + comment.\mbox{\hyperlink{classComment_a42badb3c20796582f2efa420b186febe}{description}}() + \textcolor{stringliteral}{"');"};}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     std::cout << sql << std::endl;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} r = \mbox{\hyperlink{classAbstractRepo_ac5942793beb49d527fcd9ae8a6a95d06}{executeInsert}}(\_db, sql);}
+\DoxyCodeLine{14     std::cout << r << std::endl;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     }
+\DoxyCodeLine{17     \textcolor{keywordflow}{if} (r != 0) \{}
+\DoxyCodeLine{18         sqlite3\_int64 lastRowId = sqlite3\_last\_insert\_rowid(\_db);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \textcolor{comment}{// Você pode agora buscar o tweet recém-\/criado usando o ID obtido}}
+\DoxyCodeLine{21         \mbox{\hyperlink{classComment}{Comment}} newComment = \mbox{\hyperlink{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}{searchCommentById}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(lastRowId));}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{comment}{// Retornando o tweet recém-\/criado}}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} newComment;}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Comment não foi adicionado ao banco de dados"};}
+\DoxyCodeLine{28 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}\label{classCommentRepo_a418b7a40ebeddec0dd3f5f35d8d13007}} 
+\index{CommentRepo@{CommentRepo}!getCommentsByTweetId@{getCommentsByTweetId}}
+\index{getCommentsByTweetId@{getCommentsByTweetId}!CommentRepo@{CommentRepo}}
+\doxysubsubsection{\texorpdfstring{getCommentsByTweetId()}{getCommentsByTweetId()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classComment}{Comment}} $>$ Comment\+Repo\+::get\+Comments\+By\+Tweet\+Id (\begin{DoxyParamCaption}\item[{int}]{tweet\+Id }\end{DoxyParamCaption})}
+
+
+
+Pega todos os tweets do banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tweet\+Id} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna uma lista de todos os tweets do banco de dados 
+\end{DoxyReturn}
+
+
+Definition at line 30 of file commentreppo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30                                                                 \{}
+\DoxyCodeLine{31   std::vector<Comment> commentVec;}
+\DoxyCodeLine{32   std::string sql;}
+\DoxyCodeLine{33   sql += \textcolor{stringliteral}{"SELECT * FROM comment WHERE tweet\_id = "} + std::to\_string(tweetId) + \textcolor{stringliteral}{";"};}
+\DoxyCodeLine{34   std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{35   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} commentData : result) \{}
+\DoxyCodeLine{36       \mbox{\hyperlink{classComment}{Comment}} c(stoi(commentData[\textcolor{stringliteral}{"id"}]), stoi(commentData[\textcolor{stringliteral}{"author\_id"}]), }
+\DoxyCodeLine{37         stoi(commentData[\textcolor{stringliteral}{"tweet\_id"}]), commentData[\textcolor{stringliteral}{"description"}]);}
+\DoxyCodeLine{38       commentVec.push\_back(c);}
+\DoxyCodeLine{39   \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41   \textcolor{keywordflow}{return} commentVec;}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}\label{classCommentRepo_a110cdbbe62e11f1ee78c48044d1c45a7}} 
+\index{CommentRepo@{CommentRepo}!searchCommentById@{searchCommentById}}
+\index{searchCommentById@{searchCommentById}!CommentRepo@{CommentRepo}}
+\doxysubsubsection{\texorpdfstring{searchCommentById()}{searchCommentById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classComment}{Comment}} Comment\+Repo\+::search\+Comment\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Busca tweets que foram enviados por um usuario com esse username. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna uma lista de tweets que contenham o author como esse username 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file commentreppo.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44                                              \{}
+\DoxyCodeLine{45   std::string sql;}
+\DoxyCodeLine{46   sql += \textcolor{stringliteral}{"SELECT * FROM comment WHERE id = "} + std::to\_string(\textcolor{keywordtype}{id}) + \textcolor{stringliteral}{";"};}
+\DoxyCodeLine{47   std::vector<std::map<std::string, std::string>> result = \mbox{\hyperlink{classAbstractRepo_ab4fa6ec748e3218ebc2dc116c2435cdf}{executeSelect}}(\_db, sql);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49   \mbox{\hyperlink{classComment}{Comment}} c(stoi(result[0][\textcolor{stringliteral}{"id"}]), stoi(result[0][\textcolor{stringliteral}{"author\_id"}]), }
+\DoxyCodeLine{50     stoi(result[0][\textcolor{stringliteral}{"tweet\_id"}]), result[0][\textcolor{stringliteral}{"description"}]);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52   \textcolor{keywordflow}{return} c;}
+\DoxyCodeLine{53 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+commentrepo.\+hpp\item 
+commentreppo.\+cpp\end{DoxyCompactItemize}

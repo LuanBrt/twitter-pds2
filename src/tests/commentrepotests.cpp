@@ -14,41 +14,41 @@
 TEST_CASE("Testando repositorio de usuários") {
     const char *dbname = "databasetest.db";
     setenv("DBNAME", dbname, 0);
-    Database db;
+    repo::Database db;
     db.createDb();
 
-    TweetRepo tweetRepo;
-    UserRepo userRepo;
-    CommentRepo commentRepo;
+    repo::TweetRepo tweetRepo;
+    repo::UserRepo userRepo;
+    repo::CommentRepo commentRepo;
     SUBCASE("Testando adição de tweet ao banco de dados") {
-        User user("luanborges", "123456", "Luan Borges");
-        User ur = userRepo.addUser(user);
+        model::User user("luanborges", "123456", "Luan Borges");
+        model::User ur = userRepo.addUser(user);
 
-        Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
-        Tweet tr = tweetRepo.addTweet(tweet);
+        model::Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
+        model::Tweet tr = tweetRepo.addTweet(tweet);
 
-        Comment comment(ur.id(), tr.id(), "teste comentário");
-        Comment cr = commentRepo.addComment(comment);
+        model::Comment comment(ur.id(), tr.id(), "teste comentário");
+        model::Comment cr = commentRepo.addComment(comment);
 
         CHECK(cr.description() == comment.description());
     }
 
     SUBCASE("Testando busca de todos os tweets no banco de dados") {
-      User user("luanborges", "123456", "Luan Borges");
-      User ur = userRepo.addUser(user);
+      model::User user("luanborges", "123456", "Luan Borges");
+      model::User ur = userRepo.addUser(user);
 
-      Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
-      Tweet tr = tweetRepo.addTweet(tweet);
+      model::Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
+      model::Tweet tr = tweetRepo.addTweet(tweet);
 
-      Comment comment1(ur.id(), tr.id(), "teste comentário 1");
-      Comment comment2(ur.id(), tr.id(), "teste comentário 2");
-      Comment comment3(ur.id(), tr.id(), "teste comentário 3");
+      model::Comment comment1(ur.id(), tr.id(), "teste comentário 1");
+      model::Comment comment2(ur.id(), tr.id(), "teste comentário 2");
+      model::Comment comment3(ur.id(), tr.id(), "teste comentário 3");
         
       commentRepo.addComment(comment1);
       commentRepo.addComment(comment2);
       commentRepo.addComment(comment3);
 
-      std::vector<Comment> commentVector = commentRepo.getCommentsByTweetId(tr.id());
+      std::vector<model::Comment> commentVector = commentRepo.getCommentsByTweetId(tr.id());
 
       CHECK(commentVector[0].description() == comment1.description());
       CHECK(commentVector[1].description() == comment2.description());
@@ -56,17 +56,17 @@ TEST_CASE("Testando repositorio de usuários") {
     }
 
     SUBCASE("Testando busca de tweet por id")  {
-      User user("luanborges", "123456", "Luan Borges");
+      model::User user("luanborges", "123456", "Luan Borges");
 
-      User ur = userRepo.addUser(user);
+      model::User ur = userRepo.addUser(user);
 
-      Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
-      Tweet tr = tweetRepo.addTweet(tweet);
+      model::Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
+      model::Tweet tr = tweetRepo.addTweet(tweet);
 
-      Comment comment(ur.id(), tr.id(), "teste comentário");
-      Comment cr = commentRepo.addComment(comment);
+      model::Comment comment(ur.id(), tr.id(), "teste comentário");
+      model::Comment cr = commentRepo.addComment(comment);
 
-      Comment commentSearch = commentRepo.searchCommentById(cr.id());
+      model::Comment commentSearch = commentRepo.searchCommentById(cr.id());
 
       CHECK_EQ(commentSearch.description(), cr.description());
     }

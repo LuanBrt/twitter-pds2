@@ -8,7 +8,7 @@
 int main(int argc, char* argv[]) {
 	setenv("DBNAME", "database.db", 0);
 	if (argc > 1 && strcmp(argv[1], "migrate") == 0) {
-		Database database;
+		repo::Database database;
 		database.createDb();
 	} else {
 		CommandLine commandLine;

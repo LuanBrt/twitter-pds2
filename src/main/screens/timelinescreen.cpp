@@ -2,27 +2,26 @@
 
 namespace screen {
     void TimelineScreen::renderTweetList(std::vector<model::Tweet> tweets) {
-        std::cout << "\nSeus tweets: \n\n";
+        renderMessage("\nTimeline: \n");
         for (auto tweet : tweets) {
-            std::cout << tweet.author().username() << " - " << tweet.description() << std::endl;
+            renderMessage("Id: " + std::to_string(tweet.id()));
+            renderMessage(tweet.author().username() + " - " + tweet.description());
         }
     }
 
-    void TimelineScreen::renderTextSearchUser(std::vector<model::User> users){
-
-        if(users.empty()){
-
-            std::cout<<"Desculpe, mas não encotramos nenhum usuário"<<std::endl;
-
-        }else{
-
-            for(auto it: users){
-
-                std::cout<<it.username()<<std::endl<<it.nickname()<<std::endl;
-
-            }
-
+    void TimelineScreen::renderSearchUserResult(std::vector<model::User> users){
+        flushConsole();
+        renderSeparator();
+        if (users.size() == 0) {
+            renderMessage("Desculpe, mas não encotramos nenhum usuário");
+        } else {
+        renderMessage("Usuários Encontrados:");
+        renderMessage("");
+        for (auto user : users) {
+            renderMessage(user.username());
         }
-
+        renderSeparator();
+        renderMessage("timeline");
+        }
     }
 }

@@ -15,6 +15,6 @@ namespace screen{
 
         /// @brief renderiza os dados dos usuários encontrados
         /// @param users 
-        void renderTextSearchUser(std::vector<model::User> users);
+        void renderSearchUserResult(std::vector<model::User> users);
     };
 }

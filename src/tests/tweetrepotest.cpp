@@ -12,38 +12,38 @@
 TEST_CASE("Testando repositorio de usuários") {
     const char *dbname = "databasetest.db";
     setenv("DBNAME", dbname, 0);
-    Database db;
+    repo::Database db;
     db.createDb();
 
-    TweetRepo tweetRepo;
-    UserRepo userRepo;
+    repo::TweetRepo tweetRepo;
+    repo::UserRepo userRepo;
     SUBCASE("Testando adição de tweet ao banco de dados") {
-        User user("luanborges", "123456", "Luan Borges");
-        User ur = userRepo.addUser(user);
+        model::User user("luanborges", "123456", "Luan Borges");
+        model::User ur = userRepo.addUser(user);
 
-        Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
-        Tweet tr = tweetRepo.addTweet(tweet);
+        model::Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
+        model::Tweet tr = tweetRepo.addTweet(tweet);
 
         CHECK(tr.description() == tweet.description());
     }
 
     SUBCASE("Testando busca de todos os tweets no banco de dados") {
-      User user1("userteste1", "123", "Luan Borges");
-      User user2("userteste2", "123", "Luan Borges");
-      User user3("userteste3", "123", "Luan Borges");
+      model::User user1("userteste1", "123", "Luan Borges");
+      model::User user2("userteste2", "123", "Luan Borges");
+      model::User user3("userteste3", "123", "Luan Borges");
 
-      User ur1 = userRepo.addUser(user1);
-      User ur2 = userRepo.addUser(user2);
-      User ur3 = userRepo.addUser(user3);
+      model::User ur1 = userRepo.addUser(user1);
+      model::User ur2 = userRepo.addUser(user2);
+      model::User ur3 = userRepo.addUser(user3);
 
-      Tweet tweet1(ur1.id(), "teste tweet 1", "22/11/2023", 0);
-      Tweet tweet2(ur1.id(), "teste tweet 2", "22/11/2023", 0);
-      Tweet tweet3(ur3.id(), "teste tweet 3", "22/11/2023", 0);
+      model::Tweet tweet1(ur1.id(), "teste tweet 1", "22/11/2023", 0);
+      model::Tweet tweet2(ur1.id(), "teste tweet 2", "22/11/2023", 0);
+      model::Tweet tweet3(ur3.id(), "teste tweet 3", "22/11/2023", 0);
       tweetRepo.addTweet(tweet1);
       tweetRepo.addTweet(tweet2);
       tweetRepo.addTweet(tweet3);
 
-      std::vector<Tweet> tweetVector = tweetRepo.getTweets();
+      std::vector<model::Tweet> tweetVector = tweetRepo.getTweets();
 
       CHECK(tweetVector[0].description() == tweet1.description());
       CHECK(tweetVector[1].description() == tweet2.description());
@@ -51,14 +51,14 @@ TEST_CASE("Testando repositorio de usuários") {
     }
 
     SUBCASE("Testando busca de tweet por id")  {
-      User user("luanborges", "123456", "Luan Borges");
+      model::User user("luanborges", "123456", "Luan Borges");
 
-      User ur = userRepo.addUser(user);
+      model::User ur = userRepo.addUser(user);
 
-      Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
-      Tweet tr = tweetRepo.addTweet(tweet);
+      model::Tweet tweet(ur.id(), "teste tweet", "22/11/2023", 0);
+      model::Tweet tr = tweetRepo.addTweet(tweet);
 
-      Tweet tweetSearch = tweetRepo.searchTweetById(tr.id());
+      model::Tweet tweetSearch = tweetRepo.searchTweetById(tr.id());
 
       CHECK_EQ(tweetSearch.description(), tr.description());
     }
@@ -66,20 +66,20 @@ TEST_CASE("Testando repositorio de usuários") {
     SUBCASE("Testando obtenção de timeline de usuário") {
 
       // criando usuários
-      User user1("talvani", "123456", "Talvani");
-      User ur1 = userRepo.addUser(user1);
-      User user2("luan", "123456", "Luan Borges");
-      User ur2 = userRepo.addUser(user2);
+      model::User user1("talvani", "123456", "Talvani");
+      model::User ur1 = userRepo.addUser(user1);
+      model::User user2("luan", "123456", "Luan Borges");
+      model::User ur2 = userRepo.addUser(user2);
 
       // seguindo usuário
       userRepo.followUser(ur1, ur2);
 
       // criando tweet
-      Tweet tweet(ur2.id(), "teste tweet", "24/11/2023", 0);
-      Tweet tr = tweetRepo.addTweet(tweet);
+      model::Tweet tweet(ur2.id(), "teste tweet", "24/11/2023", 0);
+      model::Tweet tr = tweetRepo.addTweet(tweet);
 
 
-      std::vector<Tweet> timeline = tweetRepo.getUserTimeline(ur1);
+      std::vector<model::Tweet> timeline = tweetRepo.getUserTimeline(ur1);
       CHECK(timeline[0].id() == tr.id());
 
     }

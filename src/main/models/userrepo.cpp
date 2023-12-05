@@ -33,6 +33,19 @@ namespace repo {
         return u;
     }
 
+    model::User* UserRepo::searchUserByUsername(std::string username) {
+        std::string sql;
+        sql += "SELECT * FROM user WHERE username = '" + username + "';";
+        std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
+        
+        if (!result.empty()) {
+            model::User* u = new model::User(stoi(result[0]["id"]), result[0]["username"], result[0]["password"], result[0]["nickname"]);
+            return u;
+        } else {
+            return nullptr; // Retorna um ponteiro nulo se não encontrar o usuário
+        }
+    }
+
     // FUNÇÃO QUE BUSCA O USUÁRIO NO BANCO DE DADOS PELO NOME
     std::vector<model::User> UserRepo::searchUser(std::string keyword) {
         std::vector<model::User> userVec;
@@ -59,9 +72,23 @@ namespace repo {
         return userVec;
     }
 
+    int UserRepo::isUserFollow(model::User follower, model::User followed) {
+        std::vector<model::User> userVec;
+        std::string sql = "SELECT u.id FROM follow f JOIN user u ON u.id = f.followed_id WHERE follower_id="+std::to_string(follower.id())+" "
+                        "AND followed_id="+std::to_string(followed.id())+";";
+        std::vector<std::map<std::string, std::string>> result = executeSelect(_db, sql);
+        return result.size();
+    }
+
     model::User UserRepo::followUser(model::User follower, model::User followed) {
         std::string sql = "INSERT INTO follow (follower_id, followed_id) VALUES ("+std::to_string(follower.id())+", "+std::to_string(followed.id())+");";
         int r = executeInsert(_db, sql);
         return followed;
+    }
+
+    int UserRepo::unfollowUser(model::User follower, model::User followed) {
+        std::string sql = "DELETE FROM follow WHERE follower_id="+std::to_string(follower.id())+" "
+                        "AND followed_id="+std::to_string(followed.id())+";";
+        return executeDelete(_db, sql);
     }
 }

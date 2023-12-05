@@ -1,6 +1,7 @@
 #pragma once
 
 #include "controllers/abstractcontroller.hpp"
+#include "controllers/userprofilecontroller.hpp"
 #include "models/user.hpp"
 #include "models/userrepo.hpp"
 #include "models/tweetrepo.hpp"
@@ -17,17 +18,23 @@ namespace controller {
         TimelineController(model::User u);
 
 
+        /// @brief Metodo virtual dos controllers
+        /// @return O proximo controller
+        AbstractController *render() override;
+
+
         /// @brief Obtem os tweets do repositorio, e envia para a view exibir
         void getTweets();
+        /// @brief Obtem um usuário e entra no profile dele
+        void seeUser();
         /// @brief Busca tweets no repositorio
         void searchTweets();
         /// @brief Busca usuarios no repositorio
         void searchUsers();
 
+        /// @brief Função que publica um tweet
+        void sendTweet();
 
-        /// @brief Metodo virtual dos controllers
-        /// @return O proximo controller
-        AbstractController *render() override;
 
     private:
         enum ValidOptions {
@@ -43,7 +50,7 @@ namespace controller {
         std::map<int, std::string> _options;
 
         model::User _user;
-        screen::TimelineScreen _view;
+        screen::TimelineScreen _timelineScreen;
         repo::TweetRepo _tweetRepo;
         repo::UserRepo _userRepo;
 

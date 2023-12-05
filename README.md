@@ -5,7 +5,7 @@
 ## Dependências necessárias:
 
 Sqlite3: https://www.sqlite.org/download.html ou
-```sudo apt-get installqlite3 libsqlite3-dev```
+```sudo apt-get install sqlite3 libsqlite3-dev```
 
 
 ## Executando:
@@ -32,4 +32,4 @@ Exemplo: firefox index.html ( no terminal )
 O projeto tem um planejamento para implementação de mais funções além das que já estão implementadas nesta versão 1.0 estável.
 
 ## Contribuição:
-Bernardo Marquez, Luan Borges, Marcus Vinicius, Pedro _, Talvani de Souza.
+Bernardo Marquez, Luan Borges, Marcus Vinicius, Pedro Tavares, Talvani de Souza.
